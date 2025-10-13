@@ -1,0 +1,89 @@
+/* QuoteBlock.module.css - Save to: BoomBox/frontend/src/components/sections/QuoteBlock.module.css */
+
+.quote {
+  background: rgba(0, 0, 0, 0);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-md);
+  margin: 0;
+  text-align: center;
+  animation: textFocusIn 1.6s ease-in-out;
+}
+
+.text {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-primary);
+  text-shadow: 0.02em 0 lightgray, 0 0.02em lightgray;
+  margin-bottom: var(--spacing-sm);
+}
+
+.author {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  font-style: normal;
+  font-weight: 500;
+}
+
+/* ========== DESKTOP ENHANCEMENTS ========== */
+
+@media (min-width: 992px) {
+  .quote {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(0, 0, 0, 0.3));
+    border-left: 4px solid var(--color-accent-gold);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-lg);
+    margin: var(--spacing-md) 0;
+    position: relative;
+    backdrop-filter: blur(10px);
+  }
+
+  .quote::before {
+    content: '"';
+    font-size: 4rem;
+    color: var(--color-accent-gold);
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    font-family: 'Georgia', serif;
+    opacity: 0.3;
+    line-height: 1;
+  }
+
+  .text {
+    font-size: var(--font-size-lg);
+    font-style: italic;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .author {
+    color: var(--color-accent-gold);
+    font-weight: 600;
+    font-size: var(--font-size-base);
+    margin-top: var(--spacing-sm);
+  }
+
+  .author::before {
+    content: "— ";
+  }
+}
+
+/* ========== ANIMATIONS ========== */
+
+@keyframes textFocusIn {
+  from { 
+    filter: blur(12px); 
+    opacity: 0; 
+  }
+  to { 
+    filter: blur(0px); 
+    opacity: 1; 
+  }
+}
+
+/* ========== ACCESSIBILITY ========== */
+
+@media (prefers-reduced-motion: reduce) {
+  .quote {
+    animation: none;
+  }
+}

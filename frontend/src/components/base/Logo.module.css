@@ -1,0 +1,49 @@
+.logo {
+  display: block;
+  transition: transform var(--transition-base), filter var(--transition-base);
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.5));
+}
+
+/* ========== SIZES ========== */
+
+.sm {
+  width: 30px;
+  height: 30px;
+}
+
+.md {
+  width: 80px;
+  height: 80px;
+}
+
+.lg {
+  width: 120px;
+  height: 120px;
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 576px) {
+  .md {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .lg {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+/* ========== ACCESSIBILITY ========== */
+
+@media (prefers-reduced-motion: reduce) {
+  .logo {
+    transition: none;
+  }
+}
