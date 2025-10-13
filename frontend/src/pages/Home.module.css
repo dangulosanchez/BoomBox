@@ -1,0 +1,430 @@
+/* Home.module.css - Complete Mobile + Desktop with Content & CTA */
+
+/* ========================================
+   MOBILE LAYOUT - Complete Experience
+   ======================================== */
+
+.mobileHome {
+  background: var(--color-bg-primary);
+  min-height: 100vh;
+}
+
+/* Logo Section - FIXED CENTERING */
+.mobileLogoSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-lg) 0;
+  animation: fadeInDown 0.6s ease-out;
+}
+
+.mobileLogoSection img {
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.4));
+}
+
+/* Hero Image with Gradient Overlay */
+.mobileImageWrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  animation: fadeIn 0.8s ease-out 0.2s both;
+}
+
+.mobileHeroImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  transform: scale(1.02);
+}
+
+.mobileImageGradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30%;
+  background: linear-gradient(
+    to top, 
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.7) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+/* Tagline Section - NEW */
+.mobileTagline {
+  padding: var(--spacing-lg) var(--spacing-md);
+  text-align: center;
+  background: linear-gradient(180deg, #000 0%, #0a0a0a 100%);
+  animation: fadeInUp 0.8s ease-out 0.3s both;
+}
+
+.taglineText {
+  font-size: var(--font-size-xl);
+  font-weight: 400;
+  color: var(--color-accent-gold);
+  margin: 0;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+/* Quote Section */
+.mobileQuoteSection {
+  padding: var(--spacing-xl) var(--spacing-md);
+  background: #0a0a0a;
+  position: relative;
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.accentLine {
+  width: 60px;
+  height: 3px;
+  background: var(--gradient-gold-simple);
+  margin: 0 auto var(--spacing-lg);
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+}
+
+.quote {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.quoteIcon {
+  display: block;
+  font-size: 4rem;
+  line-height: 0.5;
+  color: var(--color-accent-gold);
+  opacity: 0.5;
+  font-family: Georgia, serif;
+  margin-bottom: var(--spacing-sm);
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.quoteText {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--color-text-primary);
+  margin: 0 0 var(--spacing-md) 0;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.quoteAuthor {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-accent-gold);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: var(--spacing-md);
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+/* About Section - Mobile */
+.mobileAboutSection {
+  padding: var(--spacing-xl) var(--spacing-md);
+  background: linear-gradient(180deg, #0a0a0a 0%, #000 100%);
+  animation: fadeInUp 0.8s ease-out 0.5s both;
+}
+
+.mobileAboutTitle {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-align: center;
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+.mobileAboutText {
+  font-size: var(--font-size-base);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--spacing-md) 0;
+  text-align: center;
+}
+
+.mobileAboutText:last-of-type {
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Stats Row - Mobile */
+.mobileStatsRow {
+  display: flex;
+  justify-content: space-around;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.mobileStat {
+  text-align: center;
+  flex: 1;
+}
+
+.statNumber {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-accent-gold);
+  font-family: var(--font-heading);
+  line-height: 1;
+  margin-bottom: var(--spacing-xs);
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+.statLabel {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* CTA Section - Primary Action */
+.mobileCTA {
+  padding: var(--spacing-2xl) var(--spacing-md);
+  background: linear-gradient(180deg, #000 0%, #0a0a0a 50%, #000 100%);
+  text-align: center;
+  animation: fadeInUp 0.8s ease-out 0.6s both;
+  border-top: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.ctaTitle {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0 0 var(--spacing-sm) 0;
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.ctaSubtext {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--spacing-lg) 0;
+}
+
+.ctaButtons {
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Secondary CTAs */
+.secondaryCTAs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+}
+
+.secondaryLink {
+  font-size: var(--font-size-sm);
+  color: var(--color-accent-gold);
+  text-decoration: none;
+  transition: all var(--transition-base);
+  font-weight: 500;
+}
+
+.secondaryLink:hover {
+  color: var(--color-accent-gold-light);
+  text-decoration: underline;
+}
+
+.linkDivider {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+/* ========================================
+   RESPONSIVE ENHANCEMENTS
+   ======================================== */
+
+/* Small Mobile */
+@media (max-width: 375px) {
+  .mobileQuoteSection,
+  .mobileAboutSection,
+  .mobileCTA {
+    padding: var(--spacing-lg) var(--spacing-sm);
+  }
+  
+  .quoteText,
+  .mobileAboutText {
+    font-size: 1rem;
+  }
+  
+  .quoteIcon {
+    font-size: 3rem;
+  }
+  
+  .statNumber {
+    font-size: var(--font-size-xl);
+  }
+}
+
+/* Large Mobile (Phablets) */
+@media (min-width: 414px) and (max-width: 767px) {
+  .quoteText,
+  .mobileAboutText {
+    font-size: 1.125rem;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .accentLine {
+    width: 80px;
+  }
+  
+  .taglineText {
+    font-size: 1.75rem;
+  }
+}
+
+/* Tablet Portrait */
+@media (min-width: 768px) and (max-width: 991px) {
+  .mobileQuoteSection,
+  .mobileAboutSection,
+  .mobileCTA {
+    padding: var(--spacing-2xl) var(--spacing-xl);
+  }
+  
+  .quoteText,
+  .mobileAboutText {
+    font-size: 1.25rem;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .accentLine {
+    width: 100px;
+    height: 4px;
+  }
+  
+  .quoteIcon {
+    font-size: 5rem;
+  }
+  
+  .taglineText {
+    font-size: 2rem;
+  }
+  
+  .mobileAboutTitle,
+  .ctaTitle {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .mobileStatsRow {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .statNumber {
+    font-size: var(--font-size-3xl);
+  }
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   PERFORMANCE & ACCESSIBILITY
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .mobileLogoSection,
+  .mobileImageWrapper,
+  .mobileTagline,
+  .mobileQuoteSection,
+  .mobileAboutSection,
+  .mobileCTA {
+    animation: none !important;
+  }
+  
+  .mobileHeroImage {
+    transform: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .quoteIcon {
+    opacity: 1;
+  }
+  
+  .mobileImageGradient {
+    background: linear-gradient(to top, #000 0%, transparent 100%);
+  }
+  
+  .accentLine {
+    box-shadow: none;
+  }
+}
+
+/* Touch Optimization */
+.mobileHome {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+.mobileImageWrapper {
+  overscroll-behavior-y: contain;
+}
+
+/* Will-change for performance */
+.mobileLogoSection,
+.mobileImageWrapper,
+.mobileTagline,
+.mobileQuoteSection,
+.mobileAboutSection,
+.mobileCTA {
+  will-change: transform, opacity;
+  animation-fill-mode: both;
+}
+
+/* Print Styles */
+@media print {
+  .mobileImageGradient,
+  .accentLine,
+  .mobileCTA {
+    display: none;
+  }
+  
+  .quoteIcon {
+    color: #000;
+    opacity: 0.3;
+  }
+}
