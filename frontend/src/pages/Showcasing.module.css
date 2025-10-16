@@ -425,6 +425,10 @@
   margin-top: var(--spacing-md);
 }
 
+
+/* Optional hard stop for any overflow inside the IG cards */
+
+
 /* ========== EMPTY STATE ========== */
 
 .emptyState {
@@ -492,6 +496,22 @@
     right: var(--spacing-md);
   }
 
+
+.instagramGrid { grid-template-columns: 1fr !important; }
+
+  .instagramSection .instagram-media,
+  .instagramSection blockquote.instagram-media,
+  .instagramSection .instagram-media div,
+  .instagramSection .instagram-media iframe {
+    max-width: 100% !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+}
+
+
+@media (max-width: 992px) {
   .instagramGrid {
     grid-template-columns: 1fr 1fr;
   }
