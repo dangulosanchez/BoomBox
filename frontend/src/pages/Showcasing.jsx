@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './Showcasing.module.css';
 
@@ -232,21 +232,77 @@ const ActivityCard = ({ activity, index }) => {
   );
 };
 
-// ========== INSTAGRAM FEED COMPONENT ==========
+/**
+ * ========== INSTAGRAM FEED COMPONENT ==========
+ * Free right now: render any list of public Instagram post URLs using Instagram's oEmbed script.
+ * - Replace the sample URLs with posts from @theboomboxmiami or your preferred hashtag.
+ * - Later upgrade path (still free): swap `postUrls` by fetching from your own API
+ *   that calls the Instagram Graph API (Hashtag Search/User Media) with a token.
+ */
 const InstagramFeed = () => {
+  const containerRef = useRef(null);
+
+  // TODO: Replace these with your posts (copy the URL from the Instagram post "..." menu > "Copy link").
+  // You can also paste URLs that include your hashtag search results gathered manually.
+  const postUrls = useMemo(
+    () => [
+      // Example public posts (placeholders) — replace all three:
+      'https://www.instagram.com/p/DOJZqjBjvkm/?utm_source=ig_web_copy_link',
+      'https://www.instagram.com/p/DPWs2M1Drye/?utm_source=ig_web_copy_link',
+      'https://www.instagram.com/p/DPyf-WgjWpX/?utm_source=ig_web_copy_link'
+    ],
+    []
+  );
+
+  // Load Instagram embed script once; it’s free and official.
+  useEffect(() => {
+    const existing = document.getElementById('ig-embed-script');
+    if (!existing) {
+      const s = document.createElement('script');
+      s.async = true;
+      s.defer = true;
+      s.id = 'ig-embed-script';
+      s.src = 'https://www.instagram.com/embed.js';
+      document.body.appendChild(s);
+      s.onload = () => {
+        if (window.instgrm && window.instgrm.Embeds) {
+          window.instgrm.Embeds.process();
+        }
+      };
+    } else if (window.instgrm && window.instgrm.Embeds) {
+      window.instgrm.Embeds.process();
+    }
+  }, []);
+
+  // Re-process embeds when URLs change
+  useEffect(() => {
+    if (window.instgrm && window.instgrm.Embeds) {
+      window.instgrm.Embeds.process();
+    }
+  }, [postUrls]);
+
   return (
     <section className={styles.instagramSection}>
-      <h2 className={styles.instagramTitle}>Follow Us on Instagram</h2>
-      <p className={styles.instagramHandle}>@theboomboxmiami</p>
-      <a
-        href="https://instagram.com/theboomboxmiami"
-        target="_blank"
-        rel="noopener noreferrer"
-        className={styles.instagramCTA}
-      >
-        Follow Us
-      </a>
-      <p className={styles.instagramNote}>Instagram feed integration coming soon</p>
+      <div ref={containerRef} className={styles.instagramGrid}>
+        {postUrls.length > 0 ? (
+          postUrls.map((url, i) => (
+            <div key={i} className={styles.igEmbed}>
+              <blockquote
+                className="instagram-media"
+                data-instgrm-captioned
+                data-instgrm-permalink={url}
+                data-instgrm-version="14"
+                style={{ background: 'transparent', border: 0, margin: 0 }}
+              >
+              </blockquote>
+            </div>
+          ))
+        ) : (
+          <p className={styles.igEmpty}>
+            No Instagram posts configured yet. Add post URLs to <code>postUrls</code>.
+          </p>
+        )}
+      </div>
     </section>
   );
 };
@@ -259,6 +315,27 @@ const Showcasing = () => {
     if (activeFilter === 'all') return activitiesData;
     return activitiesData.filter(activity => activity.category === activeFilter);
   }, [activeFilter]);
+
+  const gridRef = useRef(null);
+
+    // When a filter button is clicked, change the filter and scroll to the grid
+    
+    const handleFilterChange = (id) => {
+    setActiveFilter(id);
+    // account for a fixed header (tweak 80 if your header height differs)
+    const headerOffset = 80;
+    const prefersReduced =
+    typeof window !== 'undefined' &&
+    window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (gridRef.current) {
+    const top =
+    gridRef.current.getBoundingClientRect().top +
+    window.pageYOffset -
+    headerOffset;
+    window.scrollTo({ top, behavior: prefersReduced ? 'auto' : 'smooth' });
+    }
+    };
 
   return (
     <div className={styles.showcase}>
@@ -276,10 +353,10 @@ const Showcasing = () => {
       </motion.header>
 
       {/* Filter Bar */}
-      <FilterBar activeFilter={activeFilter} onFilterChange={setActiveFilter} />
+      <FilterBar activeFilter={activeFilter} onFilterChange={handleFilterChange} />
 
       {/* Masonry Grid */}
-      <div className={styles.gridContainer}>
+      <div div ref={gridRef} className={styles.gridContainer}>
         <div className={styles.masonryGrid}>
           <AnimatePresence mode="wait">
             {filteredActivities.map((activity, index) => (
