@@ -20,6 +20,7 @@ import OnboardingRoute from './OnboardingRoute';
 
 // Import global styles
 import './styles/globals.css';
+import Showcasing from './pages/Showcasing';
 
 /**
  * Main Application Component
@@ -85,11 +86,7 @@ function App() {
           <Route 
             path="/showcasing" 
             element={
-              <Placeholder 
-                title="Showcasing" 
-                subtitle="Discover Miami's Next Big Thing"
-                message="Coming Soon"
-              />
+              <Showcasing/>
             } 
           />
           <Route 

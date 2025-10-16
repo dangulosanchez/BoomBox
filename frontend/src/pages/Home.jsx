@@ -187,12 +187,12 @@ const Home = () => {
                   <div style={{ 
                     fontSize: '1rem', 
                     color: 'var(--color-text-secondary)' 
-                  }}>Artists Showcased</div>
+                  }}>Artists Showcasingd</div>
                 </div>
               </div>
             </div>
           }
-          imageUrl="/images/building.jpeg"
+          image="/images/building.jpeg"
         />
 
         {/* <TestimonialSection /> */}
