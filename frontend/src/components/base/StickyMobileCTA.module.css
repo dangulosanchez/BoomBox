@@ -1,0 +1,85 @@
+.stickyBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.98));
+  border-top: 1px solid rgba(255, 215, 0, 0.3);
+  padding: var(--spacing-sm) var(--spacing-md);
+  transform: translateY(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.5);
+}
+
+.stickyBar.visible {
+  transform: translateY(0);
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Event Info */
+.eventInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  flex: 1;
+  min-width: 0; /* Allow text truncation */
+}
+
+.eventName {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.separator {
+  color: var(--color-accent-gold);
+  opacity: 0.5;
+  font-size: var(--font-size-sm);
+}
+
+.eventPrice {
+  font-size: var(--font-size-sm);
+  color: var(--color-accent-gold);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* CTA Button */
+.ctaButton {
+  flex-shrink: 0;
+  min-width: 80px;
+}
+
+/* Hide on desktop */
+@media (min-width: 992px) {
+  .stickyBar {
+    display: none;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .stickyBar {
+    transition: none;
+  }
+}
+
+/* Safe area for mobile notch/home indicator */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .stickyBar {
+    padding-bottom: calc(var(--spacing-sm) + env(safe-area-inset-bottom));
+  }
+}

@@ -1,31 +1,38 @@
 import Hero from '../components/sections/Hero';
 import AboutSection from '../components/sections/AboutSection';
+import PressBar from '../components/sections/PressBar';
+import TestimonialSection from '../components/sections/TestimonialSection';
+import EventsPreview from '../components/sections/EventsPreview';
 import Logo from '../components/base/Logo';
 import Button from '../components/base/Button';
+import StickyMobileCTA from '../components/base/StickyMobileCTA';
 import styles from './Home.module.css';
 
 /**
- * Home Page - Complete experience with content parity & CTA
+ * Home Page - Complete conversion-optimized experience
  * 
  * @component
- * @improvements
- * - Mobile now has About content (not just quote)
- * - Added strong CTA section (Shotgun events)
- * - Fixed logo centering
- * - Maintained fast performance
- * - Progressive disclosure (essential first, details fold)
+ * @improvements (Phase 2 - Conversion Optimization)
+ * - Added press/authority bar (Miami New Times, notable artists)
+ * - Added testimonials section with social proof
+ * - Added upcoming events preview with placeholder cards
+ * - Enhanced hero CTA with urgency/social proof
+ * - Added mobile sticky CTA bar
+ * - Updated copy to be more benefit-driven
+ * - Prepared Shotgun widget integration point
+ * 
+ * @flow
+ * Hero → Press Bar → About → Testimonials → Events Preview
  */
 const Home = () => {
   return (
     <>
       {/* ========== MOBILE LAYOUT ========== */}
       <div className={`${styles.mobileHome} mobile-only`}>
-        {/* Logo Section - FIXED CENTERING */}
         <div className={styles.mobileLogoSection}>
           <Logo size="md" variant="black" />
         </div>
 
-        {/* Hero Image with Gradient Overlay */}
         <div className={styles.mobileImageWrapper}>
           <img 
             src="/images/building.jpeg" 
@@ -36,26 +43,26 @@ const Home = () => {
           <div className={styles.mobileImageGradient}></div>
         </div>
 
-        {/* Tagline - Short & Punchy */}
         <div className={styles.mobileTagline}>
           <h1 className={styles.taglineText}>For locals, by locals</h1>
         </div>
 
-        {/* Quote Section */}
         <div className={styles.mobileQuoteSection}>
           <div className={styles.accentLine}></div>
           
           <blockquote className={styles.quote}>
             <span className={styles.quoteIcon} aria-hidden="true">"</span>
             <p className={styles.quoteText}>
-              THE Boombox showcases Miami's top underground music and arts scene. 
-              Often imitated but never duplicated, "The Box" is the place to be.
+              For 6 years, The Boombox has been Miami's underground sanctuary — 
+              where emerging artists find their voice and music lovers discover their next obsession. 
+              Often imitated, never duplicated.
             </p>
             <footer className={styles.quoteAuthor}>— THE BOOMBOX</footer>
           </blockquote>
         </div>
 
-        {/* About Content - Mobile Optimized */}
+        <PressBar />
+
         <div className={styles.mobileAboutSection}>
           <h2 className={styles.mobileAboutTitle}>About The Box</h2>
           <div className={styles.accentLine}></div>
@@ -87,43 +94,14 @@ const Home = () => {
           </div>
         </div>
 
-        {/* CTA Section - Primary Action */}
-        <div className={styles.mobileCTA}>
-          <h2 className={styles.ctaTitle}>Upcoming Events</h2>
-          <p className={styles.ctaSubtext}>
-            Check out what's happening at The Box
-          </p>
-          
-          <div className={styles.ctaButtons}>
-            <Button 
-              as="a"
-              href="https://shotgun.live/en/venues/the-boombox-miami"
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="primary"
-              size="lg"
-              fullWidth
-            >
-              View Events on Shotgun
-            </Button>
-          </div>
-          
-          {/* Optional: Secondary CTAs */}
-          <div className={styles.secondaryCTAs}>
-            <a href="#" className={styles.secondaryLink}>
-              Contact Us
-            </a>
-            <span className={styles.linkDivider}>•</span>
-            <a href="#" className={styles.secondaryLink}>
-              Gallery
-            </a>
-          </div>
+        <TestimonialSection />
+
+        <div data-section="events">
+          <EventsPreview />
         </div>
       </div>
 
-      {/* ========== DESKTOP LAYOUT ========== */}
       <div className="desktop-only">
-        {/* Full-screen Hero */}
         <Hero
           title="THE BOOMBOX"
           subtitle="Miami's Underground Music Scene"
@@ -133,8 +111,10 @@ const Home = () => {
           height="100vh"
           overlay={true}
         >
-          {/* CTA in Desktop Hero */}
-          <div style={{ marginTop: 'var(--spacing-lg)' }}>
+          <div className={styles.heroCTAWrapper}>
+            <p className={styles.heroTeaser}>
+              Coming up: Bassline Fridays • This Saturday
+            </p>
             <Button 
               as="a"
               href="https://shotgun.live/en/venues/the-boombox-miami"
@@ -143,37 +123,89 @@ const Home = () => {
               variant="primary"
               size="lg"
             >
-              View Upcoming Events
+              See What's Happening
             </Button>
+            <p className={styles.heroSupport}>
+              🎵 Join 500+ locals every weekend
+            </p>
           </div>
         </Hero>
 
-        {/* About Section */}
+        <PressBar />
+
         <AboutSection
           title="About The Box"
           content={
             <div>
               <p style={{ fontSize: '1.3rem', marginBottom: '2rem', opacity: 0.95 }}>
-                THE Boombox showcases Miami's top underground music and arts scene. 
-                Often imitated but never duplicated, "The Box" is the place to be.
+                For 6 years, The Boombox has been Miami's underground sanctuary — 
+                where emerging artists find their voice and music lovers discover their next obsession.
               </p>
-              <p>
-                We're a community hub where emerging artists find their voice and 
-                music lovers discover their next obsession. High-energy electronic 
-                nights, intimate acoustic sets, art exhibitions, and cultural 
-                celebrations—we bring Miami's underground to life.
+              <p style={{ fontSize: '1.1rem', marginBottom: '2rem', opacity: 0.9 }}>
+                We're a community hub in the heart of Miami's Bird Road Arts District. 
+                High-energy electronic nights, intimate acoustic sets, art exhibitions, 
+                and cultural celebrations—we bring the underground to life.
               </p>
+              
+              <div style={{ 
+                display: 'grid', 
+                gridTemplateColumns: 'repeat(3, 1fr)', 
+                gap: '2rem', 
+                marginTop: '3rem' 
+              }}>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{ 
+                    fontSize: '2.5rem', 
+                    fontWeight: '700', 
+                    color: 'var(--color-accent-gold)',
+                    marginBottom: '0.5rem'
+                  }}>500+</div>
+                  <div style={{ 
+                    fontSize: '1rem', 
+                    color: 'var(--color-text-secondary)' 
+                  }}>Events Hosted</div>
+                </div>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{ 
+                    fontSize: '2.5rem', 
+                    fontWeight: '700', 
+                    color: 'var(--color-accent-gold)',
+                    marginBottom: '0.5rem'
+                  }}>10+</div>
+                  <div style={{ 
+                    fontSize: '1rem', 
+                    color: 'var(--color-text-secondary)' 
+                  }}>Years Strong</div>
+                </div>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{ 
+                    fontSize: '2.5rem', 
+                    fontWeight: '700', 
+                    color: 'var(--color-accent-gold)',
+                    marginBottom: '0.5rem'
+                  }}>1000+</div>
+                  <div style={{ 
+                    fontSize: '1rem', 
+                    color: 'var(--color-text-secondary)' 
+                  }}>Artists Showcased</div>
+                </div>
+              </div>
             </div>
           }
-          stats={[
-            { number: '500+', label: 'Events Hosted' },
-            { number: '10+', label: 'Years Active' },
-            { number: '1000+', label: 'Artists Featured' }
-          ]}
-          image="/images/building.jpeg"
-          imageAlt="The Boombox venue exterior"
+          imageUrl="/images/building.jpeg"
         />
+
+        <TestimonialSection />
+
+        <div data-section="events">
+          <EventsPreview />
+        </div>
       </div>
+
+      <StickyMobileCTA 
+        eventName="See Upcoming Shows"
+        ctaText="View Events"
+      />
     </>
   );
 };

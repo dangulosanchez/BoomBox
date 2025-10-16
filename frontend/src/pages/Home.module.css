@@ -1,9 +1,125 @@
-/* Home.module.css - Complete Mobile + Desktop with Content & CTA */
+.mobileHome [data-section="events"] {
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
+}
+/* Desktop: Same - no width constraints */
+.desktop-only [data-section="events"] {
+  width: 100%;
+  max-width: 100%;
+}
+
+
+.heroCTAWrapper {
+  margin-top: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.heroTeaser {
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  margin: 0;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.heroSupport {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin: 0;
+  opacity: 0.8;
+}
+
+@media (min-width: 992px) {
+  .heroTeaser {
+    font-size: var(--font-size-lg);
+  }
+
+  .heroSupport {
+    font-size: var(--font-size-base);
+  }
+}
 
 /* ========================================
-   MOBILE LAYOUT - Complete Experience
+   ANIMATIONS
    ======================================== */
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .heroCTAWrapper,
+  .mobileLogoSection,
+  .mobileImageWrapper,
+  .mobileTagline,
+  .mobileQuoteSection,
+  .mobileAboutSection,
+  .mobileCTA {
+    animation: none;
+  }
+}
+
+/* ========================================
+   PERFORMANCE OPTIMIZATIONS
+   ======================================== */
+
+/* Lazy load sections below the fold */
+[data-section="events"] {
+  content-visibility: auto;
+  contain-intrinsic-size: 800px; /* Estimated height */
+}
+
+/* GPU acceleration for animations */
+.heroCTAWrapper,
+.mobileImageWrapper,
+.mobileCTA {
+  will-change: transform, opacity;
+}
+
+/* Remove will-change after animation completes */
+@media (prefers-reduced-motion: no-preference) {
+  .heroCTAWrapper,
+  .mobileImageWrapper,
+  .mobileCTA {
+    animation-fill-mode: forwards;
+  }
+}
 .mobileHome {
   background: var(--color-bg-primary);
   min-height: 100vh;
@@ -426,5 +542,113 @@
   .quoteIcon {
     color: #000;
     opacity: 0.3;
+  }
+}
+
+
+.heroCTAWrapper {
+  margin-top: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.heroTeaser {
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  margin: 0;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.heroSupport {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin: 0;
+  opacity: 0.8;
+}
+
+@media (min-width: 992px) {
+  .heroTeaser {
+    font-size: var(--font-size-lg);
+  }
+
+  .heroSupport {
+    font-size: var(--font-size-base);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .heroCTAWrapper,
+  .mobileLogoSection,
+  .mobileImageWrapper,
+  .mobileTagline,
+  .mobileQuoteSection,
+  .mobileAboutSection,
+  .mobileCTA {
+    animation: none;
+  }
+}
+
+/* ========================================
+   PERFORMANCE OPTIMIZATIONS
+   ======================================== */
+
+/* Lazy load sections below the fold */
+[data-section="events"] {
+  content-visibility: auto;
+  contain-intrinsic-size: 800px; /* Estimated height */
+}
+
+/* GPU acceleration for animations */
+.heroCTAWrapper,
+.mobileImageWrapper,
+.mobileCTA {
+  will-change: transform, opacity;
+}
+
+/* Remove will-change after animation completes */
+@media (prefers-reduced-motion: no-preference) {
+  .heroCTAWrapper,
+  .mobileImageWrapper,
+  .mobileCTA {
+    animation-fill-mode: forwards;
   }
 }

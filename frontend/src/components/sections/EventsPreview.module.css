@@ -1,0 +1,151 @@
+.eventsSection {
+  background: linear-gradient(180deg, #000 0%, #0a0a0a 50%, #000 100%);
+  padding: var(--spacing-2xl) var(--spacing-md);
+  border-top: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.title {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0 0 var(--spacing-md) 0;
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.accentLine {
+  width: 80px;
+  height: 3px;
+  background: var(--gradient-gold-simple);
+  margin: 0 auto var(--spacing-md);
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+}
+
+.subtitle {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* Events Grid */
+.eventsGrid {
+  display: grid;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-2xl);
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Mobile: Stack vertically, show 2 events */
+.eventsGrid {
+  grid-template-columns: 1fr;
+}
+
+.eventsGrid > :nth-child(n+3) {
+  display: none;
+}
+
+/* Tablet: 2 columns */
+@media (min-width: 768px) {
+  .eventsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .eventsGrid > :nth-child(3) {
+    display: none;
+  }
+}
+
+/* Desktop: 3 columns, show all */
+@media (min-width: 992px) {
+  .eventsSection {
+    padding: var(--spacing-3xl) var(--spacing-md);
+  }
+
+  .title {
+    font-size: var(--font-size-3xl);
+  }
+
+  .subtitle {
+    font-size: var(--font-size-lg);
+  }
+
+  .eventsGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xl);
+  }
+
+  .eventsGrid > :nth-child(3) {
+    display: flex;
+  }
+}
+
+/* View All CTA */
+.viewAllCTA {
+  text-align: center;
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+
+.shotgunWidget {
+  /* Override Shotgun's default styles to match brand */
+  --shotgun-primary-color: #FFD700;
+  --shotgun-background-color: #000000;
+  --shotgun-text-color: #FFFFFF;
+  --shotgun-border-color: rgba(255, 215, 0, 0.15);
+  
+  /* Ensure widget fits in layout */
+  min-width: 100%;
+  margin-bottom: var(--spacing-2xl);
+}
+
+/* Example: Override Shotgun event card styles */
+.shotgunWidget :global(.shotgun-event-card) {
+  background: linear-gradient(135deg, rgba(17, 17, 17, 0.9), rgba(0, 0, 0, 0.95)) !important;
+  border: 1px solid rgba(255, 215, 0, 0.15) !important;
+  border-radius: 12px !important;
+}
+
+.shotgunWidget :global(.shotgun-event-title) {
+  color: #FFFFFF !important;
+}
+
+.shotgunWidget :global(.shotgun-button) {
+  background: linear-gradient(135deg, #ffd700, #ffed4e) !important;
+  color: #000000 !important;
+  font-weight: 600 !important;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .eventsGrid {
+    animation: none;
+  }
+}
