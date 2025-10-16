@@ -126,7 +126,7 @@ const Home = () => {
               See What's Happening
             </Button>
             <p className={styles.heroSupport}>
-              🎵 Join 500+ locals every weekend
+              Join 500+ locals every weekend
             </p>
           </div>
         </Hero>

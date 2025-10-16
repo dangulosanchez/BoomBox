@@ -61,37 +61,35 @@ const EventsPreview = () => {
     <section ref={sectionRef} className={styles.eventsSection}>
       <div className={styles.container}>
         {/* Section Header */}
-        <div className={styles.header}>
-          <h2 className={styles.title}>Upcoming Events</h2>
-          <div className={styles.accentLine}></div>
-          <p className={styles.subtitle}>
-            Get your tickets for the next show
-          </p>
-        </div>
-
         {/* Shotgun Widget */}
         {isVisible && (
-          <div className={styles.shotgunWidget}>
-            <iframe
-              ref={iframeRef}
-              src="https://shotgun.live/venues/the-boombox-miami?embedded=1&ui=dark"
-              allow="payment"
-              className={styles.shotgunIframe}
-              title="The Boombox Miami Events on Shotgun"
-              loading="lazy"
-              style={{
-                width: '100%',
-                maxWidth: '100%',
-                minWidth: '100%',
-                height: isMobile ? '700px' : '900px',
-                maxHeight: isMobile ? '80vh' : 'calc(100vh - 200px)',
-                border: '0',
-                display: 'block',
-                padding: '0',
-                margin: '0'
-              }}
-            />
-          </div>
+            <div style={{
+                paddingTop: "20px",
+                paddingBottom: "0px",
+                marginBottom: "0px"
+            }}>
+                <div className={styles.shotgunWidget}>
+                    <iframe
+                    ref={iframeRef}
+                    src="https://shotgun.live/venues/the-boombox-miami?embedded=1&ui=dark"
+                    allow="payment"
+                    className={styles.shotgunIframe}
+                    title="The Boombox Miami Events on Shotgun"
+                    loading="lazy"
+                    style={{
+                        width: '100%',
+                        maxWidth: '100%',
+                        minWidth: '100%',
+                        height: isMobile ? '700px' : '900px',
+                        maxHeight: isMobile ? '80vh' : 'calc(100vh - 200px)',
+                        border: '0',
+                        display: 'block',
+                        padding: '0',
+                        margin: '0'
+                    }}
+                    />
+                </div>
+            </div>
         )}
 
         {!isVisible && (
