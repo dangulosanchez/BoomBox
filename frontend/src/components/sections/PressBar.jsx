@@ -48,7 +48,7 @@ const PressBar = () => {
         </div>
 
         {/* Divider */}
-        <div className={styles.divider} aria-hidden="true">•</div>
+        <div className={styles.divider} aria-hidden="true"></div>
 
         {/* Notable Artists */}
         <div className={styles.artistsSection}>

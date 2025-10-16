@@ -94,7 +94,7 @@ const Home = () => {
           </div>
         </div>
 
-        <TestimonialSection />
+        {/* <TestimonialSection /> */}
 
         <div data-section="events">
           <EventsPreview />
@@ -195,7 +195,7 @@ const Home = () => {
           imageUrl="/images/building.jpeg"
         />
 
-        <TestimonialSection />
+        {/* <TestimonialSection /> */}
 
         <div data-section="events">
           <EventsPreview />

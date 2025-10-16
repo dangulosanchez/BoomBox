@@ -7,12 +7,15 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  width: 100%;
+  padding: 0;
 }
 
 /* Header */
 .header {
   text-align: center;
   margin-bottom: var(--spacing-2xl);
+  padding: 0 var(--spacing-md);
 }
 
 .title {
@@ -42,35 +45,78 @@
   opacity: 0.9;
 }
 
-/* Events Grid */
-.eventsGrid {
-  display: grid;
-  gap: var(--spacing-lg);
-  margin-bottom: var(--spacing-2xl);
+/* Shotgun Widget Container - FULL WIDTH */
+.shotgunWidget {
+  /* CRITICAL: Force full width */
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 100% !important;
+  
+  margin: 0 auto var(--spacing-lg);
   animation: fadeInUp 0.8s ease-out;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 215, 0, 0.15);
+  
+  /* Remove any inherited constraints */
+  position: relative;
+  display: block;
 }
 
-/* Mobile: Stack vertically, show 2 events */
-.eventsGrid {
-  grid-template-columns: 1fr;
+/* Shotgun Iframe - FULL WIDTH & OVERRIDE THEIR STYLES */
+.shotgunIframe {
+  /* CRITICAL: Force full width and remove constraints */
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 100% !important;
+  
+  /* Override Shotgun's padding */
+  padding: 0 !important;
+  margin: 0 !important;
+  
+  height: 800px;
+  max-height: calc(100vh - 200px);
+  border: 0;
+  display: block;
+  background: #000;
+  
+  /* Remove any box-sizing issues */
+  box-sizing: border-box;
 }
 
-.eventsGrid > :nth-child(n+3) {
-  display: none;
-}
-
-/* Tablet: 2 columns */
-@media (min-width: 768px) {
-  .eventsGrid {
-    grid-template-columns: repeat(2, 1fr);
+/* Mobile: Reduce height but keep full width, remove extra padding */
+@media (max-width: 768px) {
+  .eventsSection {
+    padding: var(--spacing-xl) 0;
   }
-
-  .eventsGrid > :nth-child(3) {
-    display: none;
+  
+  .container {
+    padding: 0;
+  }
+  
+  .shotgunWidget {
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+    margin: 0;
+    width: 100% !important;
+    box-shadow: none;
+  }
+  
+  .shotgunIframe {
+    height: 700px !important;
+    max-height: 80vh !important;
+    border-radius: 0;
+    
+    /* CRITICAL: Kill Shotgun's mobile padding */
+    padding: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
   }
 }
 
-/* Desktop: 3 columns, show all */
+/* Desktop: Full height */
 @media (min-width: 992px) {
   .eventsSection {
     padding: var(--spacing-3xl) var(--spacing-md);
@@ -84,51 +130,41 @@
     font-size: var(--font-size-lg);
   }
 
-  .eventsGrid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-xl);
-  }
-
-  .eventsGrid > :nth-child(3) {
-    display: flex;
+  .shotgunIframe {
+    height: 900px !important;
+    padding: 0 !important;
   }
 }
 
-/* View All CTA */
-.viewAllCTA {
-  text-align: center;
-  padding-top: var(--spacing-lg);
-  border-top: 1px solid rgba(255, 215, 0, 0.1);
+/* Loading State */
+.loadingState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-3xl) var(--spacing-md);
+  min-height: 400px;
+  color: var(--color-text-secondary);
 }
 
-
-.shotgunWidget {
-  /* Override Shotgun's default styles to match brand */
-  --shotgun-primary-color: #FFD700;
-  --shotgun-background-color: #000000;
-  --shotgun-text-color: #FFFFFF;
-  --shotgun-border-color: rgba(255, 215, 0, 0.15);
-  
-  /* Ensure widget fits in layout */
-  min-width: 100%;
-  margin-bottom: var(--spacing-2xl);
+.loader {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(255, 215, 0, 0.2);
+  border-top-color: var(--color-accent-gold);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: var(--spacing-md);
 }
 
-/* Example: Override Shotgun event card styles */
-.shotgunWidget :global(.shotgun-event-card) {
-  background: linear-gradient(135deg, rgba(17, 17, 17, 0.9), rgba(0, 0, 0, 0.95)) !important;
-  border: 1px solid rgba(255, 215, 0, 0.15) !important;
-  border-radius: 12px !important;
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
-.shotgunWidget :global(.shotgun-event-title) {
-  color: #FFFFFF !important;
-}
-
-.shotgunWidget :global(.shotgun-button) {
-  background: linear-gradient(135deg, #ffd700, #ffed4e) !important;
-  color: #000000 !important;
-  font-weight: 600 !important;
+.loadingState p {
+  margin: 0;
+  font-size: var(--font-size-base);
+  opacity: 0.8;
 }
 
 /* Animations */
@@ -145,7 +181,31 @@
 
 /* Accessibility */
 @media (prefers-reduced-motion: reduce) {
-  .eventsGrid {
+  .shotgunWidget {
     animation: none;
   }
+  
+  .loader {
+    animation: none;
+    border-top-color: var(--color-accent-gold);
+  }
+}
+
+/* 
+  ============================================
+  GLOBAL OVERRIDE FOR SHOTGUN PADDING
+  ============================================
+  
+  Shotgun's widget.js adds padding dynamically.
+  This ensures we override it at the highest specificity.
+*/
+
+/* Override any padding Shotgun adds via JS */
+iframe[src*="shotgun.live"] {
+  padding: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin: 0 !important;
 }

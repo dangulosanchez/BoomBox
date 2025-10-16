@@ -54,6 +54,9 @@ const EventsPreview = () => {
     }
   }, [isVisible, isLoaded]);
 
+  // Determine if mobile
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
   return (
     <section ref={sectionRef} className={styles.eventsSection}>
       <div className={styles.container}>
@@ -80,10 +83,12 @@ const EventsPreview = () => {
                 width: '100%',
                 maxWidth: '100%',
                 minWidth: '100%',
-                height: '800px',
-                maxHeight: 'calc(100vh - 200px)',
+                height: isMobile ? '700px' : '900px',
+                maxHeight: isMobile ? '80vh' : 'calc(100vh - 200px)',
                 border: '0',
-                display: 'block'
+                display: 'block',
+                padding: '0',
+                margin: '0'
               }}
             />
           </div>
