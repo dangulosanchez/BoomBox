@@ -23,6 +23,9 @@ import './styles/globals.css';
 import Showcasing from './pages/Showcasing';
 import Gallery from './pages/Gallery';
 import Blog from './pages/Blog';
+import BlogCreate from './pages/BlogCreate';
+import BlogEdit from './pages/BlogEdit';
+import BlogPost from './components/blog/BlogPost';
 
 /**
  * Main Application Component
@@ -107,11 +110,16 @@ function App() {
               />
             } 
           />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
+
           <Route 
-            path="/blog" 
-            element={
-              <Blog />
-            } 
+            path="/blog/create" 
+            element={<BlogCreate />} 
+          />
+          <Route 
+            path="/blog/edit/:id" 
+            element={<BlogEdit />} 
           />
           <Route 
             path="/shop" 

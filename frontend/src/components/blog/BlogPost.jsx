@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import BlogCard from '../components/blog/BlogCard';
 import styles from './BlogPost.module.css';
-
+import BlogCard from './BlogCard';
 /**
  * BlogPost Page - Single blog post view with full content
  * 
@@ -317,7 +316,7 @@ const BlogPost = () => {
             <h2 className={styles.relatedTitle}>Related Posts</h2>
             <div className={styles.relatedGrid}>
               {relatedPosts.map(relatedPost => (
-                <BlogCard 
+                <BlogCard
                   key={relatedPost._id} 
                   post={relatedPost}
                 />

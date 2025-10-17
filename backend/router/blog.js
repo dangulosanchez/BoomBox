@@ -160,7 +160,12 @@ router.get('/:slug', async (req, res) => {
         // Find post by slug
         const post = await BlogPost.findOne({ 
             slug, 
-            status: 'published' 
+            status: {
+                $in: [
+                    // "draft",
+                    "published"
+                ]
+            }
         })
         .populate('author', 'username email createdAt')
         .lean();
