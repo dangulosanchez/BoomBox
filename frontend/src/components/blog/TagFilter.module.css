@@ -1,0 +1,184 @@
+/* ============================================
+   TAG FILTER COMPONENT STYLES
+   Tag filtering UI for blog posts
+   ============================================ */
+
+.tagFilter {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  overflow-x: auto;
+}
+
+/* Hide scrollbar but keep functionality */
+.tagFilter::-webkit-scrollbar {
+  height: 6px;
+}
+
+.tagFilter::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+.tagFilter::-webkit-scrollbar-thumb {
+  background: rgba(255, 215, 0, 0.3);
+  border-radius: 3px;
+}
+
+.tagFilter::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 215, 0, 0.5);
+}
+
+/* ========== LABEL ========== */
+.tagLabel {
+  flex-shrink: 0;
+}
+
+.labelText {
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-accent-gold);
+}
+
+/* ========== TAG LIST ========== */
+.tagList {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+/* ========== TAG BUTTONS ========== */
+.tagButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  color: var(--color-text-secondary);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.tagButton:hover {
+  background: rgba(255, 215, 0, 0.1);
+  border-color: rgba(255, 215, 0, 0.4);
+  color: var(--color-accent-gold);
+  transform: translateY(-2px);
+}
+
+.tagButton:active {
+  transform: translateY(0);
+}
+
+/* Active State */
+.tagButton.active {
+  background: var(--gradient-gold-simple);
+  border-color: var(--color-accent-gold);
+  color: var(--color-bg-primary);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+.tagButton.active:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 215, 0, 0.4);
+}
+
+/* Tag Name */
+.tagName {
+  text-transform: capitalize;
+}
+
+/* Tag Count Badge */
+.tagCount {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 0.4rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  transition: background 0.3s ease;
+}
+
+.tagButton:hover .tagCount {
+  background: rgba(255, 215, 0, 0.2);
+}
+
+.tagButton.active .tagCount {
+  background: rgba(0, 0, 0, 0.2);
+  color: var(--color-bg-primary);
+}
+
+/* ========== RESPONSIVE ========== */
+
+/* Tablet */
+@media (max-width: 768px) {
+  .tagFilter {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .tagList {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 0.5rem;
+  }
+  
+  .tagButton {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.85rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .tagFilter {
+    padding: 0.875rem;
+  }
+  
+  .labelText {
+    font-size: 0.85rem;
+  }
+  
+  .tagButton {
+    font-size: 0.8rem;
+    padding: 0.45rem 0.75rem;
+  }
+  
+  .tagCount {
+    min-width: 20px;
+    height: 20px;
+    font-size: 0.7rem;
+  }
+}
+
+/* Large Screens */
+@media (min-width: 1200px) {
+  .tagFilter {
+    padding: 2rem;
+  }
+  
+  .tagList {
+    gap: 1rem;
+  }
+}

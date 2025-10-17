@@ -1,0 +1,275 @@
+/* ============================================
+   BLOG HEADER COMPONENT STYLES
+   Hero section for blog pages
+   ============================================ */
+
+.blogHeader {
+  position: relative;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, 
+    rgba(0, 0, 0, 0.95) 0%, 
+    rgba(20, 20, 20, 0.95) 50%,
+    rgba(0, 0, 0, 0.95) 100%
+  );
+}
+
+/* ========== BACKGROUND IMAGE ========== */
+.backgroundImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2;
+  z-index: 1;
+}
+
+/* Overlay for better text readability */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(255, 215, 0, 0.1) 50%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  z-index: 2;
+}
+
+/* ========== CONTENT ========== */
+.content {
+  position: relative;
+  z-index: 3;
+  max-width: 800px;
+  padding: 3rem 2rem;
+}
+
+/* Title */
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin: 0 0 1.5rem 0;
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Subtitle */
+.subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  color: var(--color-text-secondary);
+  margin: 0 0 2rem 0;
+  line-height: 1.6;
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+/* Accent Line */
+.accentLine {
+  width: 100px;
+  height: 4px;
+  background: var(--gradient-gold-simple);
+  margin: 0 auto;
+  border-radius: 2px;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  animation: expandWidth 0.8s ease-out 0.4s both;
+}
+
+/* ========== BACKGROUND ANIMATION ========== */
+.backgroundAnimation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 215, 0, 0.15) 0%,
+    rgba(255, 215, 0, 0.05) 50%,
+    transparent 100%
+  );
+  animation: float 20s infinite ease-in-out;
+}
+
+.circle:nth-child(1) {
+  width: 300px;
+  height: 300px;
+  top: -150px;
+  left: -150px;
+  animation-delay: 0s;
+}
+
+.circle:nth-child(2) {
+  width: 400px;
+  height: 400px;
+  bottom: -200px;
+  right: -200px;
+  animation-delay: 5s;
+  animation-duration: 25s;
+}
+
+.circle:nth-child(3) {
+  width: 250px;
+  height: 250px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-delay: 10s;
+  animation-duration: 30s;
+}
+
+/* ========== ANIMATIONS ========== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes expandWidth {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100px;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translate(50px, -50px) scale(1.1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(-30px, -100px) scale(0.9);
+    opacity: 0.4;
+  }
+  75% {
+    transform: translate(-70px, -50px) scale(1.05);
+    opacity: 0.6;
+  }
+}
+
+/* ========== RESPONSIVE ========== */
+
+/* Tablet */
+@media (max-width: 768px) {
+  .blogHeader {
+    min-height: 300px;
+  }
+  
+  .content {
+    padding: 2rem 1.5rem;
+  }
+  
+  .title {
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+  }
+  
+  .subtitle {
+    margin-bottom: 1.5rem;
+  }
+  
+  .circle:nth-child(1) {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .circle:nth-child(2) {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .circle:nth-child(3) {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .blogHeader {
+    min-height: 250px;
+  }
+  
+  .content {
+    padding: 1.5rem 1rem;
+  }
+  
+  .title {
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
+  
+  .accentLine {
+    width: 60px;
+    height: 3px;
+  }
+  
+  .circle {
+    display: none; /* Hide animation circles on mobile for performance */
+  }
+}
+
+/* Large Screens */
+@media (min-width: 1400px) {
+  .blogHeader {
+    min-height: 500px;
+  }
+  
+  .content {
+    max-width: 1000px;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .title,
+  .subtitle,
+  .accentLine {
+    animation: none;
+  }
+  
+  .circle {
+    animation: none;
+    opacity: 0.2;
+  }
+}

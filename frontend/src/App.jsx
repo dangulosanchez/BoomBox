@@ -21,6 +21,8 @@ import OnboardingRoute from './OnboardingRoute';
 // Import global styles
 import './styles/globals.css';
 import Showcasing from './pages/Showcasing';
+import Gallery from './pages/Gallery';
+import Blog from './pages/Blog';
 
 /**
  * Main Application Component
@@ -92,11 +94,7 @@ function App() {
           <Route 
             path="/gallery" 
             element={
-              <Placeholder 
-                title="Gallery" 
-                subtitle="Moments Captured"
-                message="Coming Soon"
-              />
+              <Gallery />
             } 
           />
           <Route 
@@ -112,11 +110,7 @@ function App() {
           <Route 
             path="/blog" 
             element={
-              <Placeholder 
-                title="Blog" 
-                subtitle="Stories from The Box"
-                message="Coming Soon"
-              />
+              <Blog />
             } 
           />
           <Route 
