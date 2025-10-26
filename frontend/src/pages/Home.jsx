@@ -104,8 +104,8 @@ const Home = () => {
       <div className="desktop-only">
         <Hero
           title="THE BOOMBOX"
-          subtitle="Miami's Underground Music Scene"
-          tagline="For locals, by locals"
+          subtitle="Miami's Underground: Every Genre. One Community."
+          tagline=""
           backgroundImage="/images/building.jpeg"
           logo={<Logo size="lg" variant="black" />}
           height="100vh"
@@ -127,7 +127,7 @@ const Home = () => {
               See What's Happening
             </Button>
             <p className={styles.heroSupport}>
-              Come Visit Miami's Underground
+              Authentic Miami. Zero Tourist Traps.
             </p>
           </div>
         </Hero>

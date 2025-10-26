@@ -153,6 +153,9 @@ const Navbar = ({ authState, updateAuthState }) => {
               </Link>
             </li>
             <li className={styles.navItem}>
+              <Link to="/story" className={styles.navLink}>Story</Link>
+            </li>
+            <li className={styles.navItem}>
               <Link 
                 to="/contact" 
                 className={`${styles.navLink} ${isActive('/contact') ? styles.active : ''}`}

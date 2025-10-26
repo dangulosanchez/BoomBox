@@ -27,6 +27,7 @@ import BlogCreate from './pages/BlogCreate';
 import BlogEdit from './pages/BlogEdit';
 import BlogPost from './components/blog/BlogPost';
 import Contact from './pages/Contact';
+import Story from './pages/Story';
 
 /**
  * Main Application Component
@@ -143,7 +144,10 @@ function App() {
               />
             } 
           />
+
+        <Route path="/story" element={<Story />} />
         </Route>
+
 
         {/* ========== AUTH ROUTES (Public Only) ========== */}
         {/* Redirect to dashboard if already authenticated */}

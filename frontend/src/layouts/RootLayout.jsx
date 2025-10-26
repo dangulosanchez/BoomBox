@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from '../components/navigation/Navbar';
+import Footer from '../components/navigation/Footer';
 
 /**
  * RootLayout - Main layout wrapper for all routes
@@ -33,8 +34,7 @@ const RootLayout = ({ authState, updateAuthState }) => {
         <Outlet />
       </main>
 
-      {/* TODO: Add Footer in Phase 3 */}
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };

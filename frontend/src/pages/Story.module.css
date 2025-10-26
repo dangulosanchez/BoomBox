@@ -1,0 +1,517 @@
+/**
+ * ============================================
+ * STORY PAGE STYLES - The Boombox Miami
+ * 100% Design System Compliance
+ * ============================================
+ * 
+ * A photo-essay style story page with nostalgic aesthetic,
+ * scroll-triggered animations, and alternating layouts.
+ * 
+ * Design System Variables Used:
+ * - Colors: --color-bg-primary, --color-text-primary, --color-accent-gold
+ * - Typography: --font-heading, --font-body, --font-size-* scale
+ * - Spacing: --spacing-* scale
+ * - Gradients: --gradient-gold, --gradient-gold-simple
+ * - Shadows: --shadow-gold-*, --glow-gold
+ * - Transitions: --transition-base, --transition-slow
+ */
+
+/* ========================================
+   MAIN CONTAINER
+   ======================================== */
+
+.storyPage {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--color-bg-primary) 0%, #0a0a0a 50%, var(--color-bg-primary) 100%);
+  padding-top: 0;
+}
+
+/* ========================================
+   HERO SECTION
+   ======================================== */
+
+.hero {
+  text-align: center;
+  padding: var(--spacing-2xl) var(--spacing-lg) var(--spacing-xl);
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.heroTitle {
+  font-size: var(--font-size-4xl);
+  font-weight: 700;
+  font-family: var(--font-heading);
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--spacing-md);
+  letter-spacing: -0.02em;
+  text-shadow: var(--text-shadow-gold);
+  text-transform: uppercase;
+}
+
+.heroSubtitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  max-width: 700px;
+  margin: 0 auto var(--spacing-md);
+  font-family: var(--font-body);
+  font-weight: 400;
+}
+
+.heroAccent {
+  width: 80px;
+  height: 4px;
+  background: var(--gradient-gold-simple);
+  margin: 0 auto;
+  border-radius: var(--border-radius-full);
+  box-shadow: var(--glow-gold);
+}
+
+/* ========================================
+   TIMELINE SECTIONS
+   ======================================== */
+
+.timelineSection {
+  padding: var(--spacing-xl) 0;
+  position: relative;
+}
+
+.timelineSection::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 215, 0, 0.2) 20%,
+    rgba(255, 215, 0, 0.2) 80%,
+    transparent 100%
+  );
+  transform: translateX(-50%);
+  display: none; /* Show on desktop */
+}
+
+@media (min-width: 992px) {
+  .timelineSection::before {
+    display: block;
+  }
+}
+
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .contentGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+  }
+  
+  /* Alternate layout - swap image/text sides */
+  .timelineSection.alternate .contentGrid {
+    direction: rtl;
+  }
+  
+  .timelineSection.alternate .textContent {
+    direction: ltr;
+  }
+  
+  .timelineSection.alternate .imageContainer {
+    direction: ltr;
+  }
+}
+
+/* ========================================
+   TEXT CONTENT
+   ======================================== */
+
+.textContent {
+  color: var(--color-text-primary);
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.accentLine {
+  width: 80px;
+  height: 4px;
+  background: var(--gradient-gold-simple);
+  margin-bottom: var(--spacing-md);
+  border-radius: 2px;
+  box-shadow: var(--shadow-gold-sm);
+}
+
+.bodyText {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-md);
+}
+
+.bodyText:last-child {
+  margin-bottom: 0;
+}
+
+.bodyText strong {
+  color: var(--color-accent-gold);
+  font-weight: 700;
+}
+
+/* ========================================
+   IMAGE CONTAINER
+   ======================================== */
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+}
+
+.sectionImage {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  border-radius: var(--border-radius-lg);
+  display: block;
+  /* Nostalgic/authentic aesthetic */
+  filter: grayscale(15%) contrast(1.08) brightness(0.95);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  transition: all var(--transition-slow);
+}
+
+.sectionImage:hover {
+  filter: grayscale(0%) contrast(1.1) brightness(1);
+  transform: scale(1.02);
+}
+
+.imageGlow {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 237, 78, 0.1));
+  border-radius: calc(var(--border-radius-lg) + 20px);
+  z-index: -1;
+  filter: blur(30px);
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* ========================================
+   PULL QUOTE SECTIONS
+   ======================================== */
+
+.pullQuoteSection {
+  padding: var(--spacing-2xl) 0;
+  text-align: center;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 215, 0, 0.03) 0%,
+    rgba(255, 215, 0, 0.01) 50%,
+    rgba(255, 215, 0, 0.03) 100%
+  );
+  border-top: 1px solid rgba(255, 215, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.pullQuoteSection::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.pullQuote {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+  position: relative;
+  z-index: 1;
+}
+
+.quoteIcon {
+  font-family: Georgia, serif;
+  font-size: 5rem;
+  color: var(--color-accent-gold);
+  opacity: 0.3;
+  line-height: 0.5;
+  display: block;
+  margin-bottom: var(--spacing-sm);
+}
+
+.quoteText {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xl);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-text-primary);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-md);
+}
+
+.quoteAuthor {
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  color: var(--color-accent-gold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  font-weight: 600;
+}
+
+/* ========================================
+   CTA SECTION
+   ======================================== */
+
+.ctaSection {
+  padding: var(--spacing-2xl) var(--spacing-lg);
+  text-align: center;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 215, 0, 0.08) 0%,
+    rgba(255, 215, 0, 0.03) 50%,
+    rgba(255, 215, 0, 0.08) 100%
+  );
+  border-top: 2px solid rgba(255, 215, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(255, 237, 78, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.ctaTitle {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  position: relative;
+  z-index: 1;
+}
+
+.ctaSubtext {
+  font-family: var(--font-body);
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-lg);
+  position: relative;
+  z-index: 1;
+}
+
+.ctaButton {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: var(--gradient-gold-simple);
+  color: #000;
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: var(--font-size-base);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  border-radius: var(--border-radius-full);
+  text-decoration: none;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-gold-md);
+  position: relative;
+  z-index: 1;
+}
+
+.ctaButton:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-gold-lg);
+  background: var(--gradient-gold);
+}
+
+.ctaButton:active {
+  transform: translateY(-1px);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 991px) {
+  .hero {
+    padding: var(--spacing-xl) var(--spacing-md) var(--spacing-lg);
+  }
+  
+  .heroTitle {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .heroSubtitle {
+    font-size: var(--font-size-base);
+  }
+  
+  .timelineSection {
+    padding: var(--spacing-lg) 0;
+  }
+  
+  .sectionTitle {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .sectionImage {
+    height: 320px;
+  }
+  
+  .pullQuoteSection {
+    padding: var(--spacing-xl) 0;
+  }
+  
+  .quoteIcon {
+    font-size: 4rem;
+  }
+  
+  .quoteText {
+    font-size: var(--font-size-lg);
+  }
+  
+  .ctaSection {
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+  
+  .ctaTitle {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .ctaSubtext {
+    font-size: var(--font-size-base);
+  }
+}
+
+@media (max-width: 576px) {
+  .heroTitle {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .sectionTitle {
+    font-size: var(--font-size-xl);
+  }
+  
+  .bodyText {
+    font-size: var(--font-size-sm);
+  }
+  
+  .sectionImage {
+    height: 250px;
+  }
+  
+  .quoteIcon {
+    font-size: 3rem;
+  }
+  
+  .quoteText {
+    font-size: var(--font-size-base);
+  }
+  
+  .ctaTitle {
+    font-size: var(--font-size-xl);
+  }
+  
+  .ctaButton {
+    padding: 0.875rem 2rem;
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .sectionImage,
+  .ctaButton {
+    transition: none;
+  }
+  
+  .sectionImage:hover {
+    transform: none;
+  }
+  
+  .ctaButton:hover {
+    transform: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .heroTitle,
+  .quoteText {
+    text-shadow: none;
+  }
+  
+  .accentLine {
+    box-shadow: none;
+  }
+  
+  .imageGlow {
+    display: none;
+  }
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+
+@media print {
+  .storyPage {
+    background: white;
+  }
+  
+  .ctaButton {
+    display: none;
+  }
+  
+  .imageGlow {
+    display: none;
+  }
+  
+  .sectionImage {
+    filter: none;
+    box-shadow: none;
+  }
+}
