@@ -6,6 +6,8 @@ require('dotenv').config();
 const authRoutes = require('./router/auth');
 const protectedRoutes = require('./router/protected');
 const blogRoutes = require('./router/blog'); 
+// const contactRouter = require('./router/contact');
+
 
 const app = express();
 
@@ -26,6 +28,8 @@ mongoose
 app.use('/api/auth', authRoutes);
 app.use('/api', protectedRoutes);
 app.use('/api/blog', blogRoutes);
+// app.use('/api/contact', contactRouter);
+
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {

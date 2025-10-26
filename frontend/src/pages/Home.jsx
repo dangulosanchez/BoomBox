@@ -112,9 +112,10 @@ const Home = () => {
           overlay={true}
         >
           <div className={styles.heroCTAWrapper}>
-            <p className={styles.heroTeaser}>
+            {/* TODO: Resolve latest event */}
+            {/* <p className={styles.heroTeaser}>
               Coming up: Bassline Fridays • This Saturday
-            </p>
+            </p> */}
             <Button 
               as="a"
               href="https://shotgun.live/en/venues/the-boombox-miami"
@@ -126,7 +127,7 @@ const Home = () => {
               See What's Happening
             </Button>
             <p className={styles.heroSupport}>
-              Join 500+ locals every weekend
+              Come Visit Miami's Underground
             </p>
           </div>
         </Hero>
@@ -138,13 +139,12 @@ const Home = () => {
           content={
             <div>
               <p style={{ fontSize: '1.3rem', marginBottom: '2rem', opacity: 0.95 }}>
-                For 6 years, The Boombox has been Miami's underground sanctuary — 
-                where emerging artists find their voice and music lovers discover their next obsession.
+                The Boombox has been Miami’s underground refuge for six years, 
+                a place where artists experiment and audiences fall in love with what’s next.
               </p>
               <p style={{ fontSize: '1.1rem', marginBottom: '2rem', opacity: 0.9 }}>
-                We're a community hub in the heart of Miami's Bird Road Arts District. 
-                High-energy electronic nights, intimate acoustic sets, art exhibitions, 
-                and cultural celebrations—we bring the underground to life.
+                In the Bird Road Arts District, we mix music, art, and culture into one space. Electronic nights, 
+                live sessions, and exhibitions that celebrate what Miami truly sounds and feels like.
               </p>
               
               <div style={{ 
@@ -159,7 +159,7 @@ const Home = () => {
                     fontWeight: '700', 
                     color: 'var(--color-accent-gold)',
                     marginBottom: '0.5rem'
-                  }}>500+</div>
+                  }}>300+</div>
                   <div style={{ 
                     fontSize: '1rem', 
                     color: 'var(--color-text-secondary)' 
@@ -171,7 +171,7 @@ const Home = () => {
                     fontWeight: '700', 
                     color: 'var(--color-accent-gold)',
                     marginBottom: '0.5rem'
-                  }}>10+</div>
+                  }}>6+</div>
                   <div style={{ 
                     fontSize: '1rem', 
                     color: 'var(--color-text-secondary)' 
@@ -183,11 +183,11 @@ const Home = () => {
                     fontWeight: '700', 
                     color: 'var(--color-accent-gold)',
                     marginBottom: '0.5rem'
-                  }}>1000+</div>
+                  }}>500+</div>
                   <div style={{ 
                     fontSize: '1rem', 
                     color: 'var(--color-text-secondary)' 
-                  }}>Artists Showcasingd</div>
+                  }}>Artists Showcased</div>
                 </div>
               </div>
             </div>

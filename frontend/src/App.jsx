@@ -26,6 +26,7 @@ import Blog from './pages/Blog';
 import BlogCreate from './pages/BlogCreate';
 import BlogEdit from './pages/BlogEdit';
 import BlogPost from './components/blog/BlogPost';
+import Contact from './pages/Contact';
 
 /**
  * Main Application Component
@@ -94,6 +95,7 @@ function App() {
               <Showcasing/>
             } 
           />
+          <Route path="contact" element={<Contact />} />
           <Route 
             path="/gallery" 
             element={

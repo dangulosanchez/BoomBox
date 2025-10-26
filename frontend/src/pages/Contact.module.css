@@ -1,0 +1,265 @@
+/* frontend/src/pages/Contact.module.css */
+
+.contactPage {
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
+}
+
+/* ========== HERO SECTION ========== */
+.hero {
+    background: linear-gradient(135deg, #000 0%, #333 100%);
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 10px,
+            rgba(255, 255, 255, 0.03) 10px,
+            rgba(255, 255, 255, 0.03) 20px
+        );
+    pointer-events: none;
+}
+
+.heroContent {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.heroTitle {
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+    letter-spacing: -1px;
+}
+
+.heroSubtitle {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* ========== MAIN CONTENT ========== */
+.mainContent {
+    padding: 4rem 2rem;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.contentGrid {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+/* ========== INFO COLUMN ========== */
+.infoColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    position: sticky;
+    top: calc(var(--nav-height, 80px) + 2rem);
+}
+
+.infoCard {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.infoTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 2rem 0;
+    color: #000;
+}
+
+.infoItem {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    align-items: flex-start;
+}
+
+.infoItem:last-of-type {
+    margin-bottom: 0;
+}
+
+.infoIcon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.infoLabel {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #666;
+    margin: 0 0 0.5rem 0;
+}
+
+.infoText {
+    margin: 0;
+    color: #333;
+    line-height: 1.6;
+}
+
+.infoLink {
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity 0.2s ease;
+}
+
+.infoLink:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+}
+
+/* ========== SOCIAL LINKS ========== */
+.socialLinks {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+}
+
+.socialIcons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.socialIcon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5f5f5;
+    border-radius: 8px;
+    color: #333;
+    transition: all 0.2s ease;
+}
+
+.socialIcon:hover {
+    background: #000;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* ========== RESPONSE CARD ========== */
+.responseCard {
+    background: linear-gradient(135deg, #fff3cd 0%, #fff8e1 100%);
+    border: 2px solid #ffc107;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.responseTitle {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem 0;
+    color: #856404;
+}
+
+.responseText {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #856404;
+}
+
+/* ========== FORM COLUMN ========== */
+.formColumn {
+    background: white;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 1024px) {
+    .contentGrid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .infoColumn {
+        position: static;
+        order: 2;
+    }
+    
+    .formColumn {
+        order: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 3rem 1.5rem;
+    }
+    
+    .heroTitle {
+        font-size: 2rem;
+    }
+    
+    .heroSubtitle {
+        font-size: 1rem;
+    }
+    
+    .mainContent {
+        padding: 2rem 1rem;
+    }
+    
+    .formColumn {
+        padding: 2rem 1.5rem;
+    }
+    
+    .infoCard {
+        padding: 1.5rem;
+    }
+    
+    .contentGrid {
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .heroTitle {
+        font-size: 1.75rem;
+    }
+    
+    .formColumn {
+        padding: 1.5rem 1rem;
+    }
+}
+
+/* ========== ACCESSIBILITY ========== */
+@media (prefers-reduced-motion: reduce) {
+    .socialIcon,
+    .infoLink {
+        transition: none;
+    }
+}
