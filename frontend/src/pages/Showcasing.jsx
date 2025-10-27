@@ -6,16 +6,16 @@ import styles from './Showcasing.module.css';
 const activitiesData = [
   {
     id: 'coffee-sundays',
-    title: "Coffee Sundays",
+    title: "Coffee & Mart",
     frequency: 'Every Sunday',
     time: '9AM-2PM',
     vibe: 'Tres leches lattes & hour-long lines worth the wait',
     description: 'Experience Miami\'s hottest coffee trailer serving unique sugary lattes with flavors like Lucky Charms, french toast, and s\'mores. Perfect for those who love varying levels of sugar and milk in their coffee.',
     category: 'weekly',
     images: [
-      'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800',
-      'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800',
-      'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=800'
+      'images/vendors_3.jpeg',
+      'images/vendors_1.jpeg',
+      'images/vendors_2.jpeg',
     ],
     cta: { text: 'Learn More', link: '/events/coffee-sundays' }
   },
@@ -29,8 +29,9 @@ const activitiesData = [
     category: 'biweekly',
     images: [
       'images/mart.jpeg',
-      'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800',
-      'https://images.unsplash.com/photo-1482245294234-b3f2f8d5f1a4?w=800'
+      'images/art_club_2.jpeg',
+      'images/art_club_3.jpeg',
+      'images/art_club_4.jpeg'
     ],
     cta: { text: 'Join Next Session', link: '/events/art-club' }
   },
@@ -60,7 +61,9 @@ const activitiesData = [
     images: [
       'images/rave_2.jpeg',
       'images/rave_3.jpeg',
-      'images/rave_4.jpeg'
+      'images/rave_4.jpeg',
+      'images/rave_5.jpeg',
+      'images/rave_6.jpeg',
     ],
     cta: { text: 'View Lineup', link: '/events/raves' }
   },

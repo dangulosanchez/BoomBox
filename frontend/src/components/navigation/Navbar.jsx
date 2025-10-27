@@ -198,22 +198,22 @@ const Navbar = ({ authState, updateAuthState }) => {
               </>
             ) : (
               <>
-                <li className={styles.navItem}>
+                {/* <li className={styles.navItem}>
                   <Link 
                     to="/login" 
                     className={`${styles.navLink} ${isActive('/login') ? styles.active : ''}`}
                   >
                     Login
                   </Link>
-                </li>
-                <li className={styles.navItem}>
+                </li> */}
+                {/* <li className={styles.navItem}>
                   <Link 
                     to="/register" 
                     className={`${styles.navLink} ${styles.registerLink} ${isActive('/register') ? styles.active : ''}`}
                   >
                     Register
                   </Link>
-                </li>
+                </li> */}
               </>
             )}
           </ul>

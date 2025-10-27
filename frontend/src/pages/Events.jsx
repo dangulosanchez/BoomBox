@@ -11,7 +11,7 @@ const Events = () => {
     <div className={styles.collaboratePage}>
       <section className={styles.hero} style={{
         background: 
-            "var(--gradient-overlay), url('/images/bar.jpeg') center/cover no-repeat"
+            "var(--gradient-overlay), url('/images/cool_2.jpeg') center/cover no-repeat"
       }}>
         <div className={styles.heroOverlay} />
         <div className={styles.heroContent}>
