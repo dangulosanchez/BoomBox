@@ -193,7 +193,7 @@
 .sectionImage {
   width: 100%;
   height: 450px;
-  object-fit: cover;
+  object-fit: scale-down;
   border-radius: var(--border-radius-lg);
   display: block;
   /* Nostalgic/authentic aesthetic */

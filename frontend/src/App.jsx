@@ -29,6 +29,7 @@ import BlogPost from './components/blog/BlogPost';
 import Contact from './pages/Contact';
 import Collaborate from './pages/Collaborate';
 import Story from './pages/Story';
+import Events from './pages/Events';
 
 /**
  * Main Application Component
@@ -108,11 +109,7 @@ function App() {
           <Route 
             path="/events" 
             element={
-              <Placeholder 
-                title="Events" 
-                subtitle="Where Underground Culture Comes Alive"
-                message="Coming Soon"
-              />
+             <Events />
             } 
           />
           <Route path="/blog" element={<Blog />} />

@@ -192,7 +192,7 @@ const Home = () => {
               </div>
             </div>
           }
-          image="/images/building.jpeg"
+          image="/images/rave.jpg"
         />
 
         {/* <TestimonialSection /> */}

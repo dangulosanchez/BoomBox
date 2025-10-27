@@ -43,7 +43,7 @@ const activitiesData = [
     description: 'Monthly automotive meetups featuring everything from classics to customs, exotics to daily drivers. Music, awards, and a community of car enthusiasts.',
     category: 'monthly',
     images: [
-      'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800',
+      'images/cars.jpg',
       'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800',
       'https://images.unsplash.com/photo-1494905998402-395d579af36f?w=800'
     ],

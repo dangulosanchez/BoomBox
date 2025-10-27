@@ -90,10 +90,9 @@ const Story = () => {
             </div>
             
             <div className={styles.imageContainer}>
-              {/* TODO: Replace with real Boombox photos from early days */}
               <img 
-                src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=1200" 
-                alt="Urban graffiti aesthetic reminiscent of warehouse park days"
+                src="images/owners.jpg"
+                alt="The 3 owners of The Boombox."
                 className={styles.sectionImage}
               />
               <div className={styles.imageGlow}></div>
@@ -167,7 +166,7 @@ const Story = () => {
             <div className={styles.imageContainer}>
               {/* TODO: Replace with daytime exterior shot of venue/neighborhood */}
               <img 
-                src="https://images.unsplash.com/photo-1542044742-a34c2c0e5f6b?w=1200" 
+                src="images/owners_2.jpg" 
                 alt="Bird Road Arts District warehouse exterior during daytime"
                 className={styles.sectionImage}
               />
@@ -221,7 +220,7 @@ const Story = () => {
             <div className={styles.imageContainer}>
               {/* TODO: Replace with interior venue shot or crowd energy photo */}
               <img 
-                src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1200" 
+                src="images/owners_2.jpg" 
                 alt="The Boombox venue interior with crowd at event"
                 className={styles.sectionImage}
               />
@@ -298,7 +297,7 @@ const Story = () => {
             <div className={styles.imageContainer}>
               {/* TODO: Replace with modern day venue photo showing current vibe */}
               <img 
-                src="https://images.unsplash.com/photo-1563784462041-5f97ac9523dd?w=1200" 
+                src="images/owners_2.jpg" 
                 alt="The Boombox today - Miami's underground music venue"
                 className={styles.sectionImage}
               />
