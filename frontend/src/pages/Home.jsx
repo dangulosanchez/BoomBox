@@ -104,7 +104,7 @@ const Home = () => {
       <div className="desktop-only">
         <Hero
           title="THE BOOMBOX"
-          subtitle="Miami's Underground: Every Genre. One Community."
+          subtitle="Miami's Underground: All Its Corners. One Community."
           tagline=""
           backgroundImage="/images/building.jpeg"
           logo={<Logo size="lg" variant="black" />}
@@ -144,7 +144,7 @@ const Home = () => {
               </p>
               <p style={{ fontSize: '1.1rem', marginBottom: '2rem', opacity: 0.9 }}>
                 In the Bird Road Arts District, we mix music, art, and culture into one space. Electronic nights, 
-                live sessions, and exhibitions that celebrate what Miami truly sounds and feels like.
+                live sessions, and exhibitions are examples of  events that celebrate what Miami truly sounds and feels like.
               </p>
               
               <div style={{ 

@@ -281,7 +281,7 @@
 /* ========== RESPONSIVE ========== */
 @media (max-width: 768px) {
     .contactFormWrapper {
-        padding: 1rem;
+        padding: 0rem;
     }
     
     .successMessage,
