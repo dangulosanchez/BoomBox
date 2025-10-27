@@ -10,7 +10,7 @@ const Footer = () => {
           <Link to="/showcasing" className={styles.footerLink}>Showcasing</Link>
           <Link to="/gallery" className={styles.footerLink}>Gallery</Link>
           <Link to="/blog" className={styles.footerLink}>Blog</Link>
-          <Link to="/contact" className={styles.footerLink}>Contact</Link>
+          <Link to="/collaborate" className={styles.footerLink}>Collaborations</Link>
         </nav>
         <p className={styles.copyright}>
           © {new Date().getFullYear()} The Boombox Miami. All rights reserved.

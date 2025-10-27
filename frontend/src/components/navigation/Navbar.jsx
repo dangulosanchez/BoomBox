@@ -157,6 +157,14 @@ const Navbar = ({ authState, updateAuthState }) => {
             </li>
             <li className={styles.navItem}>
               <Link 
+                to="/collaborations" 
+                className={`${styles.navLink} ${isActive('/contact') ? styles.active : ''}`}
+              >
+                Collaborate
+              </Link>
+            </li>
+            <li className={styles.navItem}>
+              <Link 
                 to="/contact" 
                 className={`${styles.navLink} ${isActive('/contact') ? styles.active : ''}`}
               >

@@ -1,5 +1,6 @@
 // frontend/src/components/forms/ContactForm.jsx
 import { useState, useRef, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
 import styles from './ContactForm.module.css';
 
@@ -13,8 +14,11 @@ import styles from './ContactForm.module.css';
  * - Accessible (ARIA labels, keyboard nav)
  * - Character counter
  * - Loading states and error handling
+ * - URL parameter support for pre-filling inquiry type (?type=event-collaboration)
  */
 const ContactForm = () => {
+    const [searchParams] = useSearchParams();
+    
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -40,12 +44,32 @@ const ContactForm = () => {
     
     const inquiryTypes = [
         { value: '', label: 'Select inquiry type *' },
-        { value: 'booking', label: 'Booking Request' },
+        { value: 'event-collaboration', label: 'Event Collaboration' },
+        { value: 'rehearsal-space', label: 'Rehearsal Space Rental' },
+        { value: 'vendor-community', label: 'Vendor/Community Event' },
+        { value: 'booking', label: 'General Booking Request' },
         { value: 'general', label: 'General Inquiry' },
         { value: 'press', label: 'Press Inquiry' },
         { value: 'partnerships', label: 'Partnerships' },
         { value: 'technical', label: 'Technical Support' }
     ];
+    
+    /**
+     * Pre-fill inquiry type from URL parameter on mount
+     */
+    useEffect(() => {
+        const typeParam = searchParams.get('type');
+        if (typeParam) {
+            // Check if the type parameter matches a valid inquiry type
+            const validType = inquiryTypes.find(t => t.value === typeParam);
+            if (validType) {
+                setFormData(prev => ({
+                    ...prev,
+                    inquiryType: typeParam
+                }));
+            }
+        }
+    }, [searchParams]);
     
     /**
      * Real-time Validation
@@ -97,22 +121,24 @@ const ContactForm = () => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         
+        // Update form data
         setFormData(prev => ({
             ...prev,
             [name]: value
         }));
         
-        // Validate on change if field has been touched
+        // Validate if field was previously touched
         if (touched[name]) {
+            const error = validateField(name, value);
             setErrors(prev => ({
                 ...prev,
-                [name]: validateField(name, value)
+                [name]: error
             }));
         }
     };
     
     /**
-     * Handle blur (mark field as touched)
+     * Handle field blur (mark as touched)
      */
     const handleBlur = (e) => {
         const { name, value } = e.target;
@@ -122,40 +148,41 @@ const ContactForm = () => {
             [name]: true
         }));
         
+        const error = validateField(name, value);
         setErrors(prev => ({
             ...prev,
-            [name]: validateField(name, value)
+            [name]: error
         }));
-    };
-    
-    /**
-     * Handle hCaptcha verification
-     */
-    const handleCaptchaVerify = (token) => {
-        setCaptchaToken(token);
-    };
-    
-    /**
-     * Handle hCaptcha expiration
-     */
-    const handleCaptchaExpire = () => {
-        setCaptchaToken(null);
     };
     
     /**
      * Validate entire form
      */
     const validateForm = () => {
-        const newErrors = {};
+        const formErrors = {};
         
         Object.keys(formData).forEach(key => {
-            if (key !== 'website' && key !== 'phone') { // Phone is optional
+            if (key !== 'website' && key !== 'phone') { // Skip honeypot and optional phone
                 const error = validateField(key, formData[key]);
-                if (error) newErrors[key] = error;
+                if (error) formErrors[key] = error;
             }
         });
         
-        return newErrors;
+        return formErrors;
+    };
+    
+    /**
+     * Handle captcha verification
+     */
+    const handleCaptchaVerify = (token) => {
+        setCaptchaToken(token);
+    };
+    
+    /**
+     * Handle captcha expiration
+     */
+    const handleCaptchaExpire = () => {
+        setCaptchaToken(null);
     };
     
     /**
@@ -188,6 +215,15 @@ const ContactForm = () => {
         if (!captchaToken) {
             setSubmitStatus('error');
             setSubmitMessage('Please complete the captcha verification');
+            return;
+        }
+        
+        // Check honeypot (if filled, it's a bot)
+        if (formData.website) {
+            console.log('Bot detected via honeypot');
+            // Silently fail for bots
+            setSubmitStatus('success');
+            setSubmitMessage('Your message has been sent successfully!');
             return;
         }
         
@@ -238,78 +274,39 @@ const ContactForm = () => {
                 }
             } else {
                 setSubmitStatus('error');
-                
-                // Handle validation errors from backend
-                if (data.details && Array.isArray(data.details)) {
-                    const backendErrors = {};
-                    data.details.forEach(err => {
-                        backendErrors[err.field] = err.message;
-                    });
-                    setErrors(backendErrors);
-                    setSubmitMessage('Please fix the errors and try again');
-                } else {
-                    setSubmitMessage(data.error || 'An error occurred. Please try again.');
-                }
-                
-                // Reset captcha on error
-                if (captchaRef.current) {
-                    captchaRef.current.resetCaptcha();
-                }
-                setCaptchaToken(null);
+                setSubmitMessage(data.error || 'Something went wrong. Please try again.');
             }
         } catch (error) {
             console.error('Form submission error:', error);
             setSubmitStatus('error');
             setSubmitMessage('Network error. Please check your connection and try again.');
-            
-            // Reset captcha on error
-            if (captchaRef.current) {
-                captchaRef.current.resetCaptcha();
-            }
-            setCaptchaToken(null);
         } finally {
             setIsSubmitting(false);
         }
-    };
-    
-    /**
-     * Get character count color based on limit
-     */
-    const getCharCountColor = () => {
-        const length = formData.message.length;
-        if (length < MIN_MESSAGE_LENGTH) return styles.charCountLow;
-        if (length > MAX_MESSAGE_LENGTH * 0.9) return styles.charCountHigh;
-        return styles.charCountNormal;
     };
     
     return (
         <div className={styles.contactFormWrapper} ref={formRef}>
             {/* Success Message */}
             {submitStatus === 'success' && (
-                <div className={styles.successMessage} role="alert" aria-live="polite">
+                <div className={styles.successMessage} role="alert">
                     <div className={styles.successIcon}>✓</div>
                     <h3>Message Sent!</h3>
                     <p>{submitMessage}</p>
-                    <p className={styles.successSubtext}>
-                        We typically respond within 24-48 hours.
-                    </p>
+                    <p className={styles.successSubtext}>We'll get back to you within 24-48 hours.</p>
                 </div>
             )}
             
             {/* Error Message */}
             {submitStatus === 'error' && (
-                <div className={styles.errorMessage} role="alert" aria-live="assertive">
-                    <div className={styles.errorIcon}>⚠</div>
+                <div className={styles.errorMessage} role="alert">
+                    <span className={styles.errorIcon}>⚠</span>
                     <p>{submitMessage}</p>
                 </div>
             )}
             
-            <form 
-                className={styles.contactForm} 
-                onSubmit={handleSubmit}
-                noValidate
-                aria-label="Contact form"
-            >
+            {/* Contact Form */}
+            <form onSubmit={handleSubmit} className={styles.contactForm} noValidate>
                 {/* Name Field */}
                 <div className={styles.formGroup}>
                     <label htmlFor="name" className={styles.label}>
@@ -441,34 +438,31 @@ const ContactForm = () => {
                     )}
                 </div>
                 
-                {/* Message Field with Character Counter */}
+                {/* Message Field */}
                 <div className={styles.formGroup}>
-                    <div className={styles.labelRow}>
-                        <label htmlFor="message" className={styles.label}>
-                            Message <span className={styles.required} aria-label="required">*</span>
-                        </label>
-                        <span 
-                            className={`${styles.charCount} ${getCharCountColor()}`}
-                            aria-live="polite"
-                            aria-label={`${formData.message.length} of ${MAX_MESSAGE_LENGTH} characters used`}
-                        >
+                    <label htmlFor="message" className={styles.label}>
+                        Message <span className={styles.required} aria-label="required">*</span>
+                    </label>
+                    <div className={styles.textareaWrapper}>
+                        <textarea
+                            id="message"
+                            name="message"
+                            value={formData.message}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            rows="6"
+                            maxLength={MAX_MESSAGE_LENGTH}
+                            className={`${styles.textarea} ${errors.message && touched.message ? styles.inputError : ''}`}
+                            aria-required="true"
+                            aria-invalid={errors.message && touched.message ? 'true' : 'false'}
+                            aria-describedby={errors.message && touched.message ? 'message-error' : 'message-hint'}
+                            disabled={isSubmitting}
+                            placeholder="Tell us more about your inquiry..."
+                        />
+                        <div className={styles.characterCount}>
                             {formData.message.length} / {MAX_MESSAGE_LENGTH}
-                        </span>
+                        </div>
                     </div>
-                    <textarea
-                        id="message"
-                        name="message"
-                        value={formData.message}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        rows="6"
-                        className={`${styles.textarea} ${errors.message && touched.message ? styles.inputError : ''}`}
-                        aria-required="true"
-                        aria-invalid={errors.message && touched.message ? 'true' : 'false'}
-                        aria-describedby={errors.message && touched.message ? 'message-error' : 'message-hint'}
-                        disabled={isSubmitting}
-                        placeholder="Tell us more about your inquiry..."
-                    />
                     {errors.message && touched.message ? (
                         <span id="message-error" className={styles.errorText} role="alert">
                             {errors.message}

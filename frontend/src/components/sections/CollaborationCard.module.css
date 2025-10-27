@@ -1,0 +1,321 @@
+/**
+ * ============================================
+ * COLLABORATION CARD STYLES
+ * 100% Design System Compliance
+ * ============================================
+ */
+
+.card {
+  background: linear-gradient(135deg, rgba(17, 17, 17, 0.9), rgba(0, 0, 0, 0.95));
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: var(--border-radius-xl);
+  padding: var(--spacing-xl);
+  backdrop-filter: blur(10px);
+  transition: all var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0; /* Critical for flex/grid children */
+  box-sizing: border-box;
+  overflow-wrap: break-word; /* Prevents long words from overflowing */
+  word-wrap: break-word;
+
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-gold-md);
+  border-color: rgba(255, 215, 0, 0.4);
+}
+
+/* ========================================
+   CARD HEADER
+   ======================================== */
+
+.cardHeader {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.15);
+}
+
+.icon {
+  font-size: 3rem;
+  line-height: 1;
+  margin-bottom: var(--spacing-md);
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+}
+
+.title {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  font-family: var(--font-heading);
+  color: var(--color-accent-gold);
+  margin-bottom: var(--spacing-xs);
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  font-weight: 400;
+  font-family: var(--font-body);
+  margin: 0;
+}
+
+/* ========================================
+   CARD BODY
+   ======================================== */
+
+.cardBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.description {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+  font-family: var(--font-body);
+}
+
+/* ========================================
+   SECTIONS
+   ======================================== */
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.sectionTitle {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  font-family: var(--font-heading);
+  color: var(--color-text-primary);
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+/* ========================================
+   LISTS
+   ======================================== */
+
+/* Bulleted Lists (How It Works, What You Get, Event Types) */
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.listItem {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  padding-left: var(--spacing-md);
+  position: relative;
+  font-family: var(--font-body);
+}
+
+.listItem::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--color-accent-gold);
+  font-weight: 700;
+}
+
+/* Checkmark Lists (Perfect For) */
+.checkList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.checkItem {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  font-family: var(--font-body);
+}
+
+.checkmark {
+  color: var(--color-accent-gold);
+  font-weight: 700;
+  flex-shrink: 0;
+  font-size: var(--font-size-base);
+}
+
+/* ========================================
+   CARD FOOTER
+   ======================================== */
+
+.cardFooter {
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid rgba(255, 215, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--gradient-gold-simple);
+  color: var(--color-bg-primary);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  font-family: var(--font-heading);
+  border-radius: var(--border-radius-lg);
+  text-decoration: none;
+  transition: all var(--transition-base);
+  border: 2px solid transparent;
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-gold-lg);
+  filter: brightness(1.1);
+}
+
+.ctaButton:active {
+  transform: translateY(0);
+}
+
+/* ========================================
+   ADDITIONAL INFO
+   ======================================== */
+
+.additionalInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  align-items: center;
+}
+
+.infoItem {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  text-align: center;
+  opacity: 0.9;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 1199px) {
+  .card {
+    padding: var(--spacing-lg);
+  }
+
+  .title {
+    font-size: var(--font-size-xl);
+  }
+
+  .subtitle {
+    font-size: var(--font-size-base);
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: var(--spacing-md);
+  }
+
+  .cardHeader {
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+  }
+
+  .icon {
+    font-size: 2.5rem;
+  }
+
+  .title {
+    font-size: var(--font-size-lg);
+  }
+
+  .subtitle {
+    font-size: var(--font-size-sm);
+  }
+
+  .description,
+  .sectionTitle {
+    font-size: var(--font-size-sm);
+  }
+
+  .listItem,
+  .checkItem {
+    font-size: var(--font-size-xs);
+  }
+
+  .cardBody {
+    gap: var(--spacing-md);
+  }
+
+  .cardFooter {
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+  }
+
+  .ctaButton {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .icon {
+    font-size: 2rem;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .ctaButton {
+    transition: none;
+  }
+  
+  .card:hover {
+    transform: none;
+  }
+  
+  .ctaButton:hover {
+    transform: none;
+  }
+}
+
+/* Focus styles */
+.ctaButton:focus-visible {
+  outline: 2px solid var(--color-accent-gold);
+  outline-offset: 4px;
+}

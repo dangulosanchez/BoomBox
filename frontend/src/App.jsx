@@ -27,6 +27,7 @@ import BlogCreate from './pages/BlogCreate';
 import BlogEdit from './pages/BlogEdit';
 import BlogPost from './components/blog/BlogPost';
 import Contact from './pages/Contact';
+import Collaborate from './pages/Collaborate';
 import Story from './pages/Story';
 
 /**
@@ -97,6 +98,7 @@ function App() {
             } 
           />
           <Route path="contact" element={<Contact />} />
+          <Route path="collaborations" element={<Collaborate />} />
           <Route 
             path="/gallery" 
             element={
