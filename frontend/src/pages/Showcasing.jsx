@@ -5,8 +5,8 @@ import styles from './Showcasing.module.css';
 // ========== DATA STRUCTURE ==========
 const activitiesData = [
   {
-    id: 'kujos',
-    title: "Kujo's Coffee",
+    id: 'coffee-sundays',
+    title: "Coffee Sundays",
     frequency: 'Every Sunday',
     time: '9AM-2PM',
     vibe: 'Tres leches lattes & hour-long lines worth the wait',
@@ -17,7 +17,7 @@ const activitiesData = [
       'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800',
       'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=800'
     ],
-    cta: { text: 'Learn More', link: '/events/kujos-coffee' }
+    cta: { text: 'Learn More', link: '/events/coffee-sundays' }
   },
   {
     id: 'art-club',
@@ -28,7 +28,7 @@ const activitiesData = [
     description: 'Bi-weekly creative sessions where local artists and art enthusiasts gather to create, collaborate, and connect. From painting to mixed media, all skill levels welcome.',
     category: 'biweekly',
     images: [
-      'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800',
+      'images/mart.jpeg',
       'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800',
       'https://images.unsplash.com/photo-1482245294234-b3f2f8d5f1a4?w=800'
     ],
@@ -58,9 +58,9 @@ const activitiesData = [
     description: 'Miami\'s hottest electronic music events featuring top DJs and producers. From house to techno, experience cutting-edge sound in an intimate venue.',
     category: 'weekly',
     images: [
-      'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800',
-      'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800',
-      'https://images.unsplash.com/photo-1571330735066-03aaa9429d89?w=800'
+      'images/rave_2.jpeg',
+      'images/rave_3.jpeg',
+      'images/rave_4.jpeg'
     ],
     cta: { text: 'View Lineup', link: '/events/raves' }
   },
@@ -73,9 +73,9 @@ const activitiesData = [
     description: 'Live performances across genres - from indie rock to Latin jazz. Experience music in an intimate setting with world-class acoustics.',
     category: 'multiple',
     images: [
-      'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=800',
-      'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=800',
-      'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800'
+      'images/live_show_1.jpeg',
+      'images/live_show_2.jpeg',
+      'images/live_show_3.jpeg'
     ],
     cta: { text: 'Upcoming Shows', link: '/events/concerts' }
   }
@@ -274,7 +274,6 @@ const InstagramFeed = () => {
     }
   }, []);
 
-  // Re-process embeds when URLs change
   useEffect(() => {
     if (window.instgrm && window.instgrm.Embeds) {
       window.instgrm.Embeds.process();

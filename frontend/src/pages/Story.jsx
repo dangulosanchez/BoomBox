@@ -166,7 +166,7 @@ const Story = () => {
             <div className={styles.imageContainer}>
               {/* TODO: Replace with daytime exterior shot of venue/neighborhood */}
               <img 
-                src="images/owners_2.jpg" 
+                src="images/outside_2.jpeg" 
                 alt="Bird Road Arts District warehouse exterior during daytime"
                 className={styles.sectionImage}
               />
