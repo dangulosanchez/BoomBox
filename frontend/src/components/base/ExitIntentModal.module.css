@@ -1,0 +1,45 @@
+.backdrop {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
+  z-index: 1100;
+}
+
+.modal {
+  position: fixed; inset: 0;
+  display: grid; place-items: center;
+  padding: var(--spacing-lg);
+  z-index: 1101;
+}
+
+.modal > :global(.emailCapture) {
+  width: 100%;
+  max-width: 520px;
+  background: linear-gradient(180deg, rgba(10,10,10,0.95), rgba(0,0,0,0.98));
+  border: 1px solid rgba(255,215,0,0.18);
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,215,0,0.06) inset;
+  padding: clamp(var(--spacing-md), 4vw, var(--spacing-xl));
+}
+
+/* Optional title/subtitle hooks if EmailCapture exposes them */
+.modal :global(.title) {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xl);
+  margin: 0 0 var(--spacing-xs);
+  background: var(--gradient-gold);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+.modal :global(.subtitle) {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+@media (max-width: 480px) {
+  .modal > :global(.emailCapture) {
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+  }
+}

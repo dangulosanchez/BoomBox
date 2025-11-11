@@ -7,6 +7,12 @@ import Logo from '../components/base/Logo';
 import Button from '../components/base/Button';
 import StickyMobileCTA from '../components/base/StickyMobileCTA';
 import styles from './Home.module.css';
+import EmailCapture from '../components/base/EmailCapture';
+import ExitIntentModal from '../components/base/ExitIntentModal';
+import TicketAvailability from '../components/base/TicketAvailability';
+import SocialLinks from '../components/base/SocialLinks';
+import { useState } from 'react';
+
 
 /**
  * Home Page - Complete conversion-optimized experience
@@ -25,14 +31,21 @@ import styles from './Home.module.css';
  * Hero → Press Bar → About → Testimonials → Events Preview
  */
 const Home = () => {
+
+  const [nextEventData] = useState({
+    name: "Bassline Underground",
+    date: "This Friday",
+    ticketsRemaining: 23,
+    capacity: 200
+  });
+
+  const [testVariant] = useState('A');
+
+
   return (
     <>
       {/* ========== MOBILE LAYOUT ========== */}
       <div className={`${styles.mobileHome} mobile-only`}>
-        <div className={styles.mobileLogoSection}>
-          <Logo size="md" variant="black" />
-        </div>
-
         <div className={styles.mobileImageWrapper}>
           <img 
             src="/images/building.jpeg" 
@@ -41,6 +54,16 @@ const Home = () => {
             loading="eager"
           />
           <div className={styles.mobileImageGradient}></div>
+
+            {/* <div className={styles.heroUrgency}>
+              <TicketAvailability
+                remaining={nextEventData.ticketsRemaining}
+                capacity={nextEventData.capacity}
+                eventName={nextEventData.date}
+                variant="badge"
+                animated={true}
+              />
+          </div> */}
         </div>
 
         <div className={styles.mobileTagline}>
@@ -62,6 +85,37 @@ const Home = () => {
         </div>
 
         <PressBar />
+
+      <div className={styles.mobileEmailSection}>
+        <EmailCapture
+          variant="inline"
+          title="Get In Before We Sell Out"
+          subtitle="Exclusive presale access • Only 200 spots per event"
+          buttonText="Get Access"
+          source="mobile_hero"
+          showConsent={false}
+          showFrequency={true}
+        />
+      </div>
+
+      <div className={styles.statsSection}>
+        <div className={styles.statItem}>
+          <span className={styles.statNumber}>6+<br/></span>
+          <span className={styles.statLabel}>Years</span>
+        </div>
+        <div className={styles.statItem}>
+          <span className={styles.statNumber}>300+<br/></span>
+          <span className={styles.statLabel}>Events</span>
+        </div>
+        <div className={styles.statItem}>
+          <span className={styles.statNumber}>140<br/></span>
+          <span className={styles.statLabel}>Indoor Capacity</span>
+        </div>
+        <div className={styles.statItem}>
+          <span className={styles.statNumber}>Free<br/></span>
+          <span className={styles.statLabel}>Parking</span>
+        </div>
+      </div>
 
         <div className={styles.mobileAboutSection}>
           <h2 className={styles.mobileAboutTitle}>About The Box</h2>
@@ -95,6 +149,17 @@ const Home = () => {
         </div>
 
         {/* <TestimonialSection /> */}
+
+        <div className={styles.socialCTASection}>
+          <h3 className={styles.socialTitle}>Don't miss anything!</h3>
+          <SocialLinks
+            placement="inline"
+            showLabels={true}
+            showCounts={false}
+            size="lg"
+            className={styles.homeSocial}
+          />
+        </div>
 
         <div data-section="events">
           <EventsPreview />
@@ -159,7 +224,7 @@ const Home = () => {
                     fontWeight: '700', 
                     color: 'var(--color-accent-gold)',
                     marginBottom: '0.5rem'
-                  }}>300+</div>
+                  }}>300+ </div>
                   <div style={{ 
                     fontSize: '1rem', 
                     color: 'var(--color-text-secondary)' 
@@ -171,7 +236,7 @@ const Home = () => {
                     fontWeight: '700', 
                     color: 'var(--color-accent-gold)',
                     marginBottom: '0.5rem'
-                  }}>6+</div>
+                  }}>6+ </div>
                   <div style={{ 
                     fontSize: '1rem', 
                     color: 'var(--color-text-secondary)' 
@@ -183,7 +248,7 @@ const Home = () => {
                     fontWeight: '700', 
                     color: 'var(--color-accent-gold)',
                     marginBottom: '0.5rem'
-                  }}>500+</div>
+                  }}>500+ </div>
                   <div style={{ 
                     fontSize: '1rem', 
                     color: 'var(--color-text-secondary)' 
@@ -199,12 +264,20 @@ const Home = () => {
 
         <div data-section="events">
           <EventsPreview />
-        </div>
+        </div> 
       </div>
 
       <StickyMobileCTA 
-        eventName="See Upcoming Shows"
-        ctaText="View Events"
+        eventName={`${nextEventData.name} - ${nextEventData.ticketsRemaining} left`}
+        ctaText="Get Tickets"
+        scrollToEvents={true}
+      />
+
+      <ExitIntentModal 
+        delaySeconds={30}
+        scrollThreshold={25}
+        variant={testVariant}
+        testMode={false}
       />
     </>
   );

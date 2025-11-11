@@ -1,0 +1,84 @@
+.inline {
+  display: inline-flex; align-items: center;
+  gap: var(--spacing-xs);
+  padding: 4px 8px;
+  border-radius: var(--border-radius-sm);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  font-size: var(--font-size-sm);
+}
+.inline.compact { padding: 2px 6px; font-size: var(--font-size-xs); }
+.inlineText { font-weight: 600; }
+.inlineSubtext { color: var(--color-text-secondary); }
+
+.badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 6px 10px;
+  border-radius: var(--border-radius-full);
+  font-weight: 700;
+  font-size: var(--font-size-xs);
+  background: rgba(0,0,0,0.7);
+  border: 1px solid rgba(255,215,0,0.25);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+}
+.badgeText { letter-spacing: 0.3px; }
+
+.banner {
+  width: 100%;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--border-radius-md);
+  background: linear-gradient(180deg, #0a0a0a, #000);
+  padding: var(--spacing-sm);
+}
+.bannerContent {
+  display: flex; align-items: center; gap: var(--spacing-xs);
+  font-weight: 600;
+}
+.eventName { color: var(--color-text-secondary); font-size: var(--font-size-sm); }
+.separator { opacity: 0.5; }
+.message { font-size: var(--font-size-sm); }
+.subMessage { color: var(--color-text-secondary); font-size: var(--font-size-xs); }
+.progressBar { height: 4px; background: rgba(255,255,255,0.08); border-radius: 9999px; margin-top: var(--spacing-xs); overflow: hidden; }
+.progressFill { height: 100%; border-radius: 9999px; }
+
+.card {
+  background: linear-gradient(180deg, rgba(10,10,10,0.95), rgba(0,0,0,0.98));
+  border: 1px solid rgba(255,215,0,0.18);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-md);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.5);
+}
+.cardTitle { margin: 0 0 var(--spacing-sm); font-size: var(--font-size-base); }
+.cardContent { display: grid; grid-template-columns: 1fr auto; gap: var(--spacing-md); align-items: center; }
+.ticketInfo { display: grid; gap: 2px; }
+.countWrapper { display: flex; align-items: baseline; gap: var(--spacing-xs); }
+.bigNumber { font-size: 2rem; font-weight: 800; letter-spacing: 0.5px; }
+.label { color: var(--color-text-secondary); font-size: var(--font-size-sm); }
+.urgencyMessage { color: var(--color-accent-gold); font-weight: 600; margin: 4px 0 0; }
+
+.visualIndicator { display: flex; align-items: center; gap: var(--spacing-sm); }
+.capacityBar { width: 10px; height: 72px; background: rgba(255,255,255,0.06); border-radius: 9999px; overflow: hidden; }
+.soldBar { width: 100%; height: 0; }
+.capacityLabels { display: grid; font-size: var(--font-size-xs); color: var(--color-text-secondary); }
+.sold { font-weight: 700; }
+
+/* Urgency color accents (text/border tints) */
+.available { --tone: 0.35; }
+.moderate { --tone: 0.5; }
+.limited  { --tone: 0.65; }
+.urgent   { --tone: 0.8; }
+.critical { --tone: 0.9; }
+.soldout  { --tone: 0.95; }
+
+.badge.available, .inline.available  { border-color: rgba(0,255,0,0.25); }
+.badge.moderate, .inline.moderate    { border-color: rgba(255,215,0,0.25); }
+.badge.limited, .inline.limited      { border-color: rgba(255,170,0,0.25); }
+.badge.urgent, .inline.urgent        { border-color: rgba(255,136,0,0.3); }
+.badge.critical, .inline.critical    { border-color: rgba(255,68,68,0.35); }
+.badge.soldout, .inline.soldout      { border-color: rgba(255,0,0,0.35); }
+
+.updateNotification {
+  margin-top: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-accent-gold);
+}

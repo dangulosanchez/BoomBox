@@ -123,8 +123,8 @@ export const galleryImages = [
   // ========== COMMUNITY - CANDID MOMENTS ==========
   {
     id: 'community-001',
-    src: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1920',
-    thumbnail: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600',
+    src: 'images/cool_2.jpeg',
+    thumbnail: 'images/cool_2.jpeg',
     alt: 'Friends enjoying event at The Boombox Miami',
     category: 'community',
     subcategory: 'candid',
