@@ -77,7 +77,7 @@ const Navbar = ({ authState, updateAuthState }) => {
           aria-label="The Boombox - Home"
         >
           <img 
-            src="/images/new logo.png" 
+            src={`${process.env.PUBLIC_URL}/images/new logo.png`}
             alt="The Boombox Logo" 
             className={styles.logo}
             width="30"

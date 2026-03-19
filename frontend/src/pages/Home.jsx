@@ -13,7 +13,7 @@ const Home = () => {
       <Hero
         title="THE BOOMBOX"
         subtitle="For locals, by locals."
-        backgroundImage="/images/building.jpeg"
+        backgroundImage={`${process.env.PUBLIC_URL}/images/building.jpeg`}
         logo={<Logo size="lg" variant="black"/>}
         height="100vh"
         overlay={true}
@@ -71,7 +71,7 @@ const Home = () => {
             </div>
           </div>
         }
-        image="/real_images/12.jpg"
+        image={`${process.env.PUBLIC_URL}/real_images/12.jpg`}
       />
 
       <div className={styles.socialSection}>

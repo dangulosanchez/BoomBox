@@ -92,7 +92,7 @@ const Story = () => {
             
             <div className={styles.imageContainer}>
               <img 
-                src="images/owners.jpg"
+                src={`${process.env.PUBLIC_URL}/images/owners.jpg`}
                 alt="The 3 owners of The Boombox."
                 className={styles.sectionImage}
               />
@@ -167,7 +167,7 @@ const Story = () => {
             <div className={styles.imageContainer}>
               {/* TODO: Replace with daytime exterior shot of venue/neighborhood */}
               <img 
-                src="images/outside_2.jpeg" 
+                src={`${process.env.PUBLIC_URL}/images/outside_2.jpeg`}
                 alt="Bird Road Arts District warehouse exterior during daytime"
                 className={styles.sectionImage}
               />
@@ -221,7 +221,7 @@ const Story = () => {
             <div className={styles.imageContainer}>
               {/* TODO: Replace with interior venue shot or crowd energy photo */}
               <img 
-                src="images/owners_2.jpg" 
+                src={`${process.env.PUBLIC_URL}/images/owners_2.jpg`}
                 alt="The Boombox venue interior with crowd at event"
                 className={styles.sectionImage}
               />
@@ -298,7 +298,7 @@ const Story = () => {
             <div className={styles.imageContainer}>
               {/* TODO: Replace with modern day venue photo showing current vibe */}
               <img 
-                src="images/owners_2.jpg" 
+                src={`${process.env.PUBLIC_URL}/images/owners_2.jpg`}
                 alt="The Boombox today - Miami's underground music venue"
                 className={styles.sectionImage}
               />

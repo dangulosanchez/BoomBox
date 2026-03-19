@@ -78,7 +78,7 @@ function App() {
   };
 
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Routes>
         {/* ========== PUBLIC MARKETING ROUTES ========== */}
         {/* All visitors can access these pages, auth optional */}
