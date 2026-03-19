@@ -112,14 +112,14 @@ const Navbar = ({ authState, updateAuthState }) => {
                 Home
               </Link>
             </li>
-            <li className={styles.navItem}>
+            {/* <li className={styles.navItem}>
               <Link 
                 to="/showcasing" 
                 className={`${styles.navLink} ${isActive('/showcasing') ? styles.active : ''}`}
               >
                 Showcasing
               </Link>
-            </li>
+            </li> */}
             <li className={styles.navItem}>
               <Link 
                 to="/gallery" 
@@ -128,30 +128,30 @@ const Navbar = ({ authState, updateAuthState }) => {
                 Gallery
               </Link>
             </li>
-            <li className={styles.navItem}>
+            {/* <li className={styles.navItem}>
               <Link 
                 to="/events" 
                 className={`${styles.navLink} ${isActive('/events') ? styles.active : ''}`}
               >
                 Events
               </Link>
-            </li>
-            <li className={styles.navItem}>
+            </li> */}
+            {/* <li className={styles.navItem}>
               <Link 
                 to="/shop" 
                 className={`${styles.navLink} ${isActive('/shop') ? styles.active : ''}`}
               >
                 Shop
               </Link>
-            </li>
-            <li className={styles.navItem}>
+            </li> */}
+            {/* <li className={styles.navItem}>
               <Link 
                 to="/blog" 
                 className={`${styles.navLink} ${isActive('/blog') ? styles.active : ''}`}
               >
                 Blog
               </Link>
-            </li>
+            </li> */}
             <li className={styles.navItem}>
               <Link to="/story"
                 className={`${styles.navLink} ${isActive('/story') ? styles.active : ''}`}

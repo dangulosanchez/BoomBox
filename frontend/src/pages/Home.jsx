@@ -46,6 +46,10 @@ const Home = () => {
     <>
       {/* ========== MOBILE LAYOUT ========== */}
       <div className={`${styles.mobileHome} mobile-only`}>
+        <div data-section="events">
+          <EventsPreview />
+        </div>       
+        
         <div className={styles.mobileImageWrapper}>
           <img 
             src="/images/building.jpeg" 
@@ -160,10 +164,6 @@ const Home = () => {
             className={styles.homeSocial}
           />
         </div>
-
-        <div data-section="events">
-          <EventsPreview />
-        </div>
       </div>
 
       <div className="desktop-only">
@@ -196,6 +196,10 @@ const Home = () => {
             </p>
           </div>
         </Hero>
+
+        <div data-section="events">
+            <EventsPreview />
+        </div> 
 
         <PressBar />
 
@@ -257,14 +261,11 @@ const Home = () => {
               </div>
             </div>
           }
-          image="/images/rave.jpg"
+          image="/real_images/12.jpg"
         />
 
         {/* <TestimonialSection /> */}
 
-        <div data-section="events">
-          <EventsPreview />
-        </div> 
       </div>
 
       <StickyMobileCTA 
