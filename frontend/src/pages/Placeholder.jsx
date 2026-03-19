@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import XPButton from '../components/base/XPButton';
 import styles from './Placeholder.module.css';
 
 /**
@@ -32,9 +33,9 @@ const Placeholder = ({
         <p className={styles.message}>{message}</p>
         
         {showBackButton && (
-          <Link to="/" className={styles.backButton}>
+          <XPButton as={Link} to="/">
             ← Back to Home
-          </Link>
+          </XPButton>
         )}
       </div>
     </div>

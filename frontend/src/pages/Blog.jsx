@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import XPButton from '../components/base/XPButton';
 import BlogCard from '../components/blog/BlogCard';
 import BlogHeader from '../components/blog/BlogHeader';
 import TagFilter from '../components/blog/TagFilter';
@@ -280,9 +281,9 @@ const Blog = () => {
           {error && (
             <div className={styles.errorState}>
               <p className={styles.errorMessage}>⚠️ {error}</p>
-              <button onClick={fetchPosts} className={styles.retryButton}>
+              <XPButton onClick={fetchPosts}>
                 Try Again
-              </button>
+              </XPButton>
             </div>
           )}
 
@@ -360,9 +361,9 @@ const Blog = () => {
           <p className={styles.ctaText}>
             Share your story, review, or insight with The Boombox community.
           </p>
-          <Link to="/blog/create" className={styles.ctaButton}>
+          <XPButton as={Link} to="/blog/create">
             Write a Post
-          </Link>
+          </XPButton>
         </div>
       </section>
     </div>

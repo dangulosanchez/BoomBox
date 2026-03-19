@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
+import XPButton from '../base/XPButton';
 import styles from './BlogPost.module.css';
 import BlogCard from './BlogCard';
 /**
@@ -149,12 +150,9 @@ const BlogPost = () => {
                 : 'Something went wrong while loading this post.'}
             </p>
             <div className={styles.errorActions}>
-              <button 
-                onClick={() => navigate('/blog')}
-                className={styles.backButton}
-              >
+              <XPButton onClick={() => navigate('/blog')}>
                 ← Back to Blog
-              </button>
+              </XPButton>
             </div>
           </div>
         </div>
@@ -333,9 +331,9 @@ const BlogPost = () => {
           <p className={styles.ctaText}>
             Discover more stories from The Boombox community
           </p>
-          <Link to="/blog" className={styles.ctaButton}>
+          <XPButton as={Link} to="/blog">
             View All Posts
-          </Link>
+          </XPButton>
         </div>
       </section>
 

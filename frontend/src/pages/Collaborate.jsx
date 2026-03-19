@@ -24,11 +24,69 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import CollaborationCard from '../components/sections/CollaborationCard';
+import CyberLunaWindow from '../components/base/CyberLunaWindow';
+import XPButton from '../components/base/XPButton';
 import styles from './Collaborate.module.css';
+
+// IDs that open a CyberLunaWindow instead of navigating
+const WINDOW_IDS = new Set(['events', 'vendor']);
+
+// Window body content rendered inside the CyberLunaWindow
+const CollabWindowContent = ({ collab }) => (
+  <div className={styles.windowBody}>
+    <p className={styles.windowDesc}>{collab.description}</p>
+
+    {collab.howItWorks && (
+      <div className={styles.windowSection}>
+        <h4 className={styles.windowSectionLabel}>How it works</h4>
+        <ol className={styles.windowList}>
+          {collab.howItWorks.map((item, i) => (
+            <li key={i} className={styles.windowListItem}>
+              <span className={styles.windowStep}>{String(i + 1).padStart(2, '0')}</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
+    )}
+
+    {collab.eventTypes && (
+      <div className={styles.windowSection}>
+        <h4 className={styles.windowSectionLabel}>Event types</h4>
+        <ul className={styles.windowBullets}>
+          {collab.eventTypes.map((item, i) => (
+            <li key={i}>{item}</li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    <div className={styles.windowSection}>
+      <h4 className={styles.windowSectionLabel}>Perfect for</h4>
+      <div className={styles.windowTags}>
+        {collab.perfectFor.map((item, i) => (
+          <span key={i} className={styles.windowTag}>{item}</span>
+        ))}
+      </div>
+    </div>
+
+    <div className={styles.windowFooter}>
+      {collab.additionalInfo?.map((info, i) => (
+        <span key={i} className={styles.windowInfo}>{info}</span>
+      ))}
+      <XPButton as="a" href={collab.ctaLink} className={styles.windowCta}>
+        {collab.ctaText} →
+      </XPButton>
+    </div>
+  </div>
+);
 
 const Collaborate = () => {
   // FAQ accordion state
   const [openFaqIndex, setOpenFaqIndex] = useState(null);
+
+  // Active CyberLunaWindow
+  const [activeWindow, setActiveWindow] = useState(null);
 
   const toggleFaq = (index) => {
     setOpenFaqIndex(openFaqIndex === index ? null : index);
@@ -247,10 +305,30 @@ const Collaborate = () => {
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
               >
-                <CollaborationCard {...collab} />
+                <CollaborationCard
+                  {...collab}
+                  onCtaClick={
+                    WINDOW_IDS.has(collab.id)
+                      ? () => setActiveWindow(collab.id)
+                      : undefined
+                  }
+                />
               </motion.div>
             ))}
           </div>
+
+          {/* CyberLunaWindow modals */}
+          {collaborationTypes
+            .filter((c) => c.id === activeWindow)
+            .map((c) => (
+              <CyberLunaWindow
+                key={c.id}
+                title={c.title}
+                onClose={() => setActiveWindow(null)}
+              >
+                <CollabWindowContent collab={c} />
+              </CyberLunaWindow>
+            ))}
         </div>
       </section>
 
@@ -325,12 +403,12 @@ const Collaborate = () => {
               Whether you're planning an event, need rehearsal space, or want to join our vendor community—we'd love to hear from you.
             </p>
             <div className={styles.finalCtaButtons}>
-              <Link to="/contact" className={styles.primaryBtn}>
+              <XPButton as={Link} to="/contact">
                 Send Us Your Idea
-              </Link>
-              <Link to="/showcasing" className={styles.secondaryBtn}>
+              </XPButton>
+              <XPButton as={Link} to="/showcasing">
                 See What We've Done
-              </Link>
+              </XPButton>
             </div>
           </motion.div>
         </div>

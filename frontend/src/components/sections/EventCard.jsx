@@ -1,4 +1,4 @@
-import Button from '../base/Button';
+import XPButton from '../base/XPButton';
 import styles from './EventCard.module.css';
 
 /**
@@ -65,17 +65,14 @@ const EventCard = ({
         </div>
 
         <div className={styles.cta}>
-          <Button
+          <XPButton
             as="a"
             href={ticketUrl}
             target="_blank"
             rel="noopener noreferrer"
-            variant="primary"
-            size="md"
-            fullWidth
           >
             Get Tickets
-          </Button>
+          </XPButton>
         </div>
       </div>
     </article>

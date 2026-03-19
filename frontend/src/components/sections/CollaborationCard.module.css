@@ -212,8 +212,10 @@
 }
 
 /* ========== CTA BUTTON ========== */
+/* Covers both <Link> and <button> variants */
 
 .ctaButton {
+  background: none; /* reset button default */
   display: inline-flex;
   align-items: center;
   justify-content: space-between;

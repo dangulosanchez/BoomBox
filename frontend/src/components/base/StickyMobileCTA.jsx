@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Button from './Button';
+import XPButton from './XPButton';
 import styles from './StickyMobileCTA.module.css';
 
 /**
@@ -88,18 +88,16 @@ const StickyMobileCTA = ({
           <span className={styles.eventName}>{eventName}</span>
         </div>
         
-        <Button
+        <XPButton
           as="a"
           href={scrollToEvents ? "#events" : externalUrl}
           target={scrollToEvents ? undefined : "_blank"}
           rel={scrollToEvents ? undefined : "noopener noreferrer"}
           onClick={handleClick}
-          variant="primary"
-          size="sm"
           className={styles.ctaButton}
         >
           {ctaText}
-        </Button>
+        </XPButton>
       </div>
     </div>
   );

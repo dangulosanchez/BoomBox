@@ -17,7 +17,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Button from '../base/Button';
+import XPButton from '../base/XPButton';
 import styles from './EmailCapture.module.css';
 
 /**
@@ -254,15 +254,13 @@ const EmailCapture = ({
                   aria-describedby={error ? "email-error" : undefined}
                   disabled={isLoading}
                 />
-                <Button
+                <XPButton
                   type="submit"
-                  variant="primary"
-                  size={variant === 'sticky' ? 'sm' : 'md'}
                   disabled={isLoading}
                   className={styles.submitBtn}
                 >
                   {isLoading ? 'Joining...' : buttonText}
-                </Button>
+                </XPButton>
               </div>
 
               {/* Error message */}

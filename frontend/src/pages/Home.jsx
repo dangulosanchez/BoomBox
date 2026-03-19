@@ -170,10 +170,10 @@ const Home = () => {
       <div className="desktop-only">
         <Hero
           title="THE BOOMBOX"
-          subtitle="Miami's Underground: All Its Corners. One Community."
+          subtitle="For locals, by locals."
           tagline=""
           backgroundImage="/images/building.jpeg"
-          logo={<Logo size="lg" variant="black" />}
+          logo={<Logo size="lg" variant="black"/>}
           height="100vh"
           overlay={true}
         >

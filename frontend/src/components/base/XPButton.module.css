@@ -93,6 +93,14 @@
   line-height: 1;
 }
 
+/* ========== DISABLED STATE ========== */
+
+.xpButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 /* ========== ACCESSIBILITY ========== */
 
 @media (prefers-reduced-motion: reduce) {

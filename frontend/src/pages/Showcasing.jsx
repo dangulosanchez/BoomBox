@@ -1,5 +1,6 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import XPButton from '../components/base/XPButton';
 import styles from './Showcasing.module.css';
 
 // ========== DATA STRUCTURE ==========
@@ -213,9 +214,9 @@ const ActivityCard = ({ activity, index }) => {
           )}
 
           {/* CTA Button */}
-          <a href={activity.cta.link} className={styles.cardCTA}>
+          <XPButton as="a" href={activity.cta.link}>
             {activity.cta.text}
-          </a>
+          </XPButton>
         </div>
       </motion.article>
 

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import XPButton from '../components/base/XPButton';
 import styles from './Story.module.css';
 
 /**
@@ -321,9 +322,9 @@ const Story = () => {
         <p className={styles.ctaSubtext}>
           See what 6 years of authentic underground culture looks like.
         </p>
-        <a href="/events" className={styles.ctaButton}>
+        <XPButton as="a" href="/events">
           See Upcoming Events
-        </a>
+        </XPButton>
       </motion.section>
     </div>
   );

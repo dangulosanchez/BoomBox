@@ -11,7 +11,8 @@ const CollaborationCard = ({
   perfectFor,
   ctaText,
   ctaLink,
-  additionalInfo
+  additionalInfo,
+  onCtaClick,   // if provided, fires instead of navigating
 }) => {
   return (
     <article className={styles.card}>
@@ -79,12 +80,21 @@ const CollaborationCard = ({
             ))}
           </div>
         )}
-        <Link to={ctaLink} className={styles.ctaButton}>
-          <span>{ctaText}</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-        </Link>
+        {onCtaClick ? (
+          <button type="button" className={styles.ctaButton} onClick={onCtaClick}>
+            <span>{ctaText}</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+        ) : (
+          <Link to={ctaLink} className={styles.ctaButton}>
+            <span>{ctaText}</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </Link>
+        )}
       </div>
     </article>
   );

@@ -532,6 +532,122 @@
 }
 
 /* ========================================
+   CYBER-LUNA WINDOW CONTENT
+   All type uses Tahoma 11px per XP spec.
+   ======================================== */
+
+.windowBody {
+  font-family: 'Tahoma', 'Segoe UI', sans-serif;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.82);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 460px;
+  max-width: 520px;
+}
+
+.windowDesc {
+  margin: 0;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.windowSection {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.windowSectionLabel {
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 9px;
+  font-weight: bold;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 215, 0, 0.7);
+  margin: 0;
+}
+
+.windowList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.windowListItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.55;
+}
+
+.windowStep {
+  font-weight: bold;
+  color: rgba(255, 215, 0, 0.65);
+  flex-shrink: 0;
+  font-size: 10px;
+  padding-top: 1px;
+}
+
+.windowBullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.windowBullets li::before {
+  content: '– ';
+  color: rgba(255, 215, 0, 0.5);
+}
+
+.windowTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.windowTag {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  padding: 2px 6px;
+}
+
+.windowFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 2px;
+}
+
+.windowInfo {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.28);
+}
+
+.windowInfo:not(:last-of-type)::after {
+  content: ' · ';
+  margin: 0 4px;
+}
+
+.windowCta {
+  margin-left: auto;
+}
+
+/* ========================================
    ACCESSIBILITY
    ======================================== */
 
