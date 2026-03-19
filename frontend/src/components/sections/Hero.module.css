@@ -44,8 +44,15 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  filter: brightness(0.4) contrast(1.2);
+  filter: brightness(0.45) contrast(1.15);
   transition: transform 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .backgroundImage {
+    filter: brightness(0.5) contrast(1.1);
+    background-position: center top;
+  }
 }
 
 /* Subtle parallax effect on desktop */
@@ -206,11 +213,25 @@
 
 /* ========== MOBILE ADJUSTMENTS ========== */
 
-@media (max-width: 576px) {
-  .content {
-    padding: var(--spacing-sm);
+/* On mobile, pull content toward the top so logo is visible immediately */
+@media (max-width: 768px) {
+  .hero {
+    align-items: flex-start;
   }
 
+  .content {
+    padding-top: 12vh;
+    padding-left: var(--spacing-sm);
+    padding-right: var(--spacing-sm);
+    padding-bottom: var(--spacing-md);
+  }
+
+  .actions {
+    margin-top: var(--spacing-md);
+  }
+}
+
+@media (max-width: 576px) {
   .title {
     font-size: var(--font-size-2xl);
     letter-spacing: var(--letter-spacing-wider);
