@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://dangulosanchez.github.io/BoomBox",
+  "homepage": "https://dangulosanchez.github.io/BoomBox",  
   "dependencies": {
     "@hcaptcha/react-hcaptcha": "^2.0.2",
     "@testing-library/jest-dom": "^5.17.0",
