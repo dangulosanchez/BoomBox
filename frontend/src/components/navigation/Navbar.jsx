@@ -112,46 +112,14 @@ const Navbar = ({ authState, updateAuthState }) => {
                 Home
               </Link>
             </li>
-            {/* <li className={styles.navItem}>
-              <Link 
-                to="/showcasing" 
-                className={`${styles.navLink} ${isActive('/showcasing') ? styles.active : ''}`}
-              >
-                Showcasing
-              </Link>
-            </li> */}
             <li className={styles.navItem}>
-              <Link 
-                to="/gallery" 
+              <Link
+                to="/gallery"
                 className={`${styles.navLink} ${isActive('/gallery') ? styles.active : ''}`}
               >
                 Gallery
               </Link>
             </li>
-            {/* <li className={styles.navItem}>
-              <Link 
-                to="/events" 
-                className={`${styles.navLink} ${isActive('/events') ? styles.active : ''}`}
-              >
-                Events
-              </Link>
-            </li> */}
-            {/* <li className={styles.navItem}>
-              <Link 
-                to="/shop" 
-                className={`${styles.navLink} ${isActive('/shop') ? styles.active : ''}`}
-              >
-                Shop
-              </Link>
-            </li> */}
-            {/* <li className={styles.navItem}>
-              <Link 
-                to="/blog" 
-                className={`${styles.navLink} ${isActive('/blog') ? styles.active : ''}`}
-              >
-                Blog
-              </Link>
-            </li> */}
             <li className={styles.navItem}>
               <Link to="/story"
                 className={`${styles.navLink} ${isActive('/story') ? styles.active : ''}`}
@@ -196,26 +164,7 @@ const Navbar = ({ authState, updateAuthState }) => {
                   </button>
                 </li>
               </>
-            ) : (
-              <>
-                {/* <li className={styles.navItem}>
-                  <Link 
-                    to="/login" 
-                    className={`${styles.navLink} ${isActive('/login') ? styles.active : ''}`}
-                  >
-                    Login
-                  </Link>
-                </li> */}
-                {/* <li className={styles.navItem}>
-                  <Link 
-                    to="/register" 
-                    className={`${styles.navLink} ${styles.registerLink} ${isActive('/register') ? styles.active : ''}`}
-                  >
-                    Register
-                  </Link>
-                </li> */}
-              </>
-            )}
+            ) : null}
           </ul>
         </div>
       </div>

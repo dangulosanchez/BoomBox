@@ -14,7 +14,7 @@
 /* Header */
 .header {
   text-align: center;
-  margin-bottom: var(--spacing-2xl);
+  margin-bottom: var(--spacing-lg);
   padding: 0 var(--spacing-md);
 }
 
@@ -85,31 +85,34 @@
   box-sizing: border-box;
 }
 
-/* Mobile: Reduce height but keep full width, remove extra padding */
+/* Tablet: reduce from the large default */
+@media (max-width: 991px) {
+  .eventsSection {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+}
+
+/* Mobile: side padding so embed has breathing room */
 @media (max-width: 768px) {
   .eventsSection {
-    padding: var(--spacing-xl) 0;
+    padding: var(--spacing-md) var(--spacing-sm);
   }
-  
+
   .container {
     padding: 0;
   }
-  
+
   .shotgunWidget {
-    border-radius: 0;
-    border-left: 0;
-    border-right: 0;
+    border-radius: var(--border-radius-md);
     margin: 0;
     width: 100% !important;
-    box-shadow: none;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
   }
-  
+
   .shotgunIframe {
     height: 700px !important;
     max-height: 80vh !important;
     border-radius: 0;
-    
-    /* CRITICAL: Kill Shotgun's mobile padding */
     padding: 0 !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;

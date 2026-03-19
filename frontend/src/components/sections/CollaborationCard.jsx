@@ -16,11 +16,14 @@ const CollaborationCard = ({
 }) => {
   return (
     <article className={styles.card}>
-      <div className={styles.cardAccent} />
+      {/* XP-style window title bar */}
+      <div className={styles.titleBar}>
+        <span className={styles.titleBarIcon} aria-hidden="true">◈</span>
+        <span className={styles.titleBarText}>{title}</span>
+      </div>
 
       <div className={styles.cardHeader}>
         <span className={styles.cardLabel}>{subtitle}</span>
-        <h3 className={styles.title}>{title}</h3>
       </div>
 
       <div className={styles.cardBody}>

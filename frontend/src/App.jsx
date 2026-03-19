@@ -22,14 +22,9 @@ import OnboardingRoute from './OnboardingRoute';
 import './styles/globals.css';
 import Showcasing from './pages/Showcasing';
 import Gallery from './pages/Gallery';
-import Blog from './pages/Blog';
-import BlogCreate from './pages/BlogCreate';
-import BlogEdit from './pages/BlogEdit';
-import BlogPost from './components/blog/BlogPost';
 import Contact from './pages/Contact';
 import Collaborate from './pages/Collaborate';
 import Story from './pages/Story';
-import Events from './pages/Events';
 
 /**
  * Main Application Component
@@ -106,24 +101,7 @@ function App() {
               <Gallery />
             } 
           />
-          <Route 
-            path="/events" 
-            element={
-             <Events />
-            } 
-          />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogPost />} />
-
-          <Route 
-            path="/blog/create" 
-            element={<BlogCreate />} 
-          />
-          <Route 
-            path="/blog/edit/:id" 
-            element={<BlogEdit />} 
-          />
-          <Route 
+          <Route
             path="/shop" 
             element={
               <Placeholder 

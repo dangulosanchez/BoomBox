@@ -166,7 +166,7 @@ const SocialLinks = ({
 
           {showLabels && (
             <span className={styles.label}>
-              {p.username}
+              {p.name}
             </span>
           )}
 

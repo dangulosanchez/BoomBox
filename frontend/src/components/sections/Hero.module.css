@@ -8,8 +8,17 @@
 }
 
 .heightFull {
-  height: 100vh;
-  min-height: 600px;
+  /* Fill exactly the visible area below the fixed nav */
+  height: calc(100vh - var(--nav-height));
+  min-height: 500px;
+}
+
+/* Use small/dynamic viewport units on browsers that support them
+   (accounts for iOS address bar and Android browser chrome) */
+@supports (height: 100svh) {
+  .heightFull {
+    height: calc(100svh - var(--nav-height));
+  }
 }
 
 .heightMedium {
@@ -75,18 +84,9 @@
 }
 
 .logoContainer img {
-  width: 80px;
-  height: 80px;
   margin: 0 auto;
   filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.5));
   animation: glow 2s ease-in-out infinite alternate;
-}
-
-@media (min-width: 992px) {
-  .logoContainer img {
-    width: 120px;
-    height: 120px;
-  }
 }
 
 /* Title */
