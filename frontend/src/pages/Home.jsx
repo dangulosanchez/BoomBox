@@ -5,6 +5,7 @@ import TestimonialSection from '../components/sections/TestimonialSection';
 import EventsPreview from '../components/sections/EventsPreview';
 import Logo from '../components/base/Logo';
 import Button from '../components/base/Button';
+import XPButton from '../components/base/XPButton';
 import StickyMobileCTA from '../components/base/StickyMobileCTA';
 import styles from './Home.module.css';
 import EmailCapture from '../components/base/EmailCapture';
@@ -181,16 +182,14 @@ const Home = () => {
             {/* <p className={styles.heroTeaser}>
               Coming up: Bassline Fridays • This Saturday
             </p> */}
-            <Button 
+            <XPButton
               as="a"
               href="https://shotgun.live/en/venues/the-boombox-miami"
               target="_blank"
               rel="noopener noreferrer"
-              variant="primary"
-              size="lg"
             >
               See What's Happening
-            </Button>
+            </XPButton>
             <p className={styles.heroSupport}>
               Authentic Miami. Zero Tourist Traps.
             </p>

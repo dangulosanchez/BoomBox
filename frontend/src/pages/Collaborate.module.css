@@ -1,25 +1,10 @@
-/**
- * ============================================
- * COLLABORATE PAGE STYLES - The Boombox Miami
- * 100% Design System Compliance
- * ============================================
- * 
- * Features:
- * - Dark gradient background with gold accents
- * - Full-width hero with overlay
- * - Responsive 3-column grid (desktop) → 2-column (tablet) → 1-column (mobile)
- * - Smooth hover effects and transitions
- * - FAQ accordion with animations
- * - Mobile-optimized spacing and typography
- */
-
-/* ========================================
-   MAIN CONTAINER
-   ======================================== */
+/* ============================================
+   COLLABORATE PAGE — REDESIGNED
+   ============================================ */
 
 .collaboratePage {
   min-height: 100vh;
-  background: linear-gradient(135deg, var(--color-bg-primary) 0%, #0a0a0a 50%, var(--color-bg-primary) 100%);
+  background: var(--color-bg-primary);
   padding-top: 0;
 }
 
@@ -29,30 +14,23 @@
 
 .hero {
   position: relative;
-  min-height: 60vh;
+  min-height: 65vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: var(--spacing-2xl) var(--spacing-lg);
-  background: 
-    var(--gradient-overlay),
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.82) 100%),
     url('https://theboomboxmiami.com/images/building.jpeg') center/cover no-repeat;
   background-attachment: fixed;
   overflow: hidden;
 }
 
-.heroOverlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.85) 100%);
-  z-index: 1;
-}
-
 .heroContent {
   position: relative;
   z-index: 2;
-  max-width: 900px;
+  max-width: 820px;
   margin: 0 auto;
 }
 
@@ -60,30 +38,32 @@
   font-size: var(--font-size-4xl);
   font-weight: 700;
   font-family: var(--font-heading);
-  background: var(--gradient-gold);
+  background: var(--gradient-gold-simple);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-bottom: var(--spacing-md);
   letter-spacing: -0.02em;
-  text-shadow: var(--text-shadow-gold);
   text-transform: uppercase;
+  line-height: 1;
 }
 
 .heroSubtitle {
   font-size: var(--font-size-xl);
   color: var(--color-text-primary);
-  line-height: var(--line-height-relaxed);
-  margin-bottom: var(--spacing-md);
+  line-height: 1.45;
+  margin-bottom: var(--spacing-sm);
   font-family: var(--font-heading);
-  font-weight: 600;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
 .heroText {
-  font-size: var(--font-size-lg);
-  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+  color: rgba(255, 255, 255, 0.6);
   line-height: var(--line-height-relaxed);
-  max-width: 700px;
+  max-width: 600px;
   margin: 0 auto var(--spacing-xl);
   font-family: var(--font-body);
 }
@@ -94,29 +74,24 @@
   align-items: center;
   gap: var(--spacing-xs);
   color: var(--color-accent-gold);
-  font-size: var(--font-size-sm);
-  font-weight: 500;
-  animation: bounce 2s infinite;
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  animation: bounce 2.5s ease-in-out infinite;
   cursor: pointer;
+  opacity: 0.75;
 }
 
 @keyframes bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(8px); }
 }
 
 /* ========================================
-   PHILOSOPHY SECTION
+   SHARED: CONTAINER
    ======================================== */
-
-.philosophySection {
-  padding: var(--spacing-2xl) 0;
-  background: linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(20,20,20,0.95) 100%);
-}
 
 .container {
   max-width: var(--container-max-width);
@@ -124,25 +99,88 @@
   padding: 0 var(--container-padding);
 }
 
-.philosophyContent {
+/* ========================================
+   SHARED: SECTION TITLE
+   ======================================== */
+
+.sectionTitle {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  font-family: var(--font-heading);
   text-align: center;
-  max-width: 900px;
-  margin: 0 auto;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--spacing-xl);
+  padding-top: var(--spacing-md);
+  position: relative;
+}
+
+.sectionTitle::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 44px;
+  height: 2px;
+  background: var(--gradient-gold-simple);
+  border-radius: 1px;
+}
+
+/* ========================================
+   PHILOSOPHY SECTION — EDITORIAL SPLIT
+   ======================================== */
+
+.philosophySection {
+  padding: var(--spacing-2xl) 0;
+  background: #080808;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.philosophyContent {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: var(--spacing-2xl);
+  align-items: start;
+}
+
+.philosophyLeft {
+  padding-top: 0.25rem;
+}
+
+.philosophyEyebrow {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-accent-gold);
+  margin-bottom: var(--spacing-sm);
+  opacity: 0.85;
 }
 
 .philosophyTitle {
   font-size: var(--font-size-3xl);
   font-weight: 700;
   font-family: var(--font-heading);
-  color: var(--color-accent-gold);
-  margin-bottom: var(--spacing-md);
-  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+  letter-spacing: -0.025em;
+  line-height: 1.0;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.philosophyRight {
+  /* right column — description + stats */
 }
 
 .philosophyText {
-  font-size: var(--font-size-lg);
-  color: var(--color-text-secondary);
-  line-height: var(--line-height-relaxed);
+  font-size: var(--font-size-base);
+  color: rgba(255, 255, 255, 0.62);
+  line-height: 1.85;
   margin-bottom: var(--spacing-xl);
   font-family: var(--font-body);
 }
@@ -150,17 +188,15 @@
 /* Stats Bar */
 .statsBar {
   display: flex;
-  justify-content: center;
   gap: var(--spacing-xl);
   flex-wrap: wrap;
-  margin-top: var(--spacing-xl);
-  padding-top: var(--spacing-xl);
-  border-top: 1px solid rgba(255, 215, 0, 0.2);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid rgba(255, 215, 0, 0.15);
 }
 
 .statItem {
-  text-align: center;
-  min-width: 150px;
+  text-align: left;
+  min-width: 120px;
 }
 
 .statNumber {
@@ -168,14 +204,17 @@
   font-weight: 700;
   color: var(--color-accent-gold);
   font-family: var(--font-heading);
-  line-height: 1.2;
-  margin-bottom: var(--spacing-xs);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
 }
 
 .statLabel {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
-  opacity: 0.9;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.38);
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 /* ========================================
@@ -183,46 +222,30 @@
    ======================================== */
 
 .opportunitiesSection {
-  padding: var(--spacing-xl) 0;
+  padding: var(--spacing-2xl) 0;
   background: var(--color-bg-primary);
-
-  max-width: 100%;
   width: 100%;
   box-sizing: border-box;
-  overflow: hidden; 
-}
-
-.sectionTitle {
-  font-size: var(--font-size-3xl);
-  font-weight: 700;
-  font-family: var(--font-heading);
-  text-align: center;
-  background: var(--gradient-gold);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: var(--spacing-xl);
-  letter-spacing: -0.01em;
+  overflow: hidden;
 }
 
 .opportunitiesGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--spacing-xl);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
   margin-top: var(--spacing-xl);
 }
 
-/* Responsive Grid */
-@media (max-width: 1199px) {
+@media (max-width: 1024px) {
   .opportunitiesGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .opportunitiesGrid {
     grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
+    gap: var(--spacing-md);
   }
 }
 
@@ -232,28 +255,30 @@
 
 .faqSection {
   padding: var(--spacing-2xl) 0;
-  background: linear-gradient(135deg, rgba(10,10,10,0.95) 0%, rgba(0,0,0,0.95) 100%);
+  background: #080808;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .faqList {
-  max-width: 900px;
+  max-width: 820px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
+  gap: 2px;
 }
 
 .faqItem {
-  background: linear-gradient(135deg, rgba(17, 17, 17, 0.8), rgba(0, 0, 0, 0.9));
-  border: 1px solid rgba(255, 215, 0, 0.15);
-  border-radius: var(--border-radius-lg);
-  overflow: hidden;
-  transition: all var(--transition-base);
+  background: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  transition: background 0.2s ease;
+}
+
+.faqItem:first-child {
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 .faqItem:hover {
-  border-color: rgba(255, 215, 0, 0.3);
-  box-shadow: var(--shadow-gold-sm);
+  background: rgba(255, 255, 255, 0.02);
 }
 
 .faqQuestion {
@@ -261,16 +286,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--spacing-lg);
+  padding: var(--spacing-md) 0;
   background: none;
   border: none;
   color: var(--color-text-primary);
-  font-size: var(--font-size-lg);
-  font-weight: 600;
-  font-family: var(--font-heading);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  font-family: var(--font-body);
   text-align: left;
   cursor: pointer;
-  transition: color var(--transition-base);
+  transition: color 0.2s ease;
+  gap: var(--spacing-md);
 }
 
 .faqQuestion:hover {
@@ -283,20 +309,22 @@
 
 .faqIcon {
   flex-shrink: 0;
-  transition: transform var(--transition-base);
-  color: var(--color-accent-gold);
+  transition: transform 0.25s ease;
+  color: rgba(255, 215, 0, 0.5);
 }
 
 .faqQuestion.active .faqIcon {
   transform: rotate(180deg);
+  color: var(--color-accent-gold);
 }
 
 .faqAnswer {
-  padding: 0 var(--spacing-lg) var(--spacing-lg);
-  color: var(--color-text-secondary);
-  font-size: var(--font-size-base);
-  line-height: var(--line-height-relaxed);
+  padding: 0 0 var(--spacing-md) 0;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: var(--font-size-sm);
+  line-height: 1.8;
   font-family: var(--font-body);
+  max-width: 680px;
 }
 
 .faqAnswer p {
@@ -309,7 +337,7 @@
 
 .finalCtaSection {
   padding: var(--spacing-2xl) 0;
-  background: linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(15,15,15,0.95) 100%);
+  background: var(--color-bg-primary);
   position: relative;
   overflow: hidden;
 }
@@ -317,37 +345,38 @@
 .finalCtaSection::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
-  pointer-events: none;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 600px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.25), transparent);
 }
 
 .finalCtaContent {
   text-align: center;
-  max-width: 800px;
+  max-width: 680px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
-  padding: var(--spacing-xl);
-  background: linear-gradient(135deg, rgba(17, 17, 17, 0.6), rgba(0, 0, 0, 0.7));
-  border: 2px solid rgba(255, 215, 0, 0.3);
-  border-radius: var(--border-radius-xl);
-  backdrop-filter: blur(10px);
 }
 
 .finalCtaTitle {
   font-size: var(--font-size-3xl);
   font-weight: 700;
   font-family: var(--font-heading);
-  color: var(--color-accent-gold);
+  color: var(--color-text-primary);
   margin-bottom: var(--spacing-md);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  line-height: 1.05;
 }
 
 .finalCtaText {
-  font-size: var(--font-size-lg);
-  color: var(--color-text-secondary);
-  line-height: var(--line-height-relaxed);
+  font-size: var(--font-size-base);
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.8;
   margin-bottom: var(--spacing-xl);
   font-family: var(--font-body);
 }
@@ -364,71 +393,65 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: var(--spacing-md) var(--spacing-xl);
-  font-size: var(--font-size-base);
+  padding: 0.9rem var(--spacing-lg);
+  font-size: var(--font-size-sm);
   font-weight: 600;
   font-family: var(--font-heading);
   border-radius: var(--border-radius-lg);
   text-decoration: none;
-  transition: all var(--transition-base);
-  min-width: 200px;
+  transition: all 0.25s ease;
+  letter-spacing: 0.04em;
+  min-width: 180px;
 }
 
 .primaryBtn {
   background: var(--gradient-gold-simple);
-  color: var(--color-bg-primary);
+  color: #000;
   border: 2px solid transparent;
 }
 
 .primaryBtn:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-gold-lg);
-  filter: brightness(1.1);
+  filter: brightness(1.08);
 }
 
 .secondaryBtn {
   background: transparent;
   color: var(--color-accent-gold);
-  border: 2px solid var(--color-accent-gold);
+  border: 1px solid rgba(255, 215, 0, 0.3);
 }
 
 .secondaryBtn:hover {
-  background: var(--color-accent-gold);
-  color: var(--color-bg-primary);
+  background: rgba(255, 215, 0, 0.06);
+  border-color: rgba(255, 215, 0, 0.6);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-gold-md);
 }
 
 /* ========================================
-   RESPONSIVE DESIGN
+   RESPONSIVE
    ======================================== */
 
 @media (max-width: 1024px) {
-  .hero {
-    min-height: 50vh;
-    padding: var(--spacing-xl) var(--spacing-md);
+  .philosophyContent {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
   }
 
-  .philosophySection,
-  .opportunitiesSection,
-  .faqSection,
-  .finalCtaSection {
-    padding: var(--spacing-xl) 0;
+  .philosophyTitle {
+    font-size: var(--font-size-2xl);
   }
 
   .statsBar {
     gap: var(--spacing-lg);
   }
-
-  .statItem {
-    min-width: 120px;
-  }
 }
 
 @media (max-width: 768px) {
   .hero {
-    min-height: 40vh;
+    min-height: 50vh;
     background-attachment: scroll;
+    padding: var(--spacing-xl) var(--spacing-md);
   }
 
   .heroTitle {
@@ -440,45 +463,41 @@
   }
 
   .heroText {
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-lg);
   }
 
-  .philosophyTitle,
-  .sectionTitle,
+  .philosophySection,
+  .opportunitiesSection,
+  .faqSection,
+  .finalCtaSection {
+    padding: var(--spacing-xl) 0;
+  }
+
+  .sectionTitle {
+    font-size: var(--font-size-xl);
+  }
+
   .finalCtaTitle {
     font-size: var(--font-size-2xl);
   }
 
-  .philosophyText,
-  .finalCtaText {
-    font-size: var(--font-size-base);
-  }
-
   .statsBar {
-    flex-direction: column;
     gap: var(--spacing-md);
   }
 
   .statItem {
-    min-width: auto;
-  }
-
-  .statNumber {
-    font-size: var(--font-size-xl);
+    min-width: 100px;
   }
 
   .faqQuestion {
-    font-size: var(--font-size-base);
-    padding: var(--spacing-md);
-  }
-
-  .faqAnswer {
-    padding: 0 var(--spacing-md) var(--spacing-md);
+    padding: var(--spacing-sm) 0;
     font-size: var(--font-size-sm);
   }
 
-  .finalCtaContent {
-    padding: var(--spacing-lg);
+  .faqAnswer {
+    padding-bottom: var(--spacing-sm);
+    font-size: var(--font-size-xs);
   }
 
   .finalCtaButtons {
@@ -488,10 +507,8 @@
 
   .primaryBtn,
   .secondaryBtn {
-    max-height: 60px;
     width: 100%;
-    padding-left: 0px;
-    padding-right: 0px;
+    min-width: unset;
   }
 }
 
@@ -500,15 +517,17 @@
     font-size: var(--font-size-2xl);
   }
 
-  .philosophySection,
-  .opportunitiesSection,
-  .faqSection,
-  .finalCtaSection {
-    padding: var(--spacing-lg) 0;
-  }
-
   .container {
     padding: 0 var(--spacing-md);
+  }
+
+  .statsBar {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .statItem {
+    min-width: unset;
   }
 }
 
@@ -517,17 +536,18 @@
    ======================================== */
 
 @media (prefers-reduced-motion: reduce) {
-  .scrollIndicator,
+  .scrollIndicator {
+    animation: none;
+  }
+
   .faqIcon,
   .primaryBtn,
   .secondaryBtn,
   .faqItem {
-    animation: none;
     transition: none;
   }
 }
 
-/* Focus styles */
 .faqQuestion:focus-visible,
 .primaryBtn:focus-visible,
 .secondaryBtn:focus-visible {

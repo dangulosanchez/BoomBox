@@ -1,320 +1,291 @@
-/**
- * ============================================
- * COLLABORATION CARD STYLES
- * 100% Design System Compliance
- * ============================================
- */
+/* ============================================
+   COLLABORATION CARD — REDESIGNED
+   ============================================ */
 
 .card {
-  background: linear-gradient(135deg, rgba(17, 17, 17, 0.9), rgba(0, 0, 0, 0.95));
-  border: 1px solid rgba(255, 215, 0, 0.2);
+  background: #0c0c0c;
   border-radius: var(--border-radius-xl);
-  padding: var(--spacing-xl);
-  backdrop-filter: blur(10px);
-  transition: all var(--transition-base);
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 100%;
-  max-width: 100%;
-  min-width: 0; /* Critical for flex/grid children */
   box-sizing: border-box;
-  overflow-wrap: break-word; /* Prevents long words from overflowing */
-  word-wrap: break-word;
-
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  position: relative;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-gold-md);
-  border-color: rgba(255, 215, 0, 0.4);
+  transform: translateY(-6px);
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(255, 215, 0, 0.12);
 }
 
-/* ========================================
-   CARD HEADER
-   ======================================== */
+/* Gold top accent bar */
+.cardAccent {
+  height: 2px;
+  background: var(--gradient-gold-simple);
+  flex-shrink: 0;
+}
+
+/* ========== HEADER ========== */
 
 .cardHeader {
-  text-align: center;
-  margin-bottom: var(--spacing-lg);
-  padding-bottom: var(--spacing-lg);
-  border-bottom: 1px solid rgba(255, 215, 0, 0.15);
+  padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-md);
 }
 
-.icon {
-  font-size: 3rem;
-  line-height: 1;
-  margin-bottom: var(--spacing-md);
-  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+.cardLabel {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-accent-gold);
+  margin-bottom: 0.75rem;
+  opacity: 0.85;
 }
 
 .title {
-  font-size: var(--font-size-2xl);
-  font-weight: 700;
   font-family: var(--font-heading);
-  color: var(--color-accent-gold);
-  margin-bottom: var(--spacing-xs);
-  letter-spacing: -0.01em;
-}
-
-.subtitle {
-  font-size: var(--font-size-lg);
-  color: var(--color-text-secondary);
-  font-weight: 400;
-  font-family: var(--font-body);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
   margin: 0;
+  text-transform: uppercase;
 }
 
-/* ========================================
-   CARD BODY
-   ======================================== */
+/* ========== BODY ========== */
 
 .cardBody {
   flex: 1;
+  padding: 0 var(--spacing-lg);
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-lg);
+  gap: var(--spacing-md);
 }
 
 .description {
-  font-size: var(--font-size-base);
-  color: var(--color-text-secondary);
-  line-height: var(--line-height-relaxed);
-  margin: 0;
   font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.58);
+  line-height: 1.8;
+  margin: 0;
 }
 
-/* ========================================
-   SECTIONS
-   ======================================== */
+/* ========== SECTION BLOCK ========== */
 
 .section {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-sm);
+  gap: 0.75rem;
 }
 
-.sectionTitle {
-  font-size: var(--font-size-base);
-  font-weight: 600;
+.sectionLabel {
   font-family: var(--font-heading);
-  color: var(--color-text-primary);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
   margin: 0;
-  letter-spacing: 0.02em;
 }
 
-/* ========================================
-   LISTS
-   ======================================== */
+/* ========== NUMBERED LIST ========== */
 
-/* Bulleted Lists (How It Works, What You Get, Event Types) */
+.numberedList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.numberedItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.65;
+}
+
+.stepNum {
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--color-accent-gold);
+  flex-shrink: 0;
+  padding-top: 3px;
+  letter-spacing: 0.06em;
+  opacity: 0.85;
+}
+
+/* ========== DASH LIST ========== */
+
 .list {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xs);
+  gap: 0.5rem;
 }
 
 .listItem {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
-  line-height: var(--line-height-relaxed);
-  padding-left: var(--spacing-md);
-  position: relative;
   font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.68);
+  line-height: 1.65;
+  padding-left: 1.25rem;
+  position: relative;
 }
 
 .listItem::before {
-  content: '•';
+  content: '–';
   position: absolute;
   left: 0;
   color: var(--color-accent-gold);
-  font-weight: 700;
+  opacity: 0.5;
 }
 
-/* Checkmark Lists (Perfect For) */
-.checkList {
+/* ========== TAG LIST ========== */
+
+.tagList {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xs);
+  flex-wrap: wrap;
+  gap: 0.4rem;
 }
 
-.checkItem {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
-  line-height: var(--line-height-relaxed);
-  display: flex;
-  align-items: flex-start;
-  gap: var(--spacing-sm);
+.tag {
   font-family: var(--font-body);
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius-full);
+  padding: 0.28rem 0.7rem;
+  line-height: 1.5;
+  transition: border-color 0.25s ease, color 0.25s ease;
 }
 
-.checkmark {
-  color: var(--color-accent-gold);
-  font-weight: 700;
-  flex-shrink: 0;
-  font-size: var(--font-size-base);
+.card:hover .tag {
+  border-color: rgba(255, 215, 0, 0.18);
+  color: rgba(255, 255, 255, 0.75);
 }
 
-/* ========================================
-   CARD FOOTER
-   ======================================== */
+/* ========== FOOTER ========== */
 
 .cardFooter {
-  margin-top: var(--spacing-lg);
-  padding-top: var(--spacing-lg);
-  border-top: 1px solid rgba(255, 215, 0, 0.15);
+  padding: var(--spacing-md) var(--spacing-lg) var(--spacing-lg);
+  margin-top: auto;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
+  gap: 0.875rem;
 }
+
+.additionalInfo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+}
+
+.infoItem {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.28);
+  letter-spacing: 0.02em;
+}
+
+.infoItem:not(:last-child)::after {
+  content: '·';
+  margin: 0 0.45rem;
+  opacity: 0.6;
+}
+
+/* ========== CTA BUTTON ========== */
 
 .ctaButton {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   width: 100%;
-  padding: var(--spacing-md) var(--spacing-lg);
-  background: var(--gradient-gold-simple);
-  color: var(--color-bg-primary);
-  font-size: var(--font-size-base);
-  font-weight: 600;
+  padding: 0.9rem 1.25rem;
+  background: transparent;
+  color: var(--color-accent-gold);
   font-family: var(--font-heading);
-  border-radius: var(--border-radius-lg);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  letter-spacing: 0.04em;
   text-decoration: none;
-  transition: all var(--transition-base);
-  border: 2px solid transparent;
+  border: 1px solid rgba(255, 215, 0, 0.28);
+  border-radius: var(--border-radius-lg);
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
 }
 
 .ctaButton:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-gold-lg);
-  filter: brightness(1.1);
+  background: var(--color-accent-gold);
+  color: #000;
+  border-color: var(--color-accent-gold);
 }
 
-.ctaButton:active {
-  transform: translateY(0);
+.ctaButton svg {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
 }
 
-/* ========================================
-   ADDITIONAL INFO
-   ======================================== */
-
-.additionalInfo {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xs);
-  align-items: center;
+.ctaButton:hover svg {
+  transform: translateX(4px);
 }
 
-.infoItem {
-  font-size: var(--font-size-xs);
-  color: var(--color-text-muted);
-  font-family: var(--font-body);
-  text-align: center;
-  opacity: 0.9;
-}
+/* ========== RESPONSIVE ========== */
 
-/* ========================================
-   RESPONSIVE DESIGN
-   ======================================== */
-
-@media (max-width: 1199px) {
-  .card {
-    padding: var(--spacing-lg);
-  }
-
-  .title {
-    font-size: var(--font-size-xl);
-  }
-
-  .subtitle {
-    font-size: var(--font-size-base);
-  }
-}
-
-@media (max-width: 768px) {
-  .card {
-    padding: var(--spacing-md);
-  }
-
+@media (max-width: 1024px) {
   .cardHeader {
-    margin-bottom: var(--spacing-md);
-    padding-bottom: var(--spacing-md);
+    padding: var(--spacing-md) var(--spacing-md) var(--spacing-sm);
   }
 
-  .icon {
-    font-size: 2.5rem;
+  .cardBody {
+    padding: 0 var(--spacing-md);
+    gap: var(--spacing-sm);
+  }
+
+  .cardFooter {
+    padding: var(--spacing-sm) var(--spacing-md) var(--spacing-md);
   }
 
   .title {
     font-size: var(--font-size-lg);
   }
-
-  .subtitle {
-    font-size: var(--font-size-sm);
-  }
-
-  .description,
-  .sectionTitle {
-    font-size: var(--font-size-sm);
-  }
-
-  .listItem,
-  .checkItem {
-    font-size: var(--font-size-xs);
-  }
-
-  .cardBody {
-    gap: var(--spacing-md);
-  }
-
-  .cardFooter {
-    margin-top: var(--spacing-md);
-    padding-top: var(--spacing-md);
-  }
-
-  .ctaButton {
-    padding: var(--spacing-sm) var(--spacing-md);
-    font-size: var(--font-size-sm);
-  }
 }
 
-@media (max-width: 480px) {
-  .card {
-    padding: var(--spacing-sm) var(--spacing-md);
-  }
-
-  .icon {
-    font-size: 2rem;
-  }
-}
-
-/* ========================================
-   ACCESSIBILITY
-   ======================================== */
+/* ========== ACCESSIBILITY ========== */
 
 @media (prefers-reduced-motion: reduce) {
   .card,
-  .ctaButton {
+  .ctaButton,
+  .ctaButton svg,
+  .tag {
     transition: none;
   }
-  
+
   .card:hover {
     transform: none;
   }
-  
-  .ctaButton:hover {
+
+  .ctaButton:hover svg {
     transform: none;
   }
 }
 
-/* Focus styles */
 .ctaButton:focus-visible {
   outline: 2px solid var(--color-accent-gold);
   outline-offset: 4px;

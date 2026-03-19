@@ -139,7 +139,6 @@ const Collaborate = () => {
     <div className={styles.collaboratePage}>
       {/* ========== HERO SECTION ========== */}
       <section className={styles.hero}>
-        <div className={styles.heroOverlay} />
         <div className={styles.heroContent}>
           <motion.h1 
             className={styles.heroTitle}
@@ -155,7 +154,16 @@ const Collaborate = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            We don't rent our space—we build partnerships with our community
+            We don't rent our space.
+          </motion.h2>
+          <motion.h2 
+            className={styles.heroSubtitle}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            style={{fontSize: "32px"}}
+          >
+            We build partnerships with our community
           </motion.h2>
           <motion.p 
             className={styles.heroText}
@@ -182,31 +190,36 @@ const Collaborate = () => {
       {/* ========== PHILOSOPHY SECTION ========== */}
       <section className={styles.philosophySection}>
         <div className={styles.container}>
-          <motion.div 
+          <motion.div
             className={styles.philosophyContent}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className={styles.philosophyTitle}>More Than a Venue—A Community Hub</h2>
-            <p className={styles.philosophyText}>
-              We're not just a venue—we're a community hub. We work with promoters, artists, vendors, and creators 
-              who share our values of authenticity, creativity, and inclusivity. Every collaboration is a partnership, 
-              where we invest in your success because your success is ours.
-            </p>
-            <div className={styles.statsBar}>
-              <div className={styles.statItem}>
-                <div className={styles.statNumber}>300+</div>
-                <div className={styles.statLabel}>Successful Collaborations</div>
-              </div>
-              <div className={styles.statItem}>
-                <div className={styles.statNumber}>6+</div>
-                <div className={styles.statLabel}>Years Building Community</div>
-              </div>
-              <div className={styles.statItem}>
-                <div className={styles.statNumber}>Every Weekend</div>
-                <div className={styles.statLabel}>New Partners</div>
+            <div className={styles.philosophyLeft}>
+              <span className={styles.philosophyEyebrow}>Our approach</span>
+              <h2 className={styles.philosophyTitle}>More than a venue</h2>
+            </div>
+            <div className={styles.philosophyRight}>
+              <p className={styles.philosophyText}>
+                We work with promoters, artists, vendors, and creators who share our values of authenticity,
+                creativity, and inclusivity. Every collaboration is a partnership — we invest in your success
+                because your success is ours.
+              </p>
+              <div className={styles.statsBar}>
+                <div className={styles.statItem}>
+                  <div className={styles.statNumber}>300+</div>
+                  <div className={styles.statLabel}>Collaborations</div>
+                </div>
+                <div className={styles.statItem}>
+                  <div className={styles.statNumber}>6+</div>
+                  <div className={styles.statLabel}>Years strong</div>
+                </div>
+                <div className={styles.statItem}>
+                  <div className={styles.statNumber}>200</div>
+                  <div className={styles.statLabel}>Capacity</div>
+                </div>
               </div>
             </div>
           </motion.div>

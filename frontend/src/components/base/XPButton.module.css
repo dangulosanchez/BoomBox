@@ -1,0 +1,102 @@
+/* ============================================
+   XPButton — Windows XP Luna "Default Blue"
+   ============================================ */
+
+.xpButton {
+  /* Reset */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+
+  /* Geometry */
+  border-radius: 3px;
+  padding: 8px 28px;
+  min-height: 36px;
+
+  /* Typography */
+  font-family: 'Tahoma', 'Segoe UI', sans-serif;
+  font-size: 14px;
+  color: #000;
+  white-space: nowrap;
+
+  /* Outer border */
+  border: 1px solid #003C74;
+
+  /* Reflective plastic gradient — breaks at 50% (the "horizon line") */
+  background: linear-gradient(
+    to bottom,
+    #FFFFFF 0%,
+    #ECE9D8 50%,
+    #DCDAD5 50%,
+    #C1C1C1 100%
+  );
+
+  /* Inner highlight (glossy top-left rim) */
+  box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.9);
+
+  /* Transitions */
+  transition: border-color 0.05s, background 0.05s, box-shadow 0.05s;
+}
+
+/* ========== FOCUS STATE ========== */
+
+/* Remove default browser outline — we provide our own */
+.xpButton:focus {
+  outline: none;
+}
+
+/* Keyboard-focus: dotted inset rectangle, 3px from the border */
+.xpButton:focus-visible .xpLabel {
+  outline: 1px dotted #000;
+  outline-offset: 1px;
+}
+
+/* ========== HOVER STATE ========== */
+
+.xpButton:hover {
+  border-color: #E59700;
+  background: linear-gradient(
+    to bottom,
+    #FFFAD1 0%,
+    #F7D66A 50%,
+    #E59F23 50%,
+    #F3BD63 100%
+  );
+  box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.6);
+}
+
+/* ========== ACTIVE (PRESSED) STATE ========== */
+
+.xpButton:active {
+  border-color: #003C74;
+  background: linear-gradient(
+    to bottom,
+    #C0C0C0 0%,
+    #D3D3D3 100%
+  );
+  box-shadow: inset 1px 1px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* Sink the label 1px right + 1px down to simulate a physical press */
+.xpButton:active .xpLabel {
+  transform: translate(1px, 1px);
+  display: inline-block;
+}
+
+/* ========== LABEL SPAN ========== */
+
+.xpLabel {
+  display: inline-block;
+  line-height: 1;
+}
+
+/* ========== ACCESSIBILITY ========== */
+
+@media (prefers-reduced-motion: reduce) {
+  .xpButton {
+    transition: none;
+  }
+}

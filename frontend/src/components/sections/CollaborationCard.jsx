@@ -1,31 +1,7 @@
-/**
- * ============================================
- * COLLABORATION CARD COMPONENT
- * ============================================
- * 
- * Reusable card component for displaying collaboration opportunities
- * on the Collaborate page. Features dynamic sections based on card type.
- * 
- * @component
- * @param {Object} props
- * @param {string} props.icon - Emoji icon for the card
- * @param {string} props.title - Card title
- * @param {string} props.subtitle - Card subtitle
- * @param {string} props.description - Main description text
- * @param {Array} props.howItWorks - Optional "How It Works" list items
- * @param {Array} props.whatYouGet - Optional "What You Get" list items
- * @param {Array} props.eventTypes - Optional "Event Types" list items
- * @param {Array} props.perfectFor - "Perfect For" list items
- * @param {string} props.ctaText - CTA button text
- * @param {string} props.ctaLink - CTA button link
- * @param {Array} props.additionalInfo - Additional info items
- */
-
 import { Link } from 'react-router-dom';
 import styles from './CollaborationCard.module.css';
 
 const CollaborationCard = ({
-  icon,
   title,
   subtitle,
   description,
@@ -39,88 +15,76 @@ const CollaborationCard = ({
 }) => {
   return (
     <article className={styles.card}>
-      {/* Card Header */}
+      <div className={styles.cardAccent} />
+
       <div className={styles.cardHeader}>
-        <div className={styles.icon}>{icon}</div>
+        <span className={styles.cardLabel}>{subtitle}</span>
         <h3 className={styles.title}>{title}</h3>
-        <p className={styles.subtitle}>{subtitle}</p>
       </div>
 
-      {/* Card Body */}
       <div className={styles.cardBody}>
         <p className={styles.description}>{description}</p>
 
-        {/* How It Works Section (Event Collaborations) */}
         {howItWorks && (
           <div className={styles.section}>
-            <h4 className={styles.sectionTitle}>How It Works:</h4>
-            <ul className={styles.list}>
+            <h4 className={styles.sectionLabel}>How it works</h4>
+            <ol className={styles.numberedList}>
               {howItWorks.map((item, index) => (
-                <li key={index} className={styles.listItem}>
-                  {item}
+                <li key={index} className={styles.numberedItem}>
+                  <span className={styles.stepNum}>{String(index + 1).padStart(2, '0')}</span>
+                  <span>{item}</span>
                 </li>
               ))}
-            </ul>
+            </ol>
           </div>
         )}
 
-        {/* What You Get Section (Rehearsal Space) */}
         {whatYouGet && (
           <div className={styles.section}>
-            <h4 className={styles.sectionTitle}>What You Get:</h4>
+            <h4 className={styles.sectionLabel}>What you get</h4>
             <ul className={styles.list}>
               {whatYouGet.map((item, index) => (
-                <li key={index} className={styles.listItem}>
-                  {item}
-                </li>
+                <li key={index} className={styles.listItem}>{item}</li>
               ))}
             </ul>
           </div>
         )}
 
-        {/* Event Types Section (Vendor & Community) */}
         {eventTypes && (
           <div className={styles.section}>
-            <h4 className={styles.sectionTitle}>Event Types:</h4>
+            <h4 className={styles.sectionLabel}>Event types</h4>
             <ul className={styles.list}>
               {eventTypes.map((item, index) => (
-                <li key={index} className={styles.listItem}>
-                  {item}
-                </li>
+                <li key={index} className={styles.listItem}>{item}</li>
               ))}
             </ul>
           </div>
         )}
 
-        {/* Perfect For Section */}
         <div className={styles.section}>
-          <h4 className={styles.sectionTitle}>Perfect For:</h4>
-          <ul className={styles.checkList}>
+          <h4 className={styles.sectionLabel}>Perfect for</h4>
+          <ul className={styles.tagList}>
             {perfectFor.map((item, index) => (
-              <li key={index} className={styles.checkItem}>
-                <span className={styles.checkmark}>✓</span>
-                {item}
-              </li>
+              <li key={index} className={styles.tag}>{item}</li>
             ))}
           </ul>
         </div>
       </div>
 
-      {/* Card Footer */}
       <div className={styles.cardFooter}>
-        <Link to={ctaLink} className={styles.ctaButton}>
-          {ctaText}
-        </Link>
-        
         {additionalInfo && (
           <div className={styles.additionalInfo}>
             {additionalInfo.map((info, index) => (
-              <span key={index} className={styles.infoItem}>
-                {info}
-              </span>
+              <span key={index} className={styles.infoItem}>{info}</span>
             ))}
           </div>
         )}
+        <Link to={ctaLink} className={styles.ctaButton}>
+          <span>{ctaText}</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </Link>
       </div>
     </article>
   );
