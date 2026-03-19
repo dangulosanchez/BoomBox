@@ -19,8 +19,8 @@ import styles from './Story.module.css';
  * - Scroll-triggered animations
  * - CTA to events at the end
  * 
- * @flow
- * Hero → Warehouse Park Days → Pull Quote → Bird Road Arts District → 
+ * @narrative
+ * Hero → Warehouse Park Days → Pull Quote → Bird Road Arts District →
  * The Vision → Today → CTA Footer
  */
 const Story = () => {

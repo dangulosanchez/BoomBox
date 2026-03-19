@@ -6,7 +6,7 @@ import styles from './ContactForm.module.css';
 
 /**
  * ContactForm Component
- * 
+ *
  * Features:
  * - Real-time validation
  * - hCaptcha integration
@@ -16,9 +16,22 @@ import styles from './ContactForm.module.css';
  * - Loading states and error handling
  * - URL parameter support for pre-filling inquiry type (?type=event-collaboration)
  */
+
+const inquiryTypes = [
+    { value: '', label: 'Select inquiry type *' },
+    { value: 'event-collaboration', label: 'Event Collaboration' },
+    { value: 'rehearsal-space', label: 'Rehearsal Space Rental' },
+    { value: 'vendor-community', label: 'Vendor/Community Event' },
+    { value: 'booking', label: 'General Booking Request' },
+    { value: 'general', label: 'General Inquiry' },
+    { value: 'press', label: 'Press Inquiry' },
+    { value: 'partnerships', label: 'Partnerships' },
+    { value: 'technical', label: 'Technical Support' }
+];
+
 const ContactForm = () => {
     const [searchParams] = useSearchParams();
-    
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -28,32 +41,20 @@ const ContactForm = () => {
         inquiryType: '',
         website: '' // Honeypot field
     });
-    
+
     const [errors, setErrors] = useState({});
     const [touched, setTouched] = useState({});
     const [captchaToken, setCaptchaToken] = useState(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error'
     const [submitMessage, setSubmitMessage] = useState('');
-    
+
     const captchaRef = useRef(null);
     const formRef = useRef(null);
-    
+
     const MAX_MESSAGE_LENGTH = 2000;
     const MIN_MESSAGE_LENGTH = 20;
-    
-    const inquiryTypes = [
-        { value: '', label: 'Select inquiry type *' },
-        { value: 'event-collaboration', label: 'Event Collaboration' },
-        { value: 'rehearsal-space', label: 'Rehearsal Space Rental' },
-        { value: 'vendor-community', label: 'Vendor/Community Event' },
-        { value: 'booking', label: 'General Booking Request' },
-        { value: 'general', label: 'General Inquiry' },
-        { value: 'press', label: 'Press Inquiry' },
-        { value: 'partnerships', label: 'Partnerships' },
-        { value: 'technical', label: 'Technical Support' }
-    ];
-    
+
     /**
      * Pre-fill inquiry type from URL parameter on mount
      */
@@ -70,7 +71,7 @@ const ContactForm = () => {
             }
         }
     }, [searchParams]);
-    
+
     /**
      * Real-time Validation
      */
@@ -80,53 +81,53 @@ const ContactForm = () => {
                 if (!value.trim()) return 'Name is required';
                 if (value.length < 2) return 'Name must be at least 2 characters';
                 if (value.length > 100) return 'Name cannot exceed 100 characters';
-                if (!/^[a-zA-Z\s\-'\.]+$/.test(value)) return 'Name contains invalid characters';
+                if (!/^[a-zA-Z\s\-'.]+$/.test(value)) return 'Name contains invalid characters';
                 return '';
-            
+
             case 'email':
                 if (!value.trim()) return 'Email is required';
                 if (!/^\S+@\S+\.\S+$/.test(value)) return 'Invalid email format';
                 if (value.length > 100) return 'Email is too long';
                 return '';
-            
+
             case 'phone':
-                if (value && !/^[\d\s\-\+\(\)]+$/.test(value)) return 'Invalid phone number';
+                if (value && !/^[\d\s\-+()]+$/.test(value)) return 'Invalid phone number';
                 if (value && value.length > 20) return 'Phone number is too long';
                 return '';
-            
+
             case 'subject':
                 if (!value.trim()) return 'Subject is required';
                 if (value.length < 5) return 'Subject must be at least 5 characters';
                 if (value.length > 200) return 'Subject cannot exceed 200 characters';
                 return '';
-            
+
             case 'message':
                 if (!value.trim()) return 'Message is required';
                 if (value.length < MIN_MESSAGE_LENGTH) return `Message must be at least ${MIN_MESSAGE_LENGTH} characters`;
                 if (value.length > MAX_MESSAGE_LENGTH) return `Message cannot exceed ${MAX_MESSAGE_LENGTH} characters`;
                 return '';
-            
+
             case 'inquiryType':
                 if (!value) return 'Please select an inquiry type';
                 return '';
-            
+
             default:
                 return '';
         }
     };
-    
+
     /**
      * Handle input change with validation
      */
     const handleChange = (e) => {
         const { name, value } = e.target;
-        
+
         // Update form data
         setFormData(prev => ({
             ...prev,
             [name]: value
         }));
-        
+
         // Validate if field was previously touched
         if (touched[name]) {
             const error = validateField(name, value);
@@ -136,72 +137,72 @@ const ContactForm = () => {
             }));
         }
     };
-    
+
     /**
      * Handle field blur (mark as touched)
      */
     const handleBlur = (e) => {
         const { name, value } = e.target;
-        
+
         setTouched(prev => ({
             ...prev,
             [name]: true
         }));
-        
+
         const error = validateField(name, value);
         setErrors(prev => ({
             ...prev,
             [name]: error
         }));
     };
-    
+
     /**
      * Validate entire form
      */
     const validateForm = () => {
         const formErrors = {};
-        
+
         Object.keys(formData).forEach(key => {
             if (key !== 'website' && key !== 'phone') { // Skip honeypot and optional phone
                 const error = validateField(key, formData[key]);
                 if (error) formErrors[key] = error;
             }
         });
-        
+
         return formErrors;
     };
-    
+
     /**
      * Handle captcha verification
      */
     const handleCaptchaVerify = (token) => {
         setCaptchaToken(token);
     };
-    
+
     /**
      * Handle captcha expiration
      */
     const handleCaptchaExpire = () => {
         setCaptchaToken(null);
     };
-    
+
     /**
      * Handle form submission
      */
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+
         // Mark all fields as touched
         const allTouched = Object.keys(formData).reduce((acc, key) => {
             acc[key] = true;
             return acc;
         }, {});
         setTouched(allTouched);
-        
+
         // Validate form
         const formErrors = validateForm();
         setErrors(formErrors);
-        
+
         // Check if there are errors
         if (Object.keys(formErrors).length > 0) {
             // Focus on first error field
@@ -210,14 +211,14 @@ const ContactForm = () => {
             if (element) element.focus();
             return;
         }
-        
+
         // Check captcha
         if (!captchaToken) {
             setSubmitStatus('error');
             setSubmitMessage('Please complete the captcha verification');
             return;
         }
-        
+
         // Check honeypot (if filled, it's a bot)
         if (formData.website) {
             console.log('Bot detected via honeypot');
@@ -226,11 +227,11 @@ const ContactForm = () => {
             setSubmitMessage('Your message has been sent successfully!');
             return;
         }
-        
+
         setIsSubmitting(true);
         setSubmitStatus(null);
         setSubmitMessage('');
-        
+
         try {
             const response = await fetch(`${process.env.REACT_APP_API_URL}/api/contact`, {
                 method: 'POST',
@@ -242,13 +243,13 @@ const ContactForm = () => {
                     captchaToken
                 })
             });
-            
+
             const data = await response.json();
-            
+
             if (response.ok) {
                 setSubmitStatus('success');
                 setSubmitMessage(data.message || 'Your message has been sent successfully!');
-                
+
                 // Reset form
                 setFormData({
                     name: '',
@@ -262,12 +263,12 @@ const ContactForm = () => {
                 setTouched({});
                 setErrors({});
                 setCaptchaToken(null);
-                
+
                 // Reset captcha
                 if (captchaRef.current) {
                     captchaRef.current.resetCaptcha();
                 }
-                
+
                 // Scroll to success message
                 if (formRef.current) {
                     formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -284,7 +285,7 @@ const ContactForm = () => {
             setIsSubmitting(false);
         }
     };
-    
+
     return (
         <div className={styles.contactFormWrapper} ref={formRef}>
             {/* Success Message */}
@@ -296,7 +297,7 @@ const ContactForm = () => {
                     <p className={styles.successSubtext}>We'll get back to you within 24-48 hours.</p>
                 </div>
             )}
-            
+
             {/* Error Message */}
             {submitStatus === 'error' && (
                 <div className={styles.errorMessage} role="alert">
@@ -304,7 +305,7 @@ const ContactForm = () => {
                     <p>{submitMessage}</p>
                 </div>
             )}
-            
+
             {/* Contact Form */}
             <form onSubmit={handleSubmit} className={styles.contactForm} noValidate>
                 {/* Name Field */}
@@ -331,7 +332,7 @@ const ContactForm = () => {
                         </span>
                     )}
                 </div>
-                
+
                 {/* Email Field */}
                 <div className={styles.formGroup}>
                     <label htmlFor="email" className={styles.label}>
@@ -356,7 +357,7 @@ const ContactForm = () => {
                         </span>
                     )}
                 </div>
-                
+
                 {/* Phone Field (Optional) */}
                 <div className={styles.formGroup}>
                     <label htmlFor="phone" className={styles.label}>
@@ -381,7 +382,7 @@ const ContactForm = () => {
                         </span>
                     )}
                 </div>
-                
+
                 {/* Inquiry Type Dropdown */}
                 <div className={styles.formGroup}>
                     <label htmlFor="inquiryType" className={styles.label}>
@@ -411,7 +412,7 @@ const ContactForm = () => {
                         </span>
                     )}
                 </div>
-                
+
                 {/* Subject Field */}
                 <div className={styles.formGroup}>
                     <label htmlFor="subject" className={styles.label}>
@@ -437,7 +438,7 @@ const ContactForm = () => {
                         </span>
                     )}
                 </div>
-                
+
                 {/* Message Field */}
                 <div className={styles.formGroup}>
                     <label htmlFor="message" className={styles.label}>
@@ -473,7 +474,7 @@ const ContactForm = () => {
                         </span>
                     )}
                 </div>
-                
+
                 {/* Honeypot Field (hidden from users, catches bots) */}
                 <div className={styles.honeypot} aria-hidden="true">
                     <label htmlFor="website">Website</label>
@@ -487,7 +488,7 @@ const ContactForm = () => {
                         autoComplete="off"
                     />
                 </div>
-                
+
                 {/* hCaptcha Widget */}
                 <div className={styles.captchaWrapper}>
                     <HCaptcha
@@ -498,7 +499,7 @@ const ContactForm = () => {
                         theme="light"
                     />
                 </div>
-                
+
                 {/* Submit Button */}
                 <button
                     type="submit"
@@ -515,7 +516,7 @@ const ContactForm = () => {
                         'Send Message'
                     )}
                 </button>
-                
+
                 {/* Required Fields Notice */}
                 <p className={styles.requiredNotice}>
                     <span className={styles.required}>*</span> Required fields
