@@ -6,13 +6,16 @@ import Logo from '../components/base/Logo';
 import XPButton from '../components/base/XPButton';
 import SocialLinks from '../components/base/SocialLinks';
 import styles from './Home.module.css';
+import content from '../data/content.json';
+
+const { home } = content;
 
 const Home = () => {
   return (
     <>
       <Hero
-        title="THE BOOMBOX"
-        subtitle="For locals, by locals."
+        title={home.hero.title}
+        subtitle={home.hero.subtitle}
         backgroundImage={`${process.env.PUBLIC_URL}/images/building.jpeg`}
         logo={<Logo size="lg" variant="black"/>}
         height="100vh"
@@ -24,10 +27,10 @@ const Home = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          See What's Happening
+          {home.hero.cta_button}
         </XPButton>
         <p className={styles.heroSupport}>
-          Authentic Miami. Zero Tourist Traps.
+          {home.hero.support_text}
         </p>
       </Hero>
 
@@ -38,16 +41,14 @@ const Home = () => {
       <PressBar />
 
       <AboutSection
-        title="About The Box"
+        title={home.about.title}
         content={
           <div>
             <p style={{ fontSize: '1.3rem', marginBottom: '2rem', opacity: 0.95 }}>
-              The Boombox has been Miami's underground refuge for six years,
-              a place where artists experiment and audiences fall in love with what's next.
+              {home.about.paragraphs[0]}
             </p>
             <p style={{ fontSize: '1.1rem', marginBottom: '2rem', opacity: 0.9 }}>
-              In the Bird Road Arts District, we mix music, art, and culture into one space. Electronic nights,
-              live sessions, and exhibitions are examples of events that celebrate what Miami truly sounds and feels like.
+              {home.about.paragraphs[1]}
             </p>
 
             <div style={{
@@ -56,18 +57,12 @@ const Home = () => {
               gap: '2rem',
               marginTop: '3rem'
             }}>
-              <div style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: '2.5rem', fontWeight: '700', color: 'var(--color-accent-gold)', marginBottom: '0.5rem' }}>300+</div>
-                <div style={{ fontSize: '1rem', color: 'var(--color-text-secondary)' }}>Events Hosted</div>
-              </div>
-              <div style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: '2.5rem', fontWeight: '700', color: 'var(--color-accent-gold)', marginBottom: '0.5rem' }}>6+</div>
-                <div style={{ fontSize: '1rem', color: 'var(--color-text-secondary)' }}>Years Strong</div>
-              </div>
-              <div style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: '2.5rem', fontWeight: '700', color: 'var(--color-accent-gold)', marginBottom: '0.5rem' }}>500+</div>
-                <div style={{ fontSize: '1rem', color: 'var(--color-text-secondary)' }}>Artists Showcased</div>
-              </div>
+              {home.about.stats.map((stat, i) => (
+                <div key={i} style={{ textAlign: 'center' }}>
+                  <div style={{ fontSize: '2.5rem', fontWeight: '700', color: 'var(--color-accent-gold)', marginBottom: '0.5rem' }}>{stat.number}</div>
+                  <div style={{ fontSize: '1rem', color: 'var(--color-text-secondary)' }}>{stat.label}</div>
+                </div>
+              ))}
             </div>
           </div>
         }
@@ -75,8 +70,8 @@ const Home = () => {
       />
 
       <div className={styles.socialSection}>
-        <h2 className={styles.socialTitle}>Don't Miss Anything</h2>
-        <p className={styles.socialSubtitle}>Follow us for upcoming events, releases, and more</p>
+        <h2 className={styles.socialTitle}>{home.social.title}</h2>
+        <p className={styles.socialSubtitle}>{home.social.subtitle}</p>
         <SocialLinks
           placement="inline"
           showLabels={true}

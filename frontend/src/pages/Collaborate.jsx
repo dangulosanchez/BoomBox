@@ -27,6 +27,9 @@ import CollaborationCard from '../components/sections/CollaborationCard';
 import CyberLunaWindow from '../components/base/CyberLunaWindow';
 import XPButton from '../components/base/XPButton';
 import styles from './Collaborate.module.css';
+import content from '../data/content.json';
+
+const c = content.collaborate;
 
 // IDs that open a CyberLunaWindow instead of navigating
 const WINDOW_IDS = new Set(['events', 'vendor']);
@@ -38,7 +41,7 @@ const CollabWindowContent = ({ collab }) => (
 
     {collab.howItWorks && (
       <div className={styles.windowSection}>
-        <h4 className={styles.windowSectionLabel}>How it works</h4>
+        <h4 className={styles.windowSectionLabel}>{c.window_sections.how_it_works}</h4>
         <ol className={styles.windowList}>
           {collab.howItWorks.map((item, i) => (
             <li key={i} className={styles.windowListItem}>
@@ -52,7 +55,7 @@ const CollabWindowContent = ({ collab }) => (
 
     {collab.eventTypes && (
       <div className={styles.windowSection}>
-        <h4 className={styles.windowSectionLabel}>Event types</h4>
+        <h4 className={styles.windowSectionLabel}>{c.window_sections.event_types}</h4>
         <ul className={styles.windowBullets}>
           {collab.eventTypes.map((item, i) => (
             <li key={i}>{item}</li>
@@ -62,7 +65,7 @@ const CollabWindowContent = ({ collab }) => (
     )}
 
     <div className={styles.windowSection}>
-      <h4 className={styles.windowSectionLabel}>Perfect for</h4>
+      <h4 className={styles.windowSectionLabel}>{c.window_sections.perfect_for}</h4>
       <div className={styles.windowTags}>
         {collab.perfectFor.map((item, i) => (
           <span key={i} className={styles.windowTag}>{item}</span>
@@ -92,106 +95,25 @@ const Collaborate = () => {
     setOpenFaqIndex(openFaqIndex === index ? null : index);
   };
 
-  // FAQ data
-  const faqs = [
-    {
-      question: "Do you rent the venue for private events like birthdays or weddings?",
-      answer: "We focus on music and community events rather than private celebrations. However, if you have a creative concept that aligns with our vibe, reach out and let's talk!"
-    },
-    {
-      question: "What's the difference between \"renting\" and \"collaborating\"?",
-      answer: "We don't do traditional venue rentals where you pay a flat fee. Instead, we collaborate on events—sharing responsibilities, costs, and revenue. This keeps us invested in your success and maintains our community-first approach."
-    },
-    {
-      question: "How far in advance should I reach out?",
-      answer: "For event collaborations: 4-8 weeks minimum. For rehearsal space: 1-2 weeks. For vendor spots: ASAP as spaces fill quickly."
-    },
-    {
-      question: "What's your capacity?",
-      answer: "200 people. It's intimate, which creates an incredible energy."
-    },
-    {
-      question: "Is parking really free?",
-      answer: "Yes! Abundant free parking—one of our biggest advantages over downtown/South Beach venues."
-    },
-    {
-      question: "What genres/styles do you prioritize?",
-      answer: "We're genre-agnostic! Electronic, hip-hop, indie, emo, punk, live bands—if it's authentic and brings community together, we're interested."
-    }
-  ];
+  const faqs = c.faq.items;
 
-  // Collaboration card data
-  const collaborationTypes = [
-    {
-      id: 'events',
-      icon: '🎉',
-      title: 'Event Collaborations',
-      subtitle: 'Bring Your Vision to Life',
-      description: `Have an event concept? Let's make it happen together. We partner with promoters, collectives, and artists to host unforgettable nights—from underground raves to live shows, genre-fluid parties to themed experiences.`,
-      howItWorks: [
-        'We discuss your vision and audience',
-        'Collaborate on talent, production, and promotion',
-        'Split door sales and bar revenue (terms negotiated)',
-        'You bring the vibe, we bring the space and infrastructure'
-      ],
-      perfectFor: [
-        'Event promoters and collectives',
-        'DJs and artists building their brand',
-        'Genre-specific nights (electronic, hip-hop, indie, emo, etc.)',
-        'Themed parties and cultural events'
-      ],
-      ctaText: 'Propose an Event',
-      ctaLink: '/contact?type=event-collaboration',
-      additionalInfo: ['Response time: 48-72 hours', 'Capacity: 200 people']
-    },
-        {
-      id: 'vendor',
-      icon: '🛍️',
-      title: 'Vendor & Community Events',
-      subtitle: 'Join Our Market Days',
-      description: `Calling all vendors, artisans, and small businesses! The Boombox regularly hosts flea markets, car shows, coffee Sundays, and community gatherings. We're always looking for quality vendors to participate and showcase their goods.`,
-      eventTypes: [
-        'Weekly Coffee Sundays (featuring Kujo\'s Coffee)',
-        'Monthly flea markets and pop-up shops',
-        'Car shows and automotive meetups',
-        'Art markets and creative showcases',
-        'Seasonal community festivals'
-      ],
-      perfectFor: [
-        'Vintage and handmade goods vendors',
-        'Food and beverage vendors',
-        'Artists and craftspeople',
-        'Car enthusiasts and collectors',
-        'Local small businesses'
-      ],
-      ctaText: 'Apply as a Vendor',
-      ctaLink: '/contact?type=vendor-community',
-      additionalInfo: ['Booth fees and details shared upon approval', 'Priority given to local/independent vendors']
-    },
-    {
-      id: 'rehearsal',
-      icon: '🎸',
-      title: 'Rehearsal Space Rental',
-      subtitle: 'Perfect Your Sound',
-      description: `Need a space to rehearse, record, or create? The Boombox offers our venue as a rehearsal space for bands, musicians, and performers during off-hours. Full sound system, stage setup, and room to work on your craft.`,
-      whatYouGet: [
-        'Professional sound system and stage',
-        '200-person capacity space (great for full band setup)',
-        'Flexible booking during non-event hours',
-        'Secure, private environment',
-        'Affordable rates for local artists'
-      ],
-      perfectFor: [
-        'Bands preparing for shows',
-        'Musicians refining their set',
-        'Performers rehearsing with full production',
-        'Recording sessions and content creation'
-      ],
-      ctaText: 'Book Rehearsal Time',
-      ctaLink: '/contact?type=rehearsal-space',
-      additionalInfo: ['Hourly and daily rates available', 'Weekday availability']
-    },
-  ];
+  // Non-text data kept locally (icons, route links)
+  const OPPORTUNITY_META = {
+    events:    { icon: '🎉', ctaLink: '/contact?type=event-collaboration' },
+    vendor:    { icon: '🛍️', ctaLink: '/contact?type=vendor-community' },
+    rehearsal: { icon: '🎸', ctaLink: '/contact?type=rehearsal-space' },
+  };
+
+  const collaborationTypes = c.opportunities.map(opp => ({
+    ...opp,
+    ...OPPORTUNITY_META[opp.id],
+    howItWorks:     opp.how_it_works,
+    eventTypes:     opp.event_types,
+    whatYouGet:     opp.what_you_get,
+    perfectFor:     opp.perfect_for,
+    ctaText:        opp.cta_text,
+    additionalInfo: opp.additional_info,
+  }));
 
   return (
     <div className={styles.collaboratePage}>
@@ -204,40 +126,40 @@ const Collaborate = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            Work With Us
+            {c.hero.title}
           </motion.h1>
-          <motion.h2 
+          <motion.h2
             className={styles.heroSubtitle}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            We don't rent our space.
+            {c.hero.subtitle_1}
           </motion.h2>
-          <motion.h2 
+          <motion.h2
             className={styles.heroSubtitle}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             style={{fontSize: "32px"}}
           >
-            We build partnerships with our community
+            {c.hero.subtitle_2}
           </motion.h2>
-          <motion.p 
+          <motion.p
             className={styles.heroText}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Join promoters, artists, vendors, and creators who share our values of authenticity, creativity, and inclusivity
+            {c.hero.body}
           </motion.p>
-          <motion.div 
+          <motion.div
             className={styles.scrollIndicator}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <span>Explore Opportunities</span>
+            <span>{c.hero.scroll_indicator}</span>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path d="M19 14l-7 7m0 0l-7-7m7 7V3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
@@ -256,28 +178,18 @@ const Collaborate = () => {
             transition={{ duration: 0.8 }}
           >
             <div className={styles.philosophyLeft}>
-              <span className={styles.philosophyEyebrow}>Our approach</span>
-              <h2 className={styles.philosophyTitle}>More than a venue</h2>
+              <span className={styles.philosophyEyebrow}>{c.philosophy.eyebrow}</span>
+              <h2 className={styles.philosophyTitle}>{c.philosophy.title}</h2>
             </div>
             <div className={styles.philosophyRight}>
-              <p className={styles.philosophyText}>
-                We work with promoters, artists, vendors, and creators who share our values of authenticity,
-                creativity, and inclusivity. Every collaboration is a partnership — we invest in your success
-                because your success is ours.
-              </p>
+              <p className={styles.philosophyText}>{c.philosophy.body}</p>
               <div className={styles.statsBar}>
-                <div className={styles.statItem}>
-                  <div className={styles.statNumber}>300+</div>
-                  <div className={styles.statLabel}>Collaborations</div>
-                </div>
-                <div className={styles.statItem}>
-                  <div className={styles.statNumber}>6+</div>
-                  <div className={styles.statLabel}>Years strong</div>
-                </div>
-                <div className={styles.statItem}>
-                  <div className={styles.statNumber}>200</div>
-                  <div className={styles.statLabel}>Capacity</div>
-                </div>
+                {c.philosophy.stats.map((stat, i) => (
+                  <div key={i} className={styles.statItem}>
+                    <div className={styles.statNumber}>{stat.number}</div>
+                    <div className={styles.statLabel}>{stat.label}</div>
+                  </div>
+                ))}
               </div>
             </div>
           </motion.div>
@@ -294,7 +206,7 @@ const Collaborate = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            Three Ways to Work With Us
+            {c.opportunities_title}
           </motion.h2>
           <div className={styles.opportunitiesGrid}>
             {collaborationTypes.map((collab, index) => (
@@ -342,7 +254,7 @@ const Collaborate = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            Common Questions
+            {c.faq.title}
           </motion.h2>
           <div className={styles.faqList}>
             {faqs.map((faq, index) => (
@@ -398,16 +310,14 @@ const Collaborate = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className={styles.finalCtaTitle}>Ready to Work Together?</h2>
-            <p className={styles.finalCtaText}>
-              Whether you're planning an event, need rehearsal space, or want to join our vendor community—we'd love to hear from you.
-            </p>
+            <h2 className={styles.finalCtaTitle}>{c.final_cta.title}</h2>
+            <p className={styles.finalCtaText}>{c.final_cta.body}</p>
             <div className={styles.finalCtaButtons}>
               <XPButton as={Link} to="/contact">
-                Send Us Your Idea
+                {c.final_cta.button_primary}
               </XPButton>
               <XPButton as={Link} to="/showcasing">
-                See What We've Done
+                {c.final_cta.button_secondary}
               </XPButton>
             </div>
           </motion.div>

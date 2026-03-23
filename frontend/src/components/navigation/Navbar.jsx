@@ -2,6 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import styles from './Navbar.module.css';
+import content from '../../data/content.json';
+
+const { navbar } = content.global;
 
 /**
  * Navbar Component - Fixed navigation with auth integration
@@ -74,11 +77,11 @@ const Navbar = ({ authState, updateAuthState }) => {
         <Link 
           to="/" 
           className={styles.brand}
-          aria-label="The Boombox - Home"
+          aria-label={navbar.brand_aria_label}
         >
-          <img 
+          <img
             src={`${process.env.PUBLIC_URL}/images/new logo.png`}
-            alt="The Boombox Logo" 
+            alt={navbar.logo_alt}
             className={styles.logo}
             width="30"
             height="30"
@@ -91,7 +94,7 @@ const Navbar = ({ authState, updateAuthState }) => {
           onClick={toggleMobileMenu}
           aria-expanded={isMobileMenuOpen}
           aria-controls="navbar-menu"
-          aria-label="Toggle navigation menu"
+          aria-label={navbar.mobile_toggle_aria_label}
         >
           <span className={styles.toggleIcon}>
             {isMobileMenuOpen ? '✕' : '☰'}
@@ -109,7 +112,7 @@ const Navbar = ({ authState, updateAuthState }) => {
                 to="/" 
                 className={`${styles.navLink} ${isActive('/') ? styles.active : ''}`}
               >
-                Home
+                {navbar.links.home}
               </Link>
             </li>
             <li className={styles.navItem}>
@@ -117,30 +120,30 @@ const Navbar = ({ authState, updateAuthState }) => {
                 to="/gallery"
                 className={`${styles.navLink} ${isActive('/gallery') ? styles.active : ''}`}
               >
-                Gallery
+                {navbar.links.gallery}
               </Link>
             </li>
             <li className={styles.navItem}>
               <Link to="/story"
                 className={`${styles.navLink} ${isActive('/story') ? styles.active : ''}`}
               >
-                Story
+                {navbar.links.story}
               </Link>
             </li>
             <li className={styles.navItem}>
-              <Link 
-                to="/collaborations" 
+              <Link
+                to="/collaborations"
                 className={`${styles.navLink} ${isActive('/collaborations') ? styles.active : ''}`}
               >
-                Collaborate
+                {navbar.links.collaborate}
               </Link>
             </li>
             <li className={styles.navItem}>
-              <Link 
-                to="/contact" 
+              <Link
+                to="/contact"
                 className={`${styles.navLink} ${isActive('/contact') ? styles.active : ''}`}
               >
-                Contact
+                {navbar.links.contact}
               </Link>
             </li>
 
@@ -148,19 +151,19 @@ const Navbar = ({ authState, updateAuthState }) => {
             {authState.isAuthenticated ? (
               <>
                 <li className={styles.navItem}>
-                  <Link 
-                    to="/dashboard" 
+                  <Link
+                    to="/dashboard"
                     className={`${styles.navLink} ${isActive('/dashboard') ? styles.active : ''}`}
                   >
-                    Dashboard
+                    {navbar.links.dashboard}
                   </Link>
                 </li>
                 <li className={styles.navItem}>
-                  <button 
+                  <button
                     onClick={handleLogout}
                     className={`${styles.navLink} ${styles.logoutBtn}`}
                   >
-                    Logout
+                    {navbar.links.logout}
                   </button>
                 </li>
               </>

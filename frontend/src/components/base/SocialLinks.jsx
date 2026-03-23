@@ -9,34 +9,20 @@
 import { useState, useEffect, useMemo } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import styles from './SocialLinks.module.css';
+import content from '../../data/content.json';
 
-// Central config (icons = real assets)
-const SOCIAL_PLATFORMS = [
-  {
-    id: 'instagram',
-    name: 'Instagram',
-    url: 'https://instagram.com/theboomboxmiami',
-    iconSrc: '/icons/instagram.svg',
-    username: '@theboomboxmiami',
-    showFollowers: true
-  },
-  {
-    id: 'tiktok',
-    name: 'TikTok',
-    url: 'https://tiktok.com/@theboomboxmiami',
-    iconSrc: '/icons/tiktok.png',
-    username: '@theboomboxmiami',
-    showFollowers: false
-  },
-  {
-    id: 'facebook',
-    name: 'Facebook',
-    url: 'https://facebook.com/theboomboxmiami',
-    iconSrc: '/icons/facebook.png',
-    username: 'The Boombox Miami',
-    showFollowers: false
-  }
-];
+// Non-text platform metadata (URLs, icons, follower tracking)
+const PLATFORM_META = {
+  instagram: { url: 'https://instagram.com/theboomboxmiami', iconSrc: '/icons/instagram.svg', showFollowers: true },
+  tiktok:    { url: 'https://tiktok.com/@theboomboxmiami',   iconSrc: '/icons/tiktok.png',   showFollowers: false },
+  facebook:  { url: 'https://facebook.com/theboomboxmiami',  iconSrc: '/icons/facebook.png', showFollowers: false },
+};
+
+// Names and usernames come from content.json
+const SOCIAL_PLATFORMS = content.social_platforms.map(p => ({
+  ...p,
+  ...PLATFORM_META[p.id],
+}));
 
 // Format counts (kept from your original behavior)
 const formatFollowerCount = (count) => {

@@ -5,6 +5,9 @@ import BlogCard from '../components/blog/BlogCard';
 import BlogHeader from '../components/blog/BlogHeader';
 import TagFilter from '../components/blog/TagFilter';
 import styles from './Blog.module.css';
+import content from '../data/content.json';
+
+const { blog } = content;
 
 /**
  * Blog Page - Main blog listing with filtering, search, and pagination
@@ -162,16 +165,16 @@ const Blog = () => {
   return (
     <div className={styles.blogPage}>
       {/* Hero Header */}
-      <BlogHeader 
-        title="The Box Blog"
-        subtitle="Stories, insights, and updates from Miami's underground music scene"
+      <BlogHeader
+        title={blog.header.title}
+        subtitle={blog.header.subtitle}
       />
 
       {/* Featured Posts Section */}
       {featuredPosts.length > 0 && (
         <section className={styles.featuredSection}>
           <div className={styles.container}>
-            <h2 className={styles.sectionTitle}>Featured Stories</h2>
+            <h2 className={styles.sectionTitle}>{blog.featured_section_title}</h2>
             <div className={styles.featuredGrid}>
               {featuredPosts.map(post => (
                 <BlogCard 
@@ -195,13 +198,13 @@ const Blog = () => {
             <form onSubmit={handleSearch} className={styles.searchForm}>
               <input
                 type="text"
-                placeholder="Search posts..."
+                placeholder={blog.search.placeholder}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className={styles.searchInput}
               />
               <button type="submit" className={styles.searchButton}>
-                Search
+                {blog.search.button}
               </button>
             </form>
 
@@ -237,7 +240,7 @@ const Blog = () => {
           {/* Active Filters Display */}
           {(selectedTag || searchQuery) && (
             <div className={styles.activeFilters}>
-              <span className={styles.filterLabel}>Active filters:</span>
+              <span className={styles.filterLabel}>{blog.filters.active_prefix}</span>
               {selectedTag && (
                 <span className={styles.filterBadge}>
                   Tag: {selectedTag}
@@ -260,11 +263,11 @@ const Blog = () => {
                   </button>
                 </span>
               )}
-              <button 
+              <button
                 onClick={handleClearFilters}
                 className={styles.clearAll}
               >
-                Clear all
+                {blog.filters.clear_all}
               </button>
             </div>
           )}
@@ -273,7 +276,7 @@ const Blog = () => {
           {loading && (
             <div className={styles.loadingState}>
               <div className={styles.spinner}></div>
-              <p>Loading posts...</p>
+              <p>{blog.states.loading}</p>
             </div>
           )}
 
@@ -282,7 +285,7 @@ const Blog = () => {
             <div className={styles.errorState}>
               <p className={styles.errorMessage}>⚠️ {error}</p>
               <XPButton onClick={fetchPosts}>
-                Try Again
+                {blog.states.retry}
               </XPButton>
             </div>
           )}
@@ -303,13 +306,13 @@ const Blog = () => {
               ) : (
                 <div className={styles.emptyState}>
                   <p className={styles.emptyMessage}>
-                    No posts found matching your criteria.
+                    {blog.states.empty}
                   </p>
-                  <button 
+                  <button
                     onClick={handleClearFilters}
                     className={styles.clearFiltersButton}
                   >
-                    Clear Filters
+                    {blog.filters.clear_filters}
                   </button>
                 </div>
               )}
@@ -322,7 +325,7 @@ const Blog = () => {
                     disabled={currentPage === 1}
                     className={styles.paginationBtn}
                   >
-                    ← Previous
+                    {blog.states.pagination_prev}
                   </button>
                   
                   <div className={styles.pageNumbers}>
@@ -344,7 +347,7 @@ const Blog = () => {
                     disabled={currentPage === totalPages}
                     className={styles.paginationBtn}
                   >
-                    Next →
+                    {blog.states.pagination_next}
                   </button>
                 </div>
               )}
@@ -357,12 +360,10 @@ const Blog = () => {
       {/* CTA Section */}
       <section className={styles.ctaSection}>
         <div className={styles.container}>
-          <h2 className={styles.ctaTitle}>Want to contribute?</h2>
-          <p className={styles.ctaText}>
-            Share your story, review, or insight with The Boombox community.
-          </p>
+          <h2 className={styles.ctaTitle}>{blog.cta.title}</h2>
+          <p className={styles.ctaText}>{blog.cta.body}</p>
           <XPButton as={Link} to="/blog/create">
-            Write a Post
+            {blog.cta.button}
           </XPButton>
         </div>
       </section>

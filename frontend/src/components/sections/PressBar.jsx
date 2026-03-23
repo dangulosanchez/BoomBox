@@ -1,37 +1,29 @@
 import styles from './PressBar.module.css';
+import content from '../../data/content.json';
+
+const { press_bar } = content.home;
 
 /**
  * PressBar Component - Press mentions and notable artists
- * 
+ *
  * @component
  * @description
  * Displays press features and notable artists in a minimal, confident way.
  * Shows authority without being boastful - "quiet confidence"
- * 
+ *
  * @example
  * <PressBar />
  */
 const PressBar = () => {
-  // TODO: Replace with actual press logos/links when available
-  const pressMentions = [
-    { name: 'Miami New Times', url: 'https://www.miaminewtimes.com/music/miami-venue-the-boombox-reopens-23713817/' }
-  ];
-
-  // TODO: Add more notable artists as they perform
-  const notableArtists = [
-    'RXK Nephew',
-    'Jensen Interceptor',
-    'DJ Seinfeld',
-    'Mall Grab',
-    'INVT'
-  ];
+  const pressMentions = press_bar.press_mentions;
+  const notableArtists = press_bar.notable_artists;
 
   return (
     <section className={styles.pressBar}>
       <div className={styles.container}>
         {/* Press Mentions */}
         <div className={styles.pressSection}>
-          <p className={styles.label}>As seen in:</p>
+          <p className={styles.label}>{press_bar.press_label}</p>
           <div className={styles.pressList}>
             {pressMentions.map((press, index) => (
               <a 
@@ -52,7 +44,7 @@ const PressBar = () => {
 
         {/* Notable Artists */}
         <div className={styles.artistsSection}>
-          <p className={styles.label}>Artists who've graced our stage:</p>
+          <p className={styles.label}>{press_bar.artists_label}</p>
           <div className={styles.artistsList}>
             {notableArtists.map((artist, index) => (
               <span key={index} className={styles.artist}>

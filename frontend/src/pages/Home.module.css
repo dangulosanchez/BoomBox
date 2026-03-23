@@ -5,6 +5,7 @@
   color: var(--color-text-secondary);
   margin: 0;
   opacity: 0.8;
+  flex-basis: 100%;
 }
 
 @media (min-width: 992px) {

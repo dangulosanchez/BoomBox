@@ -2,97 +2,57 @@ import { useState, useMemo, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import XPButton from '../components/base/XPButton';
 import styles from './Showcasing.module.css';
+import content from '../data/content.json';
 
-// ========== DATA STRUCTURE ==========
-const activitiesData = [
-  {
-    id: 'coffee-sundays',
-    title: "Coffee & Mart",
-    frequency: 'Every Sunday',
-    time: '9AM-2PM',
-    vibe: 'Tres leches lattes & hour-long lines worth the wait',
-    description: 'Experience Miami\'s hottest coffee trailer serving unique sugary lattes with flavors like Lucky Charms, french toast, and s\'mores. Perfect for those who love varying levels of sugar and milk in their coffee.',
+// ========== NON-TEXT DATA (images, routes, categories) ==========
+const ACTIVITY_META = {
+  'coffee-sundays': {
     category: 'weekly',
-    images: [
-      'images/vendors_3.jpeg',
-      'images/vendors_1.jpeg',
-      'images/vendors_2.jpeg',
-    ],
-    cta: { text: 'Learn More', link: '/events/coffee-sundays' }
+    images: ['images/vendors_3.jpeg', 'images/vendors_1.jpeg', 'images/vendors_2.jpeg'],
+    ctaLink: '/events/coffee-sundays',
   },
-  {
-    id: 'art-club',
-    title: 'Art Club',
-    frequency: 'Every Other Thursday',
-    time: '7PM-10PM',
-    vibe: 'Creative expression meets community vibes',
-    description: 'Bi-weekly creative sessions where local artists and art enthusiasts gather to create, collaborate, and connect. From painting to mixed media, all skill levels welcome.',
+  'art-club': {
     category: 'biweekly',
-    images: [
-      'images/mart.jpeg',
-      'images/art_club_2.jpeg',
-      'images/art_club_3.jpeg',
-      'images/art_club_4.jpeg'
-    ],
-    cta: { text: 'Join Next Session', link: '/events/art-club' }
+    images: ['images/mart.jpeg', 'images/art_club_2.jpeg', 'images/art_club_3.jpeg', 'images/art_club_4.jpeg'],
+    ctaLink: '/events/art-club',
   },
-  {
-    id: 'car-shows',
-    title: 'Car Shows',
-    frequency: 'Monthly',
-    time: 'Various',
-    vibe: 'Horsepower, style, and community',
-    description: 'Monthly automotive meetups featuring everything from classics to customs, exotics to daily drivers. Music, awards, and a community of car enthusiasts.',
+  'car-shows': {
     category: 'monthly',
     images: [
       'images/cars.jpg',
       'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800',
-      'https://images.unsplash.com/photo-1494905998402-395d579af36f?w=800'
+      'https://images.unsplash.com/photo-1494905998402-395d579af36f?w=800',
     ],
-    cta: { text: 'See Schedule', link: '/events/car-shows' }
+    ctaLink: '/events/car-shows',
   },
-  {
-    id: 'raves',
-    title: 'Electronic Nights',
-    frequency: 'Weekly',
-    time: '10PM-4AM',
-    vibe: 'Underground beats, immersive experiences',
-    description: 'Miami\'s hottest electronic music events featuring top DJs and producers. From house to techno, experience cutting-edge sound in an intimate venue.',
+  'raves': {
     category: 'weekly',
-    images: [
-      'images/rave_2.jpeg',
-      'images/rave_3.jpeg',
-      'images/rave_4.jpeg',
-      'images/rave_5.jpeg',
-      'images/rave_6.jpeg',
-    ],
-    cta: { text: 'View Lineup', link: '/events/raves' }
+    images: ['images/rave_2.jpeg', 'images/rave_3.jpeg', 'images/rave_4.jpeg', 'images/rave_5.jpeg', 'images/rave_6.jpeg'],
+    ctaLink: '/events/raves',
   },
-  {
-    id: 'concerts',
-    title: 'Live Music',
-    frequency: 'Multiple Nights',
-    time: 'Varies',
-    vibe: 'Intimate performances, diverse sounds',
-    description: 'Live performances across genres - from indie rock to Latin jazz. Experience music in an intimate setting with world-class acoustics.',
+  'concerts': {
     category: 'multiple',
-    images: [
-      'images/live_show_1.jpeg',
-      'images/live_show_2.jpeg',
-      'images/live_show_3.jpeg'
-    ],
-    cta: { text: 'Upcoming Shows', link: '/events/concerts' }
-  }
-];
+    images: ['images/live_show_1.jpeg', 'images/live_show_2.jpeg', 'images/live_show_3.jpeg'],
+    ctaLink: '/events/concerts',
+  },
+};
+
+// ========== DATA STRUCTURE ==========
+const activitiesData = content.showcasing.activities.map(a => ({
+  ...a,
+  ...ACTIVITY_META[a.id],
+  cta: { text: a.cta_text, link: ACTIVITY_META[a.id].ctaLink },
+}));
 
 // ========== FILTER BAR COMPONENT ==========
 const FilterBar = ({ activeFilter, onFilterChange }) => {
+  const { filters: filterLabels } = content.showcasing;
   const filters = [
-    { id: 'all', label: 'All Events' },
-    { id: 'weekly', label: 'Weekly' },
-    { id: 'biweekly', label: 'Bi-Weekly' },
-    { id: 'monthly', label: 'Monthly' },
-    { id: 'multiple', label: 'Multiple Nights' }
+    { id: 'all',      label: filterLabels.all },
+    { id: 'weekly',   label: filterLabels.weekly },
+    { id: 'biweekly', label: filterLabels.biweekly },
+    { id: 'monthly',  label: filterLabels.monthly },
+    { id: 'multiple', label: filterLabels.multiple },
   ];
 
   return (
@@ -349,10 +309,8 @@ const Showcasing = () => {
         transition={{ duration: 0.7 }}
         className={styles.hero}
       >
-        <h1 className={styles.heroTitle}>What We Do</h1>
-        <p className={styles.heroSubtitle}>
-          From coffee Sundays to underground raves, The Boombox is Miami's premier destination for culture, community, and unforgettable experiences.
-        </p>
+        <h1 className={styles.heroTitle}>{content.showcasing.hero.title}</h1>
+        <p className={styles.heroSubtitle}>{content.showcasing.hero.subtitle}</p>
       </motion.header>
 
       {/* Filter Bar */}
@@ -374,8 +332,8 @@ const Showcasing = () => {
             animate={{ opacity: 1 }}
             className={styles.emptyState}
           >
-            <h3>No events in this category</h3>
-            <p>Try selecting a different filter</p>
+            <h3>{content.showcasing.empty_state.title}</h3>
+            <p>{content.showcasing.empty_state.subtitle}</p>
           </motion.div>
         )}
       </div>

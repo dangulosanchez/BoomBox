@@ -1,6 +1,9 @@
 // frontend/src/pages/Contact.jsx
 import ContactForm from '../components/form/ContactForm';
 import styles from './Contact.module.css';
+import content from '../data/content.json';
+
+const { contact } = content;
 
 /**
  * Contact Page — Windows XP CyberLuna style
@@ -21,7 +24,7 @@ const Contact = () => {
                                 {/* Title Bar */}
                                 <div className={styles.titleBar}>
                                     <span className={styles.winIcon}>◈</span>
-                                    <span className={styles.winTitle}>Contact Information</span>
+                                    <span className={styles.winTitle}>{contact.info_window.title}</span>
                                     <div className={styles.winControls}>
                                         <button className={`${styles.winBtn} ${styles.minBtn}`} type="button" aria-label="Minimize">
                                             <span className={styles.minIcon} />
@@ -35,16 +38,16 @@ const Contact = () => {
 
                                 {/* Body */}
                                 <div className={styles.windowBody}>
-                                    <h2 className={styles.sectionHeading}>Contact Information</h2>
+                                    <h2 className={styles.sectionHeading}>{contact.info_window.heading}</h2>
                                     <hr className={styles.divider} />
 
                                     {/* Email */}
                                     <div className={styles.infoItem}>
                                         <div className={styles.infoIconBox}>✉</div>
                                         <div>
-                                            <div className={styles.infoLabel}>EMAIL</div>
-                                            <a href="mailto:contact@theboomboxmiami.com" className={styles.infoLink}>
-                                                contact@theboomboxmiami.com
+                                            <div className={styles.infoLabel}>{contact.info_window.email.label}</div>
+                                            <a href={`mailto:${contact.info_window.email.address}`} className={styles.infoLink}>
+                                                {contact.info_window.email.address}
                                             </a>
                                         </div>
                                     </div>
@@ -53,10 +56,10 @@ const Contact = () => {
                                     <div className={styles.infoItem}>
                                         <div className={styles.infoIconBox}>⊙</div>
                                         <div>
-                                            <div className={styles.infoLabel}>LOCATION</div>
+                                            <div className={styles.infoLabel}>{contact.info_window.location.label}</div>
                                             <p className={styles.infoText}>
-                                                Miami, Florida<br />
-                                                Underground Music Scene
+                                                {contact.info_window.location.line1}<br />
+                                                {contact.info_window.location.line2}
                                             </p>
                                         </div>
                                     </div>
@@ -65,21 +68,21 @@ const Contact = () => {
                                     <div className={styles.infoItem}>
                                         <div className={styles.infoIconBox}>♪</div>
                                         <div>
-                                            <div className={styles.infoLabel}>EVENTS</div>
+                                            <div className={styles.infoLabel}>{contact.info_window.events.label}</div>
                                             <a
                                                 href="https://shotgun.live/en/venues/the-boombox-miami"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className={styles.infoLink}
                                             >
-                                                View on Shotgun
+                                                {contact.info_window.events.link_text}
                                             </a>
                                         </div>
                                     </div>
 
                                     {/* Social */}
                                     <div className={styles.socialSection}>
-                                        <div className={styles.socialLabel}>Follow Us</div>
+                                        <div className={styles.socialLabel}>{contact.info_window.social.label}</div>
                                         <div className={styles.socialIcons}>
                                             <a
                                                 href="https://instagram.com/theboomboxmiami"
@@ -110,10 +113,9 @@ const Contact = () => {
 
                             {/* Quick Response Alert */}
                             <div className={styles.responseBox}>
-                                <div className={styles.responseTitle}>⚠ Quick Response</div>
+                                <div className={styles.responseTitle}>⚠ {contact.quick_response.title}</div>
                                 <p className={styles.responseText}>
-                                    We typically respond to all inquiries within 24-48 hours.
-                                    For urgent booking requests, please mention it in your message.
+                                    {contact.quick_response.text}
                                 </p>
                             </div>
                         </aside>
@@ -124,7 +126,7 @@ const Contact = () => {
                                 {/* Title Bar */}
                                 <div className={styles.titleBar}>
                                     <span className={styles.winIcon}>◈</span>
-                                    <span className={styles.winTitle}>Contact Us – Inquiry Form</span>
+                                    <span className={styles.winTitle}>{contact.form_window.title}</span>
                                     <div className={styles.winControls}>
                                         <button className={`${styles.winBtn} ${styles.minBtn}`} type="button" aria-label="Minimize">
                                             <span className={styles.minIcon} />

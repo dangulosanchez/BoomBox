@@ -1,0 +1,446 @@
+{
+  "_comment": "Centralized site copy for The Boombox Miami. Edit text here — components reference this file.",
+
+  "global": {
+    "brand": "The Boombox Miami",
+    "navbar": {
+      "logo_alt": "The Boombox Logo",
+      "brand_aria_label": "The Boombox - Home",
+      "mobile_toggle_aria_label": "Toggle navigation menu",
+      "links": {
+        "home": "Home",
+        "gallery": "Gallery",
+        "story": "Story",
+        "collaborate": "Collaborate",
+        "contact": "Contact",
+        "dashboard": "Dashboard",
+        "logout": "Logout"
+      }
+    },
+    "footer": {
+      "links": {
+        "our_story": "Our Story",
+        "collaborations": "Collaborations"
+      },
+      "copyright": "© {year} The Boombox Miami. All rights reserved."
+    }
+  },
+
+  "home": {
+    "hero": {
+      "title": "THE BOOMBOX",
+      "subtitle": "For locals, by locals.",
+      "cta_button": "See What's Happening",
+      "support_text": "Authentic Miami. Zero Tourist Traps."
+    },
+    "press_bar": {
+      "press_label": "As seen in:",
+      "press_mentions": [
+        { "name": "Miami New Times", "url": "https://www.miaminewtimes.com/music/miami-venue-the-boombox-reopens-23713817/" }
+      ],
+      "artists_label": "Artists who've graced our stage:",
+      "notable_artists": ["RXK Nephew", "Jensen Interceptor", "DJ Seinfeld", "Mall Grab", "INVT"]
+    },
+    "about": {
+      "title": "About The Box",
+      "image_alt": "About The Boombox",
+      "paragraphs": [
+        "The Boombox has been Miami's underground refuge for six years, a place where artists experiment and audiences fall in love with what's next.",
+        "In the Bird Road Arts District, we mix music, art, and culture into one space. Electronic nights, live sessions, and exhibitions are examples of events that celebrate what Miami truly sounds and feels like."
+      ],
+      "stats": [
+        { "number": "300+", "label": "Events Hosted" },
+        { "number": "6+", "label": "Years Strong" },
+        { "number": "500+", "label": "Artists Showcased" }
+      ]
+    },
+    "social": {
+      "title": "Don't Miss Anything",
+      "subtitle": "Follow us for upcoming events, releases, and more"
+    }
+  },
+
+  "story": {
+    "hero": {
+      "title": "Full Circle",
+      "subtitle": "From warehouse kids to venue owners: The story of Miami's most authentic underground space"
+    },
+    "section_where_it_started": {
+      "title": "Where It Started",
+      "image_alt": "The 3 owners of The Boombox.",
+      "paragraphs": [
+        "Long before The Boombox became Miami's underground sanctuary, it was just a forgotten warehouse park in western Miami-Dade. Not the glamorous parts of the city you see in magazines — this was the suburbs, the overlooked corners where kids grew up finding their own way.",
+        "\"I remember my friends and I used to skip school all the time and go over to this little warehouse park to smoke weed, do graffiti — all our little activities,\" recalls one of the founders. \"It was our spot. Away from everything, just us and the walls.\"",
+        "The area wasn't much to look at — concrete, chain-link fences, spray paint layered on top of spray paint. But for a group of restless teenagers in the early 2010s, it was freedom. No rules, no authority, just raw creative expression and the kind of bonding that happens when you're young and finding your identity in the margins."
+      ]
+    },
+    "pull_quote_1": {
+      "text": "I think it's funny that we're throwing these huge parties there now, making a name for ourselves. It all came full circle.",
+      "author": "The Boombox Founders"
+    },
+    "section_bird_road": {
+      "title": "The Bird Road Arts District",
+      "image_alt": "Bird Road Arts District warehouse exterior during daytime",
+      "paragraphs": [
+        "What most people don't know is that this area — the Bird Road Arts District — was Miami's original underground arts hub, long before Wynwood became the city's commercialized art epicenter.",
+        "Back in the 1970s, the landlord's father bought the land for next to nothing. It was industrial, unglamorous, real. The neighborhood was a patchwork of carpentry shops, gardening supply stores, mechanic garages — working-class Miami at its core. Artists gravitated here because rent was cheap and nobody was watching.",
+        "By the time the founders were teenagers in the 2010s, the district had faded from public memory. The artists had moved on, the storefronts were weathered, and the warehouses sat quiet. But the energy was still there, embedded in the walls, waiting for someone to bring it back to life.",
+        "This wasn't prime real estate. It was overlooked, forgotten, raw — and that's exactly what made it perfect."
+      ]
+    },
+    "section_the_vision": {
+      "title": "The Vision",
+      "image_alt": "The Boombox venue interior with crowd at event",
+      "paragraphs": [
+        "Years later, those same kids who used to skip school and paint the walls had grown up. They'd traveled, experienced different music scenes, but always felt something was missing in Miami's nightlife.",
+        "The city had clubs, sure — but they were corporate, overpriced, pretentious. The underground was either too sketchy or didn't exist at all. Western Miami-Dade, where they grew up, was a cultural desert for anyone who wanted authentic, cutting-edge music experiences.",
+        "So they decided to create what they always wanted: a space that felt like home. Somewhere that honored the underground but stayed legal and safe. A venue that served the community they came from — locals, artists, outsiders, misfits. People who just wanted real music, real vibes, no bullshit.",
+        "In 2018, The Boombox opened its doors in the exact same warehouse park where they used to hang out as teenagers. The full circle wasn't planned — it just happened."
+      ]
+    },
+    "pull_quote_2": {
+      "text": "People still do graffiti there. Our spot has gotten hit a couple of times. It's cool to see there are still kids on a mission.",
+      "author": "The Boombox Founders"
+    },
+    "section_today": {
+      "title": "Today",
+      "image_alt": "The Boombox today - Miami's underground music venue",
+      "paragraphs": [
+        "Six years later, The Boombox has become what it was always meant to be: Miami's underground sanctuary. A place where emerging artists find their voice and music lovers discover their next obsession.",
+        "The walls still get tagged. The neighborhood hasn't changed much. The venue is still in the same unglamorous part of town. And that's the point.",
+        "While other venues chase trends and instagram aesthetics, The Boombox stays rooted in what it's always been: authentic, local, for the people who get it. The same kids who grew up feeling like outsiders now have a home. The same community that raised the founders now has a space to call their own.",
+        "From skipping school to running the show. From spray paint on walls to hosting international artists. From forgotten warehouse to cultural landmark.",
+        "Full circle."
+      ]
+    },
+    "cta": {
+      "title": "Experience The Boombox Yourself",
+      "subtitle": "See what 6 years of authentic underground culture looks like.",
+      "button": "See Upcoming Events"
+    }
+  },
+
+  "gallery": {
+    "hero": {
+      "title": "Gallery"
+    }
+  },
+
+  "showcasing": {
+    "hero": {
+      "title": "What We Do",
+      "subtitle": "From coffee Sundays to underground raves, The Boombox is Miami's premier destination for culture, community, and unforgettable experiences."
+    },
+    "filters": {
+      "all": "All Events",
+      "weekly": "Weekly",
+      "biweekly": "Bi-Weekly",
+      "monthly": "Monthly",
+      "multiple": "Multiple Nights"
+    },
+    "empty_state": {
+      "title": "No events in this category",
+      "subtitle": "Try selecting a different filter"
+    },
+    "activities": [
+      {
+        "id": "coffee-sundays",
+        "title": "Coffee & Mart",
+        "frequency": "Every Sunday",
+        "time": "9AM-2PM",
+        "vibe": "Tres leches lattes & hour-long lines worth the wait",
+        "description": "Experience Miami's hottest coffee trailer serving unique sugary lattes with flavors like Lucky Charms, french toast, and s'mores. Perfect for those who love varying levels of sugar and milk in their coffee.",
+        "cta_text": "Learn More"
+      },
+      {
+        "id": "art-club",
+        "title": "Art Club",
+        "frequency": "Every Other Thursday",
+        "time": "7PM-10PM",
+        "vibe": "Creative expression meets community vibes",
+        "description": "Bi-weekly creative sessions where local artists and art enthusiasts gather to create, collaborate, and connect. From painting to mixed media, all skill levels welcome.",
+        "cta_text": "Join Next Session"
+      },
+      {
+        "id": "car-shows",
+        "title": "Car Shows",
+        "frequency": "Monthly",
+        "time": "Various",
+        "vibe": "Horsepower, style, and community",
+        "description": "Monthly automotive meetups featuring everything from classics to customs, exotics to daily drivers. Music, awards, and a community of car enthusiasts.",
+        "cta_text": "See Schedule"
+      },
+      {
+        "id": "raves",
+        "title": "Electronic Nights",
+        "frequency": "Weekly",
+        "time": "10PM-4AM",
+        "vibe": "Underground beats, immersive experiences",
+        "description": "Miami's hottest electronic music events featuring top DJs and producers. From house to techno, experience cutting-edge sound in an intimate venue.",
+        "cta_text": "View Lineup"
+      },
+      {
+        "id": "concerts",
+        "title": "Live Music",
+        "frequency": "Multiple Nights",
+        "time": "Varies",
+        "vibe": "Intimate performances, diverse sounds",
+        "description": "Live performances across genres - from indie rock to Latin jazz. Experience music in an intimate setting with world-class acoustics.",
+        "cta_text": "Upcoming Shows"
+      }
+    ]
+  },
+
+  "contact": {
+    "info_window": {
+      "title": "Contact Information",
+      "heading": "Contact Information",
+      "email": {
+        "label": "EMAIL",
+        "address": "contact@theboomboxmiami.com"
+      },
+      "location": {
+        "label": "LOCATION",
+        "line1": "Miami, Florida",
+        "line2": "Underground Music Scene"
+      },
+      "events": {
+        "label": "EVENTS",
+        "link_text": "View on Shotgun"
+      },
+      "social": {
+        "label": "Follow Us"
+      }
+    },
+    "quick_response": {
+      "title": "Quick Response",
+      "text": "We typically respond to all inquiries within 24-48 hours. For urgent booking requests, please mention it in your message."
+    },
+    "form_window": {
+      "title": "Contact Us – Inquiry Form"
+    }
+  },
+
+  "contact_form": {
+    "labels": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "phone_optional": "(optional)",
+      "inquiry_type": "Inquiry Type",
+      "subject": "Subject",
+      "message": "Message"
+    },
+    "placeholders": {
+      "phone": "(555) 123-4567",
+      "subject": "Brief description of your inquiry",
+      "message": "Tell us more about your inquiry..."
+    },
+    "inquiry_types": [
+      { "value": "", "label": "Select inquiry type *" },
+      { "value": "event-collaboration", "label": "Event Collaboration" },
+      { "value": "rehearsal-space", "label": "Rehearsal Space Rental" },
+      { "value": "vendor-community", "label": "Vendor/Community Event" },
+      { "value": "booking", "label": "General Booking Request" },
+      { "value": "general", "label": "General Inquiry" },
+      { "value": "press", "label": "Press Inquiry" },
+      { "value": "partnerships", "label": "Partnerships" },
+      { "value": "technical", "label": "Technical Support" }
+    ],
+    "validation": {
+      "name_required": "Name is required",
+      "name_min": "Name must be at least 2 characters",
+      "name_max": "Name cannot exceed 100 characters",
+      "name_invalid": "Name contains invalid characters",
+      "email_required": "Email is required",
+      "email_invalid": "Invalid email format",
+      "email_max": "Email is too long",
+      "phone_invalid": "Invalid phone number",
+      "phone_max": "Phone number is too long",
+      "subject_required": "Subject is required",
+      "subject_min": "Subject must be at least 5 characters",
+      "subject_max": "Subject cannot exceed 200 characters",
+      "message_required": "Message is required",
+      "inquiry_type_required": "Please select an inquiry type",
+      "captcha_required": "Please complete the captcha verification"
+    },
+    "submit": {
+      "button_idle": "Send Message",
+      "button_sending": "Sending...",
+      "required_notice": "* Required fields",
+      "message_hint": "Minimum {min} characters required"
+    },
+    "success": {
+      "title": "Message Sent!",
+      "default_message": "Your message has been sent successfully!",
+      "subtext": "We'll get back to you within 24-48 hours."
+    },
+    "errors": {
+      "generic": "Something went wrong. Please try again.",
+      "network": "Network error. Please check your connection and try again."
+    }
+  },
+
+  "collaborate": {
+    "hero": {
+      "title": "Work With Us",
+      "subtitle_1": "We don't rent our space.",
+      "subtitle_2": "We build partnerships with our community",
+      "body": "Join promoters, artists, vendors, and creators who share our values of authenticity, creativity, and inclusivity",
+      "scroll_indicator": "Explore Opportunities"
+    },
+    "philosophy": {
+      "eyebrow": "Our approach",
+      "title": "More than a venue",
+      "body": "We work with promoters, artists, vendors, and creators who share our values of authenticity, creativity, and inclusivity. Every collaboration is a partnership — we invest in your success because your success is ours.",
+      "stats": [
+        { "number": "300+", "label": "Collaborations" },
+        { "number": "6+", "label": "Years strong" },
+        { "number": "200", "label": "Capacity" }
+      ]
+    },
+    "opportunities_title": "Three Ways to Work With Us",
+    "window_sections": {
+      "how_it_works": "How it works",
+      "event_types": "Event types",
+      "perfect_for": "Perfect for"
+    },
+    "opportunities": [
+      {
+        "id": "events",
+        "title": "Event Collaborations",
+        "subtitle": "Bring Your Vision to Life",
+        "description": "Have an event concept? Let's make it happen together. We partner with promoters, collectives, and artists to host unforgettable nights—from underground raves to live shows, genre-fluid parties to themed experiences.",
+        "how_it_works": [
+          "We discuss your vision and audience",
+          "Collaborate on talent, production, and promotion",
+          "Split door sales and bar revenue (terms negotiated)",
+          "You bring the vibe, we bring the space and infrastructure"
+        ],
+        "perfect_for": [
+          "Event promoters and collectives",
+          "DJs and artists building their brand",
+          "Genre-specific nights (electronic, hip-hop, indie, emo, etc.)",
+          "Themed parties and cultural events"
+        ],
+        "additional_info": ["Response time: 48-72 hours", "Capacity: 200 people"],
+        "cta_text": "Propose an Event"
+      },
+      {
+        "id": "vendor",
+        "title": "Vendor & Community Events",
+        "subtitle": "Join Our Market Days",
+        "description": "Calling all vendors, artisans, and small businesses! The Boombox regularly hosts flea markets, car shows, coffee Sundays, and community gatherings. We're always looking for quality vendors to participate and showcase their goods.",
+        "event_types": [
+          "Weekly Coffee Sundays (featuring Kujo's Coffee)",
+          "Monthly flea markets and pop-up shops",
+          "Car shows and automotive meetups",
+          "Art markets and creative showcases",
+          "Seasonal community festivals"
+        ],
+        "perfect_for": [
+          "Vintage and handmade goods vendors",
+          "Food and beverage vendors",
+          "Artists and craftspeople",
+          "Car enthusiasts and collectors",
+          "Local small businesses"
+        ],
+        "additional_info": ["Booth fees and details shared upon approval", "Priority given to local/independent vendors"],
+        "cta_text": "Apply as a Vendor"
+      },
+      {
+        "id": "rehearsal",
+        "title": "Rehearsal Space Rental",
+        "subtitle": "Perfect Your Sound",
+        "description": "Need a space to rehearse, record, or create? The Boombox offers our venue as a rehearsal space for bands, musicians, and performers during off-hours. Full sound system, stage setup, and room to work on your craft.",
+        "what_you_get": [
+          "Professional sound system and stage",
+          "200-person capacity space (great for full band setup)",
+          "Flexible booking during non-event hours",
+          "Secure, private environment",
+          "Affordable rates for local artists"
+        ],
+        "perfect_for": [
+          "Bands preparing for shows",
+          "Musicians refining their set",
+          "Performers rehearsing with full production",
+          "Recording sessions and content creation"
+        ],
+        "additional_info": ["Hourly and daily rates available", "Weekday availability"],
+        "cta_text": "Book Rehearsal Time"
+      }
+    ],
+    "faq": {
+      "title": "Common Questions",
+      "items": [
+        {
+          "question": "Do you rent the venue for private events like birthdays or weddings?",
+          "answer": "We focus on music and community events rather than private celebrations. However, if you have a creative concept that aligns with our vibe, reach out and let's talk!"
+        },
+        {
+          "question": "What's the difference between \"renting\" and \"collaborating\"?",
+          "answer": "We don't do traditional venue rentals where you pay a flat fee. Instead, we collaborate on events—sharing responsibilities, costs, and revenue. This keeps us invested in your success and maintains our community-first approach."
+        },
+        {
+          "question": "How far in advance should I reach out?",
+          "answer": "For event collaborations: 4-8 weeks minimum. For rehearsal space: 1-2 weeks. For vendor spots: ASAP as spaces fill quickly."
+        },
+        {
+          "question": "What's your capacity?",
+          "answer": "200 people. It's intimate, which creates an incredible energy."
+        },
+        {
+          "question": "Is parking really free?",
+          "answer": "Yes! Abundant free parking—one of our biggest advantages over downtown/South Beach venues."
+        },
+        {
+          "question": "What genres/styles do you prioritize?",
+          "answer": "We're genre-agnostic! Electronic, hip-hop, indie, emo, punk, live bands—if it's authentic and brings community together, we're interested."
+        }
+      ]
+    },
+    "final_cta": {
+      "title": "Ready to Work Together?",
+      "body": "Whether you're planning an event, need rehearsal space, or want to join our vendor community—we'd love to hear from you.",
+      "button_primary": "Send Us Your Idea",
+      "button_secondary": "See What We've Done"
+    }
+  },
+
+  "blog": {
+    "header": {
+      "title": "The Box Blog",
+      "subtitle": "Stories, insights, and updates from Miami's underground music scene"
+    },
+    "featured_section_title": "Featured Stories",
+    "search": {
+      "placeholder": "Search posts...",
+      "button": "Search"
+    },
+    "filters": {
+      "active_prefix": "Active filters:",
+      "tag_prefix": "Tag:",
+      "search_prefix": "Search:",
+      "clear_all": "Clear all",
+      "clear_filters": "Clear Filters"
+    },
+    "states": {
+      "loading": "Loading posts...",
+      "empty": "No posts found matching your criteria.",
+      "retry": "Try Again",
+      "pagination_prev": "← Previous",
+      "pagination_next": "Next →"
+    },
+    "cta": {
+      "title": "Want to contribute?",
+      "body": "Share your story, review, or insight with The Boombox community.",
+      "button": "Write a Post"
+    }
+  },
+
+  "social_platforms": [
+    { "id": "instagram", "name": "Instagram", "username": "@theboomboxmiami" },
+    { "id": "tiktok", "name": "TikTok", "username": "@theboomboxmiami" },
+    { "id": "facebook", "name": "Facebook", "username": "The Boombox Miami" }
+  ]
+}

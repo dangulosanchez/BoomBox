@@ -6,6 +6,7 @@ import 'yet-another-react-lightbox/styles.css';
 
 import { galleryImages } from '../data/galleryData';
 import styles from './Gallery.module.css';
+import content from '../data/content.json';
 
 const Gallery = () => {
   const [lightboxIndex, setLightboxIndex] = useState(-1);
@@ -55,7 +56,7 @@ const Gallery = () => {
         transition={{ duration: 0.6 }}
         className={styles.hero}
       >
-        <h1 className={styles.heroTitle}>Gallery</h1>
+        <h1 className={styles.heroTitle}>{content.gallery.hero.title}</h1>
         <div className={styles.heroAccent} />
       </motion.header>
 

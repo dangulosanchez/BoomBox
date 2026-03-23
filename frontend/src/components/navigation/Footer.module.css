@@ -21,15 +21,16 @@
 }
 
 .footerLink {
-  color: var(--color-text-secondary);
+  font-family: var(--font-ui);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
-  font-family: var(--font-body);
-  font-size: var(--font-size-sm);
-  transition: color var(--transition-base);
+  transition: color var(--xp-transition);
 }
 
 .footerLink:hover {
-  color: var(--color-accent-gold);
+  color: rgba(255, 215, 0, 0.9);
+  text-decoration: underline;
 }
 
 .copyright {

@@ -3,6 +3,9 @@ import { useState, useRef, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
 import styles from './ContactForm.module.css';
+import content from '../../data/content.json';
+
+const cf = content.contact_form;
 
 /**
  * ContactForm Component
@@ -17,17 +20,7 @@ import styles from './ContactForm.module.css';
  * - URL parameter support for pre-filling inquiry type (?type=event-collaboration)
  */
 
-const inquiryTypes = [
-    { value: '', label: 'Select inquiry type *' },
-    { value: 'event-collaboration', label: 'Event Collaboration' },
-    { value: 'rehearsal-space', label: 'Rehearsal Space Rental' },
-    { value: 'vendor-community', label: 'Vendor/Community Event' },
-    { value: 'booking', label: 'General Booking Request' },
-    { value: 'general', label: 'General Inquiry' },
-    { value: 'press', label: 'Press Inquiry' },
-    { value: 'partnerships', label: 'Partnerships' },
-    { value: 'technical', label: 'Technical Support' }
-];
+const inquiryTypes = cf.inquiry_types;
 
 const ContactForm = () => {
     const [searchParams] = useSearchParams();
@@ -215,7 +208,7 @@ const ContactForm = () => {
         // Check captcha
         if (!captchaToken) {
             setSubmitStatus('error');
-            setSubmitMessage('Please complete the captcha verification');
+            setSubmitMessage(cf.validation.captcha_required);
             return;
         }
 
@@ -224,7 +217,7 @@ const ContactForm = () => {
             console.log('Bot detected via honeypot');
             // Silently fail for bots
             setSubmitStatus('success');
-            setSubmitMessage('Your message has been sent successfully!');
+            setSubmitMessage(cf.success.default_message);
             return;
         }
 
@@ -248,7 +241,7 @@ const ContactForm = () => {
 
             if (response.ok) {
                 setSubmitStatus('success');
-                setSubmitMessage(data.message || 'Your message has been sent successfully!');
+                setSubmitMessage(data.message || cf.success.default_message);
 
                 // Reset form
                 setFormData({
@@ -275,12 +268,12 @@ const ContactForm = () => {
                 }
             } else {
                 setSubmitStatus('error');
-                setSubmitMessage(data.error || 'Something went wrong. Please try again.');
+                setSubmitMessage(data.error || cf.errors.generic);
             }
         } catch (error) {
             console.error('Form submission error:', error);
             setSubmitStatus('error');
-            setSubmitMessage('Network error. Please check your connection and try again.');
+            setSubmitMessage(cf.errors.network);
         } finally {
             setIsSubmitting(false);
         }
@@ -292,9 +285,9 @@ const ContactForm = () => {
             {submitStatus === 'success' && (
                 <div className={styles.successMessage} role="alert">
                     <div className={styles.successIcon}>✓</div>
-                    <h3>Message Sent!</h3>
+                    <h3>{cf.success.title}</h3>
                     <p>{submitMessage}</p>
-                    <p className={styles.successSubtext}>We'll get back to you within 24-48 hours.</p>
+                    <p className={styles.successSubtext}>{cf.success.subtext}</p>
                 </div>
             )}
 
@@ -311,7 +304,7 @@ const ContactForm = () => {
                 {/* Name Field */}
                 <div className={styles.formGroup}>
                     <label htmlFor="name" className={styles.label}>
-                        Name <span className={styles.required} aria-label="required">*</span>
+                        {cf.labels.name} <span className={styles.required} aria-label="required">*</span>
                     </label>
                     <input
                         type="text"
@@ -336,7 +329,7 @@ const ContactForm = () => {
                 {/* Email Field */}
                 <div className={styles.formGroup}>
                     <label htmlFor="email" className={styles.label}>
-                        Email <span className={styles.required} aria-label="required">*</span>
+                        {cf.labels.email} <span className={styles.required} aria-label="required">*</span>
                     </label>
                     <input
                         type="email"
@@ -361,7 +354,7 @@ const ContactForm = () => {
                 {/* Phone Field (Optional) */}
                 <div className={styles.formGroup}>
                     <label htmlFor="phone" className={styles.label}>
-                        Phone <span className={styles.optional}>(optional)</span>
+                        {cf.labels.phone} <span className={styles.optional}>{cf.labels.phone_optional}</span>
                     </label>
                     <input
                         type="tel"
@@ -374,7 +367,7 @@ const ContactForm = () => {
                         aria-invalid={errors.phone && touched.phone ? 'true' : 'false'}
                         aria-describedby={errors.phone && touched.phone ? 'phone-error' : undefined}
                         disabled={isSubmitting}
-                        placeholder="(555) 123-4567"
+                        placeholder={cf.placeholders.phone}
                     />
                     {errors.phone && touched.phone && (
                         <span id="phone-error" className={styles.errorText} role="alert">
@@ -386,7 +379,7 @@ const ContactForm = () => {
                 {/* Inquiry Type Dropdown */}
                 <div className={styles.formGroup}>
                     <label htmlFor="inquiryType" className={styles.label}>
-                        Inquiry Type <span className={styles.required} aria-label="required">*</span>
+                        {cf.labels.inquiry_type} <span className={styles.required} aria-label="required">*</span>
                     </label>
                     <select
                         id="inquiryType"
@@ -416,7 +409,7 @@ const ContactForm = () => {
                 {/* Subject Field */}
                 <div className={styles.formGroup}>
                     <label htmlFor="subject" className={styles.label}>
-                        Subject <span className={styles.required} aria-label="required">*</span>
+                        {cf.labels.subject} <span className={styles.required} aria-label="required">*</span>
                     </label>
                     <input
                         type="text"
@@ -430,7 +423,7 @@ const ContactForm = () => {
                         aria-invalid={errors.subject && touched.subject ? 'true' : 'false'}
                         aria-describedby={errors.subject && touched.subject ? 'subject-error' : undefined}
                         disabled={isSubmitting}
-                        placeholder="Brief description of your inquiry"
+                        placeholder={cf.placeholders.subject}
                     />
                     {errors.subject && touched.subject && (
                         <span id="subject-error" className={styles.errorText} role="alert">
@@ -442,7 +435,7 @@ const ContactForm = () => {
                 {/* Message Field */}
                 <div className={styles.formGroup}>
                     <label htmlFor="message" className={styles.label}>
-                        Message <span className={styles.required} aria-label="required">*</span>
+                        {cf.labels.message} <span className={styles.required} aria-label="required">*</span>
                     </label>
                     <div className={styles.textareaWrapper}>
                         <textarea
@@ -458,7 +451,7 @@ const ContactForm = () => {
                             aria-invalid={errors.message && touched.message ? 'true' : 'false'}
                             aria-describedby={errors.message && touched.message ? 'message-error' : 'message-hint'}
                             disabled={isSubmitting}
-                            placeholder="Tell us more about your inquiry..."
+                            placeholder={cf.placeholders.message}
                         />
                         <div className={styles.characterCount}>
                             {formData.message.length} / {MAX_MESSAGE_LENGTH}
@@ -470,7 +463,7 @@ const ContactForm = () => {
                         </span>
                     ) : (
                         <span id="message-hint" className={styles.hintText}>
-                            Minimum {MIN_MESSAGE_LENGTH} characters required
+                            {cf.submit.message_hint.replace('{min}', MIN_MESSAGE_LENGTH)}
                         </span>
                     )}
                 </div>
@@ -505,21 +498,21 @@ const ContactForm = () => {
                     type="submit"
                     className={styles.submitButton}
                     disabled={isSubmitting || !captchaToken}
-                    aria-label={isSubmitting ? 'Sending message...' : 'Send message'}
+                    aria-label={isSubmitting ? cf.submit.button_sending : cf.submit.button_idle}
                 >
                     {isSubmitting ? (
                         <>
                             <span className={styles.spinner} aria-hidden="true"></span>
-                            Sending...
+                            {cf.submit.button_sending}
                         </>
                     ) : (
-                        'Send Message'
+                        cf.submit.button_idle
                     )}
                 </button>
 
                 {/* Required Fields Notice */}
                 <p className={styles.requiredNotice}>
-                    <span className={styles.required}>*</span> Required fields
+                    <span className={styles.required}>*</span> {cf.submit.required_notice.replace('* ', '')}
                 </p>
             </form>
         </div>
