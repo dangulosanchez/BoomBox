@@ -74,7 +74,7 @@ const Home = () => {
         <p className={styles.socialSubtitle}>{home.social.subtitle}</p>
         <SocialLinks
           placement="inline"
-          showLabels={true}
+          showLabels={false}
           showCounts={false}
           size="lg"
         />
