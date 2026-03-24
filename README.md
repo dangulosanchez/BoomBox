@@ -1,112 +1,98 @@
-# MERN Authentication and Protected Routes Project
+# The Boombox Miami Website
 
-This project demonstrates a basic MERN (MongoDB, Express, React, Node.js) stack application with JWT-based authentication and route protection. It includes features such as user registration, login, and protected routes. Additionally, it prevents logged-in users from accessing the login and registration pages.
+This repository contains the website for The Boombox Miami, a Miami-based venue and creative space built around underground music, local culture, and community events.
 
-## Features
+For the purposes of this project README, treat this as a frontend website project. Any backend or authentication-related files in the repo are legacy leftovers and are not part of the website documentation below.
 
-- **User Authentication**: Users can register, log in, and receive a JWT token for authentication.
-- **Protected Routes**: Certain routes are only accessible to authenticated users.
-- **Public Routes**: Redirects authenticated users away from the login and registration pages.
-- **React Router v6**: Utilizes the latest version of React Router for navigation.
+## What This Site Includes
 
-## Installation
+- A landing page for The Boombox Miami
+- A story page about the venue and its roots
+- A gallery experience with site photography
+- Collaboration and contact pages
+- Shared navigation, footer, and reusable section components
+- Centralized site copy stored in JSON for easier content updates
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/saurabhdhumane/Mern-Stack-Authentication.git
-   cd Mern-Stack-Authentication
-   ```
+## Tech Stack
 
-2. **Install dependencies**:
-
-   - Backend (Node.js):
-     ```bash
-     cd backend
-     npm install
-     ```
-   
-   - Frontend (React):
-     ```bash
-     cd frontend
-     npm install
-     ```
-
-3. **Set up environment variables**:
-
-   Create a `.env` file in the `backend` directory with the following contents:
-
-   ```bash
-   # Server Configuration
-   PORT=5000
-
-   # Database Configuration
-   MONGO_URI=mongodb://localhost:27017/mydatabase
-
-   # JWT Configuration
-   JWT_SECRET=mysecretkey
-   JWT_EXPIRES_IN=1h
-   ```
-
-4. **Run the application**:
-
-   - Backend:
-     ```bash
-     cd backend
-     npm start
-     ```
-
-   - Frontend:
-     ```bash
-     cd frontend
-     npm start
-     ```
-
-5. **Access the application**:
-
-   Open your browser and navigate to `http://localhost:3000`.
+- React 18
+- React Router
+- CSS Modules
+- Framer Motion
+- React Photo Album
+- Yet Another React Lightbox
 
 ## Project Structure
 
-- **Backend (Node.js/Express)**: Handles user authentication, JWT token generation, and route protection.
-- **Frontend (React)**: Manages user interaction, routing, and displays pages based on authentication status.
+```text
+.
+├── frontend/        # React website
+├── backend/         # Legacy code, ignored for this website README
+├── README.md
+└── LICENSE
+```
 
-## Routes
+Key frontend folders:
 
-### Public Routes
+- `frontend/src/pages` for top-level routes like Home, Gallery, Story, Contact, and Collaborate
+- `frontend/src/components` for reusable UI pieces
+- `frontend/src/data/content.json` for editable site copy
+- `frontend/public/images` and `frontend/public/real_images` for site assets
 
-- `/login` - User login page.
-- `/register` - User registration page.
+## Getting Started
 
-### Protected Routes
+1. Install dependencies:
 
-- `/dashboard` - Accessible only to authenticated users.
+```bash
+cd frontend
+npm install
+```
 
-### Home Route
+2. Start the development server:
 
-- `/` - A public route that displays the home page.
+```bash
+npm start
+```
 
-## Usage
+3. Open the app at `http://localhost:3000`
 
-- Register a new user on the `/register` page.
-- Log in with the registered credentials on the `/login` page.
-- After login, you will be redirected to the `/dashboard` page.
-- If logged in, attempting to access `/login` or `/register` will redirect you to the `/dashboard` page.
-- The JWT token is stored in `localStorage` for session persistence.
+## Available Scripts
 
-## Technologies Used
+Run these from the `frontend` directory:
 
-- **Frontend**: React, React Router v6
-- **Backend**: Node.js, Express.js, MongoDB, JWT
-- **Libraries**: `axios`, `jwt-decode`, `dotenv`
+- `npm start` starts the local dev server
+- `npm run build` creates a production build
+- `npm test` runs the test suite
 
-## Contributing
+## Content Updates
 
-Feel free to open issues or submit pull requests if you find any bugs or want to add new features!
+Most of the website copy is centralized in:
+
+- `frontend/src/data/content.json`
+
+That makes it easy to update headlines, body copy, labels, and other text without rewriting component logic.
+
+## Routing
+
+The public website currently includes routes for:
+
+- `/`
+- `/gallery`
+- `/story`
+- `/collaborations`
+- `/contact`
+
+There are also some legacy auth-related routes still present in the codebase, but they are outside the scope of this website README.
+
+## Deployment Notes
+
+The frontend is configured with a `homepage` value in `frontend/package.json`, which suggests it is intended to be deployed as a static React site, including GitHub Pages-style hosting.
+
+If deployment behavior changes, update:
+
+- `frontend/package.json`
+- React Router `basename` usage in `frontend/src/App.jsx`
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-Make sure to replace `your-username/your-repo-name` with the actual GitHub repository URL where you’ll be pushing your code. If you have any specific sections or additional details you’d like to include, feel free to modify this `README.md` file accordingly!
+This project is licensed under the MIT License. See [LICENSE](LICENSE).

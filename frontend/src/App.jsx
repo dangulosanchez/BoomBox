@@ -14,13 +14,11 @@ import RegistrationForm from './RegistrationForm';
 import Dashboard from './Dashboard';
 
 // Route Guards (Existing - keep as is)
-import ProtectedRoute from './ProtectedRoute';
 import PublicOnlyRoute from './PublicOnlyRoute'; // Modified version of PublicRoute
 import OnboardingRoute from './OnboardingRoute';
 
 // Import global styles
 import './styles/globals.css';
-import Showcasing from './pages/Showcasing';
 import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
 import Collaborate from './pages/Collaborate';
@@ -87,12 +85,6 @@ function App() {
           <Route path="/" element={<Home />} />
           
           {/* Marketing Pages - Placeholder for now (Phase 2) */}
-          <Route 
-            path="/showcasing" 
-            element={
-              <Showcasing/>
-            } 
-          />
           <Route path="contact" element={<Contact />} />
           <Route path="collaborations" element={<Collaborate />} />
           <Route 
@@ -163,31 +155,6 @@ function App() {
           } 
         />
 
-        {/* ========== PROTECTED ROUTES ========== */}
-        {/* Require full authentication (active account) */}
-        <Route 
-          path="/dashboard" 
-          element={
-            <ProtectedRoute authState={authState}>
-              <Dashboard />
-            </ProtectedRoute>
-          } 
-        />
-        
-        <Route 
-          path="/forms/:formId" 
-          element={
-            <ProtectedRoute authState={authState}>
-              <Placeholder 
-                title="Form View" 
-                subtitle="View Your Submission"
-                message="Form viewer coming soon"
-              />
-              {/* TODO: Uncomment when FormView is ready */}
-              {/* <FormView /> */}
-            </ProtectedRoute>
-          } 
-        />
 
         {/* ========== 404 CATCH-ALL ========== */}
         {/* TODO: Create proper 404 page in Phase 3 */}

@@ -63,59 +63,56 @@
   "story": {
     "hero": {
       "title": "Full Circle",
-      "subtitle": "From warehouse kids to venue owners: The story of Miami's most authentic underground space"
+      "subtitle": "Built by locals. Still for locals."
     },
     "section_where_it_started": {
       "title": "Where It Started",
       "image_alt": "The 3 owners of The Boombox.",
       "paragraphs": [
-        "Long before The Boombox became Miami's underground sanctuary, it was just a forgotten warehouse park in western Miami-Dade. Not the glamorous parts of the city you see in magazines — this was the suburbs, the overlooked corners where kids grew up finding their own way.",
-        "\"I remember my friends and I used to skip school all the time and go over to this little warehouse park to smoke weed, do graffiti — all our little activities,\" recalls one of the founders. \"It was our spot. Away from everything, just us and the walls.\"",
-        "The area wasn't much to look at — concrete, chain-link fences, spray paint layered on top of spray paint. But for a group of restless teenagers in the early 2010s, it was freedom. No rules, no authority, just raw creative expression and the kind of bonding that happens when you're young and finding your identity in the margins."
+        "The Boombox sits in a warehouse park in western Miami-Dade, in the kind of place you’d usually drive past without thinking twice. Industrial buildings, garages, people working during the day. Not nightlife.",
+        "The three founders grew up around here. Same streets, same warehouses, same area most people overlook. Years later, they came back and opened a venue in that exact spot.",
+        "It wasn’t built to fit into Miami’s usual scene. It just came out of what was already here."
       ]
     },
     "pull_quote_1": {
-      "text": "I think it's funny that we're throwing these huge parties there now, making a name for ourselves. It all came full circle.",
+      "text": "We opened it where we grew up.",
       "author": "The Boombox Founders"
     },
     "section_bird_road": {
-      "title": "The Bird Road Arts District",
+      "title": "The Area",
       "image_alt": "Bird Road Arts District warehouse exterior during daytime",
       "paragraphs": [
-        "What most people don't know is that this area — the Bird Road Arts District — was Miami's original underground arts hub, long before Wynwood became the city's commercialized art epicenter.",
-        "Back in the 1970s, the landlord's father bought the land for next to nothing. It was industrial, unglamorous, real. The neighborhood was a patchwork of carpentry shops, gardening supply stores, mechanic garages — working-class Miami at its core. Artists gravitated here because rent was cheap and nobody was watching.",
-        "By the time the founders were teenagers in the 2010s, the district had faded from public memory. The artists had moved on, the storefronts were weathered, and the warehouses sat quiet. But the energy was still there, embedded in the walls, waiting for someone to bring it back to life.",
-        "This wasn't prime real estate. It was overlooked, forgotten, raw — and that's exactly what made it perfect."
+        "Bird Road is still a mix of everything: welders, mechanics, small shops, artists working out of converted spaces. It’s active during the day and quiet at night, unless you know where to go.",
+        "There’s nothing curated about it. No big development push, no attempt to clean it up for appearances. It’s stayed pretty much the same, and that’s part of why The Boombox works here."
       ]
     },
     "section_the_vision": {
-      "title": "The Vision",
+      "title": "The Venue",
       "image_alt": "The Boombox venue interior with crowd at event",
       "paragraphs": [
-        "Years later, those same kids who used to skip school and paint the walls had grown up. They'd traveled, experienced different music scenes, but always felt something was missing in Miami's nightlife.",
-        "The city had clubs, sure — but they were corporate, overpriced, pretentious. The underground was either too sketchy or didn't exist at all. Western Miami-Dade, where they grew up, was a cultural desert for anyone who wanted authentic, cutting-edge music experiences.",
-        "So they decided to create what they always wanted: a space that felt like home. Somewhere that honored the underground but stayed legal and safe. A venue that served the community they came from — locals, artists, outsiders, misfits. People who just wanted real music, real vibes, no bullshit.",
-        "In 2018, The Boombox opened its doors in the exact same warehouse park where they used to hang out as teenagers. The full circle wasn't planned — it just happened."
+        "The Boombox opened in late 2019. Three friends, 19 years old, figuring it out as they went and building something they actually wanted to go to.",
+        "There was no blueprint behind it. Just a space, a sound system, and a reason for people to show up.",
+        "And people did. Week after week, it grew into something real. Artists like Coffintexts, Winter Wrong, and The Orbits came through early on, and the place started to build a name for itself without forcing it.",
+        "It never tried to compete with the bigger clubs. It didn’t need to."
       ]
     },
     "pull_quote_2": {
-      "text": "People still do graffiti there. Our spot has gotten hit a couple of times. It's cool to see there are still kids on a mission.",
+      "text": "We didn’t overthink it. We just kept doing events and people kept coming back.",
       "author": "The Boombox Founders"
     },
     "section_today": {
       "title": "Today",
       "image_alt": "The Boombox today - Miami's underground music venue",
       "paragraphs": [
-        "Six years later, The Boombox has become what it was always meant to be: Miami's underground sanctuary. A place where emerging artists find their voice and music lovers discover their next obsession.",
-        "The walls still get tagged. The neighborhood hasn't changed much. The venue is still in the same unglamorous part of town. And that's the point.",
-        "While other venues chase trends and instagram aesthetics, The Boombox stays rooted in what it's always been: authentic, local, for the people who get it. The same kids who grew up feeling like outsiders now have a home. The same community that raised the founders now has a space to call their own.",
-        "From skipping school to running the show. From spray paint on walls to hosting international artists. From forgotten warehouse to cultural landmark.",
-        "Full circle."
+        "From 2019 through early 2023, The Boombox built a strong following, mostly through word of mouth. If you knew, you knew.",
+        "When it shut down, people felt it. Not just because of the events, but because there wasn’t really anything else like it in that part of the city.",
+        "Now it’s back. Same area, same people behind it, same approach.",
+        "It’s still not trying to be everything for everyone. It’s just a place that works, and once you go, you get why people keep coming back."
       ]
     },
     "cta": {
-      "title": "Experience The Boombox Yourself",
-      "subtitle": "See what 6 years of authentic underground culture looks like.",
+      "title": "See It For Yourself",
+      "subtitle": "No explanation needed.",
       "button": "See Upcoming Events"
     }
   },
@@ -292,7 +289,7 @@
     "philosophy": {
       "eyebrow": "Our approach",
       "title": "More than a venue",
-      "body": "We work with promoters, artists, vendors, and creators who share our values of authenticity, creativity, and inclusivity. Every collaboration is a partnership — we invest in your success because your success is ours.",
+      "body": "We work with promoters, artists, vendors, and creators who share our values of authenticity, creativity, and inclusivity. Every collaboration is a partnership. We invest in your success because your success is ours.",
       "stats": [
         { "number": "300+", "label": "Collaborations" },
         { "number": "6+", "label": "Years strong" },

@@ -31,7 +31,10 @@
 .brand {
   display: flex;
   align-items: center;
-  padding: 0.5rem 0;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
   z-index: calc(var(--z-index-fixed) + 2);
 }
 
@@ -51,12 +54,17 @@
 
 .mobileToggle {
   display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
   background: none;
   border: none;
   color: var(--color-text-primary);
   font-size: 1.5rem;
+  line-height: 1;
   cursor: pointer;
-  padding: 0.5rem;
   z-index: calc(var(--z-index-fixed) + 2);
   transition: color var(--transition-fast);
 }
@@ -66,10 +74,15 @@
 }
 
 .toggleIcon {
-  display: block;
-  width: 24px;
-  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  font-size: 28px;
+  line-height: 1;
   text-align: center;
+  transform: translateY(-1px);
 }
 
 /* ========== NAVIGATION MENU ========== */
@@ -167,7 +180,7 @@
 
 @media (max-width: 991px) {
   .mobileToggle {
-    display: block;
+    display: inline-flex;
   }
 
   .navMenu {

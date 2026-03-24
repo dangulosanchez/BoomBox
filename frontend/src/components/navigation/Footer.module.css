@@ -12,25 +12,96 @@
   text-align: center;
 }
 
-.footerNav {
-  display: flex;
-  justify-content: center;
-  gap: var(--spacing-md);
-  flex-wrap: wrap;
+.footerTop {
+  display: grid;
+  gap: var(--spacing-lg);
   margin-bottom: var(--spacing-md);
 }
 
+.footerNav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  row-gap: 12px;
+  column-gap: 8px;
+}
+
+.navItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+
 .footerLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 24px;
+  padding: 0;
   font-family: var(--font-ui);
-  font-size: 11px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
-  transition: color var(--xp-transition);
+  transition:
+    color var(--xp-transition),
+    transform var(--xp-transition);
+}
+
+.linkLabel {
+  position: relative;
+  top: 1px;
+}
+
+.navDot {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 8px;
+  border-radius: 50%;
+  background: #ffd700;
+  box-shadow:
+    0 0 0 1px rgba(255, 215, 0, 0.2),
+    0 0 10px rgba(255, 215, 0, 0.45);
+  opacity: 0.95;
 }
 
 .footerLink:hover {
   color: rgba(255, 215, 0, 0.9);
-  text-decoration: underline;
+  transform: translateY(-1px);
+}
+
+.socialLinks {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.76);
+  text-decoration: none;
+  transition:
+    color var(--xp-transition),
+    border-color var(--xp-transition),
+    background var(--xp-transition),
+    transform var(--xp-transition);
+}
+
+.socialLink:hover {
+  color: rgba(255, 215, 0, 0.92);
+  border-color: rgba(255, 215, 0, 0.24);
+  background: rgba(255, 215, 0, 0.08);
+  transform: translateY(-1px);
 }
 
 .copyright {
@@ -41,7 +112,14 @@
 
 @media (max-width: 768px) {
   .footerNav {
-    flex-direction: column;
-    gap: var(--spacing-sm);
+    justify-content: center;
+  }
+
+  .navDot {
+    display: none;
+  }
+
+  .navItem {
+    gap: 0;
   }
 }
