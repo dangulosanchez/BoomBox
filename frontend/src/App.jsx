@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 // Layouts
@@ -11,7 +11,6 @@ import Placeholder from './pages/Placeholder';
 // Pages - Auth (Existing)
 import LoginForm from './LoginForm';
 import RegistrationForm from './RegistrationForm';
-import Dashboard from './Dashboard';
 
 // Route Guards (Existing - keep as is)
 import PublicOnlyRoute from './PublicOnlyRoute'; // Modified version of PublicRoute
