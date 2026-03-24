@@ -84,6 +84,28 @@ const Gallery = () => {
         />
       </motion.div>
 
+      {/* XP title bar overlay — sits above the YARL lightbox */}
+      {isLightboxOpen && (
+        <div className={styles.xpBar}>
+          <span className={styles.xpBarIcon}>◈</span>
+          <span className={styles.xpBarTitle}>gallery_viewer.exe</span>
+          <div className={styles.xpBarControls}>
+            <button className={`${styles.xpBarBtn} ${styles.xpBarBtnMin}`} type="button" aria-label="Minimize">
+              <span className={styles.xpBarMinIcon} />
+            </button>
+            <button className={`${styles.xpBarBtn} ${styles.xpBarBtnMax}`} type="button" aria-label="Maximize">
+              <span className={styles.xpBarMaxIcon} />
+            </button>
+            <button
+              className={`${styles.xpBarBtn} ${styles.xpBarBtnClose}`}
+              type="button"
+              aria-label="Close"
+              onClick={() => { setIsLightboxOpen(false); setLightboxIndex(-1); }}
+            >✕</button>
+          </div>
+        </div>
+      )}
+
       <Lightbox
         open={isLightboxOpen}
         index={lightboxIndex}

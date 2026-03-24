@@ -23,6 +23,18 @@
   }
 }
 
+/* ========== XP WINDOW BODY PADDING ========== */
+
+.windowBody {
+  padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  .windowBody {
+    padding: 1.25rem;
+  }
+}
+
 /* ========== CONTENT ========== */
 
 .content {

@@ -14,6 +14,54 @@
   }
 }
 
+/* ========== ABOUT CONTENT ========== */
+
+.aboutParagraphLg {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  opacity: 0.95;
+}
+
+.aboutParagraphSm {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.aboutStats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.aboutStatItem {
+  text-align: center;
+}
+
+.aboutStatNumber {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-accent-gold);
+  margin-bottom: 0.5rem;
+}
+
+.aboutStatLabel {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 576px) {
+  .aboutStats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .aboutStatNumber {
+    font-size: 1.75rem;
+  }
+}
+
 /* ========== EVENTS SECTION ========== */
 
 [data-section="events"] {

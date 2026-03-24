@@ -42,25 +42,16 @@ const Home = () => {
 
       <AboutSection
         title={home.about.title}
+        windowTitle="about_the_box.exe"
         content={
           <div>
-            <p style={{ fontSize: '1.3rem', marginBottom: '2rem', opacity: 0.95 }}>
-              {home.about.paragraphs[0]}
-            </p>
-            <p style={{ fontSize: '1.1rem', marginBottom: '2rem', opacity: 0.9 }}>
-              {home.about.paragraphs[1]}
-            </p>
-
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: '2rem',
-              marginTop: '3rem'
-            }}>
+            <p className={styles.aboutParagraphLg}>{home.about.paragraphs[0]}</p>
+            <p className={styles.aboutParagraphSm}>{home.about.paragraphs[1]}</p>
+            <div className={styles.aboutStats}>
               {home.about.stats.map((stat, i) => (
-                <div key={i} style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: '2.5rem', fontWeight: '700', color: 'var(--color-accent-gold)', marginBottom: '0.5rem' }}>{stat.number}</div>
-                  <div style={{ fontSize: '1rem', color: 'var(--color-text-secondary)' }}>{stat.label}</div>
+                <div key={i} className={styles.aboutStatItem}>
+                  <div className={styles.aboutStatNumber}>{stat.number}</div>
+                  <div className={styles.aboutStatLabel}>{stat.label}</div>
                 </div>
               ))}
             </div>

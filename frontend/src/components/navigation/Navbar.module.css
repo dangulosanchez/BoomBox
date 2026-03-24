@@ -113,9 +113,16 @@
   transform: translateY(-2px);
 }
 
-/* Active Link Indicator */
+/* Active Link Indicator — XP inset/pressed treatment */
 .navLink.active {
   color: var(--color-accent-gold);
+  background: #0D0D0D;
+  border-radius: var(--xp-radius);
+  box-shadow: var(--xp-inset);
+}
+
+.navLink.active:hover {
+  transform: none; /* pressed items don't lift */
 }
 
 .navLink::after {

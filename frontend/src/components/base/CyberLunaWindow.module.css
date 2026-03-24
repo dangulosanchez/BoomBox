@@ -2,6 +2,21 @@
    CyberLunaWindow — XP Luna in Boombox Dark
    ============================================ */
 
+/* ── Static (in-flow) variant — no drag, no fixed positioning ── */
+/* Uses combined selector (.window.staticWindow) to beat the specificity of .window alone */
+.window.staticWindow {
+  position: relative;
+  width: 100%;
+}
+
+.titleBar.staticTitleBar {
+  cursor: default;
+}
+
+.titleBar.staticTitleBar:active {
+  cursor: default;
+}
+
 .window {
   position: fixed;
   border-radius: 5px;
@@ -142,8 +157,8 @@
 /* ========== CONTENT BODY ========== */
 
 .body {
-  background: #000000;
-  padding: 15px;
+  background: #0A0A0A;
+  padding: 1.25rem;
   font-family: 'Tahoma', 'Segoe UI', sans-serif;
   font-size: 11px;
   color: rgba(255, 255, 255, 0.85);

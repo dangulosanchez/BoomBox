@@ -26,8 +26,8 @@ const Logo = ({
 }) => {
   // Map variant to image file
   const logoSrc = variant === 'new'
-    ? `${process.env.PUBLIC_URL}/images/new logo.png`
-    : `${process.env.PUBLIC_URL}/images/logo_black.png`;
+    ? `${process.env.PUBLIC_URL}/real_images/new logo.png`
+    : `${process.env.PUBLIC_URL}/real_images/logo_black.png`;
 
   // Build className
   const classNames = [

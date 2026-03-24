@@ -28,8 +28,10 @@ const CyberLunaWindow = ({
   defaultPosition,
   minWidth = 400,
   className = '',
+  bodyClassName = '',
+  isStatic = false,
 }) => {
-  // Centre on first render if no explicit position given
+  // Centre on first render if no explicit position given (draggable mode only)
   const initPos = defaultPosition ?? {
     x: typeof window !== 'undefined' ? Math.max(0, (window.innerWidth - minWidth) / 2) : 100,
     y: typeof window !== 'undefined' ? Math.max(0, window.innerHeight * 0.15) : 80,
@@ -44,19 +46,21 @@ const CyberLunaWindow = ({
   const dragOffset = useRef({ x: 0, y: 0 });
 
   const bringToFront = useCallback(() => {
-    setZIndex(++zCounter);
-  }, []);
+    if (!isStatic) setZIndex(++zCounter);
+  }, [isStatic]);
 
   const handleTitleBarMouseDown = useCallback((e) => {
+    if (isStatic) return;
     isDragging.current = true;
     dragOffset.current = {
       x: e.clientX - posRef.current.x,
       y: e.clientY - posRef.current.y,
     };
     e.preventDefault(); // prevent text selection while dragging
-  }, []);
+  }, [isStatic]);
 
   useEffect(() => {
+    if (isStatic) return;
     const onMove = (e) => {
       if (!isDragging.current) return;
       const next = {
@@ -74,16 +78,23 @@ const CyberLunaWindow = ({
       window.removeEventListener('mousemove', onMove);
       window.removeEventListener('mouseup', onUp);
     };
-  }, []);
+  }, [isStatic]);
+
+  const windowStyle = isStatic
+    ? {}
+    : { left: position.x, top: position.y, zIndex, minWidth };
 
   return (
     <div
-      className={`${styles.window} ${className}`}
-      style={{ left: position.x, top: position.y, zIndex, minWidth }}
-      onMouseDown={bringToFront}
+      className={`${styles.window} ${isStatic ? styles.staticWindow : ''} ${className}`}
+      style={windowStyle}
+      onMouseDown={isStatic ? undefined : bringToFront}
     >
       {/* ── Title Bar ── */}
-      <div className={styles.titleBar} onMouseDown={handleTitleBarMouseDown}>
+      <div
+        className={`${styles.titleBar} ${isStatic ? styles.staticTitleBar : ''}`}
+        onMouseDown={handleTitleBarMouseDown}
+      >
         {/* Window icon placeholder — keeps symmetry */}
         <span className={styles.windowIcon} aria-hidden="true">◈</span>
 
@@ -123,7 +134,7 @@ const CyberLunaWindow = ({
       </div>
 
       {/* ── Content Body ── */}
-      <div className={styles.body}>
+      <div className={`${styles.body} ${bodyClassName}`}>
         {children}
       </div>
     </div>

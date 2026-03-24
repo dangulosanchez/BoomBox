@@ -72,6 +72,50 @@
 }
 
 /* ========================================
+   XP WINDOW OVERRIDES (Story-specific)
+   ======================================== */
+
+/* Spacious body padding for text + image grids */
+.windowContent {
+  padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  .windowContent {
+    padding: 1.25rem;
+  }
+}
+
+/* Amber alert box for pull quotes */
+.xpAlert {
+  border: 1px solid rgba(255, 193, 7, 0.45);
+  border-radius: var(--xp-radius);
+  background: rgba(255, 193, 7, 0.05);
+  padding: 1.5rem 2rem;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+  text-align: left;
+  max-width: 100%;
+}
+
+.xpAlert .quoteText {
+  font-family: var(--font-ui);
+  font-size: var(--font-size-base);
+  font-style: normal;
+  color: rgba(255, 193, 7, 0.9);
+  line-height: 1.65;
+  margin-bottom: 0.75rem;
+}
+
+.xpAlert .quoteAuthor {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  color: rgba(255, 193, 7, 0.65);
+  letter-spacing: 0.5px;
+  text-transform: none;
+  font-weight: normal;
+}
+
+/* ========================================
    TIMELINE SECTIONS
    ======================================== */
 
