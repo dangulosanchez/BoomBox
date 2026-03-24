@@ -4,21 +4,23 @@
 
 .card {
   background: #0c0c0c;
-  border-radius: var(--border-radius-xl);
+  border-radius: 4px;
+  border: 1px solid #1A1A1A;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   height: 100%;
   box-sizing: border-box;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
   position: relative;
 }
 
 .card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-4px);
+  border-color: rgba(255, 215, 0, 0.2);
   box-shadow:
-    0 24px 64px rgba(0, 0, 0, 0.7),
-    0 0 0 1px rgba(255, 215, 0, 0.12);
+    0 16px 48px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(255, 215, 0, 0.08);
 }
 
 /* ========== XP TITLE BAR ========== */
@@ -200,13 +202,13 @@
 }
 
 .tag {
-  font-family: var(--font-body);
+  font-family: 'Tahoma', 'Segoe UI', sans-serif;
   font-size: 0.68rem;
   color: rgba(255, 255, 255, 0.6);
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--border-radius-full);
-  padding: 0.28rem 0.7rem;
+  border-radius: 2px;
+  padding: 0.2rem 0.5rem;
   line-height: 1.5;
   transition: border-color 0.25s ease, color 0.25s ease;
 }
@@ -246,42 +248,6 @@
   opacity: 0.6;
 }
 
-/* ========== CTA BUTTON ========== */
-/* Covers both <Link> and <button> variants */
-
-.ctaButton {
-  background: none; /* reset button default */
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 0.9rem 1.25rem;
-  background: transparent;
-  color: var(--color-accent-gold);
-  font-family: var(--font-heading);
-  font-size: var(--font-size-sm);
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-decoration: none;
-  border: 1px solid rgba(255, 215, 0, 0.28);
-  border-radius: var(--border-radius-lg);
-  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
-}
-
-.ctaButton:hover {
-  background: var(--color-accent-gold);
-  color: #000;
-  border-color: var(--color-accent-gold);
-}
-
-.ctaButton svg {
-  flex-shrink: 0;
-  transition: transform 0.2s ease;
-}
-
-.ctaButton:hover svg {
-  transform: translateX(4px);
-}
 
 /* ========== RESPONSIVE ========== */
 
@@ -308,8 +274,6 @@
 
 @media (prefers-reduced-motion: reduce) {
   .card,
-  .ctaButton,
-  .ctaButton svg,
   .tag {
     transition: none;
   }
@@ -317,13 +281,4 @@
   .card:hover {
     transform: none;
   }
-
-  .ctaButton:hover svg {
-    transform: none;
-  }
-}
-
-.ctaButton:focus-visible {
-  outline: 2px solid var(--color-accent-gold);
-  outline-offset: 4px;
 }

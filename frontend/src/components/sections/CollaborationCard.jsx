@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import XPButton from '../base/XPButton';
 import styles from './CollaborationCard.module.css';
 
 const CollaborationCard = ({
@@ -84,19 +85,9 @@ const CollaborationCard = ({
           </div>
         )}
         {onCtaClick ? (
-          <button type="button" className={styles.ctaButton} onClick={onCtaClick}>
-            <span>{ctaText}</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </button>
+          <XPButton onClick={onCtaClick}>{ctaText}</XPButton>
         ) : (
-          <Link to={ctaLink} className={styles.ctaButton}>
-            <span>{ctaText}</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </Link>
+          <XPButton as={Link} to={ctaLink}>{ctaText}</XPButton>
         )}
       </div>
     </article>

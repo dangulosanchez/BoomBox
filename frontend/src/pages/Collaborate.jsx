@@ -99,9 +99,9 @@ const Collaborate = () => {
 
   // Non-text data kept locally (icons, route links)
   const OPPORTUNITY_META = {
-    events:    { icon: '🎉', ctaLink: '/contact?type=event-collaboration' },
-    vendor:    { icon: '🛍️', ctaLink: '/contact?type=vendor-community' },
-    rehearsal: { icon: '🎸', ctaLink: '/contact?type=rehearsal-space' },
+    events:    { ctaLink: '/contact?type=event-collaboration' },
+    vendor:    { ctaLink: '/contact?type=vendor-community' },
+    rehearsal: { ctaLink: '/contact?type=rehearsal-space' },
   };
 
   const collaborationTypes = c.opportunities.map(opp => ({
@@ -170,29 +170,31 @@ const Collaborate = () => {
       {/* ========== PHILOSOPHY SECTION ========== */}
       <section className={styles.philosophySection}>
         <div className={styles.container}>
-          <motion.div
-            className={styles.philosophyContent}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className={styles.philosophyLeft}>
-              <span className={styles.philosophyEyebrow}>{c.philosophy.eyebrow}</span>
-              <h2 className={styles.philosophyTitle}>{c.philosophy.title}</h2>
-            </div>
-            <div className={styles.philosophyRight}>
-              <p className={styles.philosophyText}>{c.philosophy.body}</p>
-              <div className={styles.statsBar}>
-                {c.philosophy.stats.map((stat, i) => (
-                  <div key={i} className={styles.statItem}>
-                    <div className={styles.statNumber}>{stat.number}</div>
-                    <div className={styles.statLabel}>{stat.label}</div>
-                  </div>
-                ))}
+          <CyberLunaWindow isStatic title="venue_philosophy.txt" bodyClassName={styles.windowContent}>
+            <motion.div
+              className={styles.philosophyContent}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className={styles.philosophyLeft}>
+                <span className={styles.philosophyEyebrow}>{c.philosophy.eyebrow}</span>
+                <h2 className={styles.philosophyTitle}>{c.philosophy.title}</h2>
               </div>
-            </div>
-          </motion.div>
+              <div className={styles.philosophyRight}>
+                <p className={styles.philosophyText}>{c.philosophy.body}</p>
+                <div className={styles.statsBar}>
+                  {c.philosophy.stats.map((stat, i) => (
+                    <div key={i} className={styles.statItem}>
+                      <div className={styles.statNumber}>{stat.number}</div>
+                      <div className={styles.statLabel}>{stat.label}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </CyberLunaWindow>
         </div>
       </section>
 
@@ -247,56 +249,42 @@ const Collaborate = () => {
       {/* ========== FAQ SECTION ========== */}
       <section className={styles.faqSection}>
         <div className={styles.container}>
-          <motion.h2 
-            className={styles.sectionTitle}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            {c.faq.title}
-          </motion.h2>
-          <div className={styles.faqList}>
-            {faqs.map((faq, index) => (
-              <motion.div
-                key={index}
-                className={styles.faqItem}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <button
-                  className={`${styles.faqQuestion} ${openFaqIndex === index ? styles.active : ''}`}
-                  onClick={() => toggleFaq(index)}
-                  aria-expanded={openFaqIndex === index}
+          <CyberLunaWindow isStatic title={c.faq.title} bodyClassName={styles.windowContent}>
+            <div className={styles.faqList}>
+              {faqs.map((faq, index) => (
+                <motion.div
+                  key={index}
+                  className={styles.faqItem}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <span>{faq.question}</span>
-                  <svg 
-                    className={styles.faqIcon}
-                    width="20" 
-                    height="20" 
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    stroke="currentColor"
+                  <button
+                    className={`${styles.faqQuestion} ${openFaqIndex === index ? styles.active : ''}`}
+                    onClick={() => toggleFaq(index)}
+                    aria-expanded={openFaqIndex === index}
                   >
-                    <path d="M19 9l-7 7-7-7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </button>
-                {openFaqIndex === index && (
-                  <motion.div
-                    className={styles.faqAnswer}
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <p>{faq.answer}</p>
-                  </motion.div>
-                )}
-              </motion.div>
-            ))}
-          </div>
+                    <span>{faq.question}</span>
+                    <span className={styles.faqToggle} aria-hidden="true">
+                      {openFaqIndex === index ? '–' : '+'}
+                    </span>
+                  </button>
+                  {openFaqIndex === index && (
+                    <motion.div
+                      className={styles.faqAnswer}
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <p>{faq.answer}</p>
+                    </motion.div>
+                  )}
+                </motion.div>
+              ))}
+            </div>
+          </CyberLunaWindow>
         </div>
       </section>
 
